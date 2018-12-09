@@ -1,0 +1,84 @@
+﻿<Page x:Class="NinjaLife.Game"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NinjaLife"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Game" Loaded="Window_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.2*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Viewbox Margin="0,0,0,0">
+            <Border BorderThickness="10" BorderBrush="Orange">
+                <Image Source="img/state_ok.png" Name="StatePic" />
+            </Border>
+        </Viewbox>
+        <Viewbox Grid.Column="1" HorizontalAlignment="Left" Margin="5,7,0,7">
+            <StackPanel >
+                <Label Content="Health:"  FontSize="10" Name="healthlabel" />
+                <Grid>
+                    <ProgressBar Height="20" Width="150" Name="healthbar" Foreground="Red"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="healthtext" FontSize="10"/>
+                </Grid>
+                <Label Content="Chakra:"  FontSize="10" Name="chakralabel"/>
+                <Grid>
+                    <ProgressBar Height="20" Width="150" Name="chakrabar" Foreground="LightBlue"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="chakratext" FontSize="10"/>
+                </Grid>
+                <Label Content="Happiness:" FontSize="10" Name="happinesslabel"/>
+                <Grid>
+                    <ProgressBar Height="20" Width="150" Name="happinessbar" Foreground="Pink"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="happinesstext" FontSize="10"/>
+                </Grid>
+                <Label Content="Energy:" FontSize="10" Name="energylabel"/>
+                <Grid>
+                    <ProgressBar Height="20" Width="150" Name="energybar" Foreground="Green"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="energytext" FontSize="10"/>
+                </Grid>
+            </StackPanel>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="2"  Grid.Row="5" Height="22" >
+            <Button Content="Ichiraku Ramen" Width="100"/>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="3" Height="22" >
+            <Button Content="Hokage mansion" Width="100"/>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1"   Grid.Row="3" Grid.RowSpan="2" Height="22">
+            <Button Content="Academy" Width="100"/>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="2"   Grid.Row="4" Height="22">
+            <Button Content="Medical centre" Width="100"/>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="4"   Grid.Row="5" Height="22">
+            <Button Content="Hot springs" Width="100"/>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="0"   Grid.Row="3" Height="22">
+            <Button Content="Training grounds" Width="100" Click="Training_Button"/>
+        </Viewbox>
+        <Viewbox  HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="5">
+            <TextBlock  Background="White" Name="timedate"/>
+        </Viewbox>
+
+    </Grid>
+    <Page.Background>
+        <ImageBrush ImageSource="/img/game_konoha.jpg"></ImageBrush>
+    </Page.Background>
+</Page>
