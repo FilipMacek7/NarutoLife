@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NarutoLife;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -98,7 +99,7 @@ namespace NinjaLife
 
         private void Training_Button(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Trainning());
+            NavigationService.Navigate(new Training());
         }
     }
 }
