@@ -11,8 +11,15 @@
     <Page.Background>
         <ImageBrush ImageSource="img/training_ground.jpg"></ImageBrush>
     </Page.Background>
+
     <Grid>
-        <Image gif:ImageBehavior.RepeatBehavior="Forever"
-               gif:ImageBehavior.AnimatedSource="img/naruto_stand.gif" Margin="10,239,578,92" />
+        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="236,159,236,201" >
+            <Button Height="50" Width="150" Margin="7" Content="Taijutsu" Click="Button_Click"></Button>
+            <Button Height="50" Width="150" Margin="7" Content="Chakra"></Button>
+        </StackPanel>
+        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="236,228,236,139" >
+            <Button Height="50" Width="150" Margin="7" Content="Quickness"></Button>
+            <Button Height="50" Width="150" Margin="7" Content="Accuracy"></Button>
+        </StackPanel>
     </Grid>
 </Page>

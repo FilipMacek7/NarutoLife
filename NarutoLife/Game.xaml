@@ -71,7 +71,7 @@
             <Button Content="Hot springs" Width="100"/>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="0"   Grid.Row="3" Height="22">
-            <Button Content="Training grounds" Width="100" Click="Training_Button"/>
+            <Button Content="Training ground" Width="100" Click="Training_Button"/>
         </Viewbox>
         <Viewbox  HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="5">
             <TextBlock  Background="White" Name="timedate"/>
