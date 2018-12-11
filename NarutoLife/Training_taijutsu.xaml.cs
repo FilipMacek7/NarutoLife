@@ -14,6 +14,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using WpfAnimatedGif;
 
 namespace NarutoLife
@@ -23,17 +24,31 @@ namespace NarutoLife
     /// </summary>
     public partial class Training_taijutsu : Page
     {
-        public Training_taijutsu()
+        int hours;      
+        public Training_taijutsu(int num)
         {
             InitializeComponent();
-            
+            hours = num;
         }
-        int score = 0;
+        DispatcherTimer dt = new DispatcherTimer();
+        int i = 0;
+        private void dtTicker(object sender, EventArgs e)
+        {
+            i++;
+            if (i == hours * 10)
+            {
+                NavigationService.Navigate(new Game(score * 0.25));
+            }
+        }
+        double score = 0;
         void Page_Loaded(object sender, RoutedEventArgs e)
         {
             this.PreviewKeyDown += Page_PreviewKeyDown;
             this.Focusable = true;
             this.Focus();
+            dt.Interval = TimeSpan.FromSeconds(1);
+            dt.Tick += dtTicker;
+            dt.Start();   
         }
         Sound punch = new Sound();       
         void Page_PreviewKeyDown(object sender, KeyEventArgs e)

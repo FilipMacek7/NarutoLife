@@ -30,7 +30,8 @@ namespace NinjaLife
 
         private void Button_Start(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Game());
+            int minusenergy = 0;
+            NavigationService.Navigate(new Game(minusenergy));
             menu.Stop();
         }
 

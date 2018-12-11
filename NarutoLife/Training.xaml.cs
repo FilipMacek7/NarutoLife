@@ -22,12 +22,18 @@ namespace NarutoLife
     {
         public Training()
         {
-            InitializeComponent();
+            InitializeComponent();         
         }
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training_taijutsu());
+            int num;
+            if (int.TryParse(Hours.Text, out num) && num > 0)
+            {
+                NavigationService.Navigate(new Training_taijutsu(num));
+            }
+           
         }
+
     }
 }

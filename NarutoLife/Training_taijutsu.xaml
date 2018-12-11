@@ -15,8 +15,8 @@
         <Image gif:ImageBehavior.RepeatBehavior="Forever"
                gif:ImageBehavior.AnimatedSource="img/naruto_stand.gif" 
                gif:ImageBehavior.AnimationCompleted="AnimationCompleted"
-               Margin="332,232,356,106" Name="Naruto" Panel.ZIndex="3"/>
-        <Image Source="img/tree_trunk.png" Margin="369,227,248,121" Panel.ZIndex="2"></Image>
-        <Label Content="Score:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="351,141,0,0" Width="201" Height="44" FontSize="25" Name="Score"/>
+                Name="Naruto" Panel.ZIndex="3" Height="100" Margin="-23,238,23,112"/>
+        <Image Source="img/tree_trunk.png" Panel.ZIndex="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Margin="392,222,313,128"></Image>
+        <Label Content="Score:" HorizontalAlignment="Center" VerticalAlignment="Center" Width="158" Height="44" FontSize="25" Name="Score" Margin="329,178,313,228"/>
     </Grid>
 </Page>

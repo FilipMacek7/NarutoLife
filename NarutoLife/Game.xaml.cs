@@ -43,14 +43,13 @@ namespace NinjaLife
 
 
         DateTime date = new DateTime(2000, 10, 13, 7, 0, 0);
-
-        Sound game = new Sound();
-        public Game()
+        int startGame = 0;
+        public Game(double minusenergy)
         {
             InitializeComponent();
-            game.Play("morning.mp3");
-            game.SetVolume(25);
+            startMusic();
             setInfo();
+            energy = energy - minusenergy;
         }
 
         DispatcherTimer dt = new DispatcherTimer();
@@ -61,11 +60,20 @@ namespace NinjaLife
             i++;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             dt.Interval = TimeSpan.FromSeconds(1);
             dt.Tick += dtTicker;
             dt.Start();
+        }
+        private void startMusic()
+        {
+            if (i==1)
+            {
+                Sound game = new Sound();
+                game.Play("morning.mp3");
+                game.SetVolume(25);
+            }
         }
         private void setInfo()
         {

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:NinjaLife"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Game" Loaded="Window_Loaded">
+      Title="Game" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -33,25 +33,25 @@
         </Viewbox>
         <Viewbox Grid.Column="1" HorizontalAlignment="Left" Margin="5,7,0,7">
             <StackPanel >
-                <Label Content="Health:"  FontSize="10" Name="healthlabel" />
+                <Label Content="Health:"  FontSize="15" Name="healthlabel" />
                 <Grid>
-                    <ProgressBar Height="20" Width="150" Name="healthbar" Foreground="Red"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="healthtext" FontSize="10"/>
+                    <ProgressBar Height="30" Width="200" Name="healthbar" Foreground="Red"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="healthtext" FontSize="15"/>
                 </Grid>
-                <Label Content="Chakra:"  FontSize="10" Name="chakralabel"/>
+                <Label Content="Chakra:"  FontSize="15" Name="chakralabel"/>
                 <Grid>
-                    <ProgressBar Height="20" Width="150" Name="chakrabar" Foreground="LightBlue"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="chakratext" FontSize="10"/>
+                    <ProgressBar Height="30" Width="200" Name="chakrabar" Foreground="LightBlue"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="chakratext" FontSize="15"/>
                 </Grid>
-                <Label Content="Happiness:" FontSize="10" Name="happinesslabel"/>
+                <Label Content="Happiness:" FontSize="15" Name="happinesslabel"/>
                 <Grid>
-                    <ProgressBar Height="20" Width="150" Name="happinessbar" Foreground="Pink"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="happinesstext" FontSize="10"/>
+                    <ProgressBar Height="30" Width="200" Name="happinessbar" Foreground="Pink"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="happinesstext" FontSize="15"/>
                 </Grid>
-                <Label Content="Energy:" FontSize="10" Name="energylabel"/>
+                <Label Content="Energy:" FontSize="15" Name="energylabel"/>
                 <Grid>
-                    <ProgressBar Height="20" Width="150" Name="energybar" Foreground="Green"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="energytext" FontSize="10"/>
+                    <ProgressBar Height="30" Width="200" Name="energybar" Foreground="Green"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="energytext" FontSize="15"/>
                 </Grid>
             </StackPanel>
         </Viewbox>

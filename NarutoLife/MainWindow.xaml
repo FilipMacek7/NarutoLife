@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="NarutoLife" Height="500" Width="820"  ResizeMode="NoResize">
+        Title="NarutoLife" Height="600" Width="1020"  ResizeMode="NoResize">
     <Grid>
         <Frame x:Name="main" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
