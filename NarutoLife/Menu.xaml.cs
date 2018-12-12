@@ -31,7 +31,8 @@ namespace NinjaLife
         private void Button_Start(object sender, RoutedEventArgs e)
         {
             int minusenergy = 0;
-            NavigationService.Navigate(new Game(minusenergy));
+            DateTime date = new DateTime(2000, 10, 13, 7, 0, 0);
+            NavigationService.Navigate(new Game(minusenergy, date));
             menu.Stop();
         }
 

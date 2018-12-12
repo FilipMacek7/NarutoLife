@@ -22,6 +22,6 @@
             <Button Height="50" Width="150" Margin="7" Content="Accuracy"></Button>
         </StackPanel>
         <TextBox HorizontalAlignment="Center" Height="28"  TextWrapping="Wrap" VerticalAlignment="Center" Width="328" Name="Hours" Margin="236,116,236,306"/>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="How long do you want to train? 1 hour = 10 seconds" VerticalAlignment="Center" Width="328"  Height="28" Background="Orange" Margin="236,88,236,334"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Name="Info" VerticalAlignment="Center" Width="328"  Height="68" Background="Orange" Margin="236,48,236,334"/>
     </Grid>
 </Page>

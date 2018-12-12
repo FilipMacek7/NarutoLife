@@ -23,9 +23,9 @@ namespace NinjaLife
     public partial class Game : Page
     {
         //main stats
-        double health = 25;
-        double chakra = 20;
-        double happiness = 70;
+        int health = 25;
+        int chakra = 20;
+        int happiness = 70;
         double energy = 50;
         int yen = 300;
 
@@ -36,27 +36,26 @@ namespace NinjaLife
         int maxenergy = 50;
 
         //battle stats
-        int strength = 0;
+        int taijutsu = 0;
         int quickness = 0;
         int vitality = 0;
 
 
-
-        DateTime date = new DateTime(2000, 10, 13, 7, 0, 0);
-        int startGame = 0;
-        public Game(double minusenergy)
+        DateTime datetime;
+        public Game(double minusenergy,  DateTime getdatetime)
         {
             InitializeComponent();
-            startMusic();
+            startMusic();        
+            energy = energy - minusenergy * 0.1;
+            timedate.Text = getdatetime.ToString("HH:mm:ss");
+            datetime = getdatetime;
             setInfo();
-            energy = energy - minusenergy;
         }
-
         DispatcherTimer dt = new DispatcherTimer();
         int i = 1;
         private void dtTicker(object sender, EventArgs e)
         {
-            timedate.Text = date.AddSeconds(i).ToString("HH:mm:ss");
+            timedate.Text = datetime.AddSeconds(i).ToString("HH:mm:ss");
             i++;
         }
 
@@ -80,7 +79,7 @@ namespace NinjaLife
             healthbar.Value = health / maxhealth * 100;
             chakrabar.Value = chakra / maxchakra * 100;
             happinessbar.Value = happiness / maxhappiness * 100;
-            energybar.Value = energy / maxenergy * 100;
+            energybar.Value = Math.Round(energy/ maxenergy * 100);
 
             healthtext.Text = health + "/" + maxhealth;
             chakratext.Text = chakra + "/" + maxchakra;
@@ -107,7 +106,7 @@ namespace NinjaLife
 
         private void Training_Button(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training());
+            NavigationService.Navigate(new Training(datetime));
         }
     }
 }

@@ -20,17 +20,23 @@ namespace NarutoLife
     /// </summary>
     public partial class Training : Page
     {
-        public Training()
+        DateTime time;
+        public Training(DateTime getdatetime)
         {
-            InitializeComponent();         
+            InitializeComponent();
+            Info.Text = "How long do you want to train?\n " +
+                "1 hour = 10 seconds\n" +
+                "0,5 hours = 5 seconds\n" +
+                "(Recommended limit are 6 hours max)"  ;
+            time = getdatetime;
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int num;
-            if (int.TryParse(Hours.Text, out num) && num > 0)
+            double num;
+            if (double.TryParse(Hours.Text, out num) && num > 0)
             {
-                NavigationService.Navigate(new Training_taijutsu(num));
+                NavigationService.Navigate(new Training_taijutsu(num,time));
             }
            
         }

@@ -24,11 +24,13 @@ namespace NarutoLife
     /// </summary>
     public partial class Training_taijutsu : Page
     {
-        int hours;      
-        public Training_taijutsu(int num)
+        double hours;
+        DateTime datetime;
+        public Training_taijutsu(double num, DateTime getdatetime)
         {
             InitializeComponent();
             hours = num;
+            datetime = getdatetime;
         }
         DispatcherTimer dt = new DispatcherTimer();
         int i = 0;
@@ -37,7 +39,7 @@ namespace NarutoLife
             i++;
             if (i == hours * 10)
             {
-                NavigationService.Navigate(new Game(score * 0.25));
+                NavigationService.Navigate(new Game(score, datetime.AddHours(hours)));
             }
         }
         double score = 0;
