@@ -21,25 +21,41 @@ namespace NarutoLife
     public partial class Training : Page
     {
         DateTime time;
-        public Training(DateTime getdatetime)
+        double _num = 1; 
+        double num {
+            get {
+                return _num;
+            }
+            set {
+                if(value < 1)
+                {
+                    return;
+                }
+                _num = value;
+            }
+        }
+        double taijutsu;
+        public Training(DateTime getdatetime, double btaijutsu, double bquickness, double bvitality, double baccuracy)
         {
             InitializeComponent();
-            Info.Text = "How long do you want to train?\n " +
-                "1 hour = 10 seconds\n" +
-                "0,5 hours = 5 seconds\n" +
-                "(Recommended limit are 6 hours max)"  ;
+            Trainhours.Text = num.ToString();
             time = getdatetime;
+            taijutsu = btaijutsu;
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            double num;
-            if (double.TryParse(Hours.Text, out num) && num > 0)
-            {
-                NavigationService.Navigate(new Training_taijutsu(num,time));
-            }
-           
+            NavigationService.Navigate(new Training_taijutsu(num, time, taijutsu));     
         }
-
+        private void Training_hnext(object sender,RoutedEventArgs e)
+        {
+            num++;
+            Trainhours.Text = num.ToString();
+        }
+        private void Training_hprevious(object sender, RoutedEventArgs e)
+        {
+            num--;
+            Trainhours.Text = num.ToString();
+        }
     }
 }

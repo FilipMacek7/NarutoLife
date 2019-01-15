@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NinjaLife
+namespace NarutoLife
 {
     /// <summary>
     /// Interakční logika pro MainWindow.xaml

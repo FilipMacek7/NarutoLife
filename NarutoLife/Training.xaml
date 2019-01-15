@@ -13,15 +13,15 @@
     </Page.Background>
 
     <Grid>
-        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="236,159,236,201" >
+        <WrapPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="330">
             <Button Height="50" Width="150" Margin="7" Content="Taijutsu" Click="Button_Click"></Button>
             <Button Height="50" Width="150" Margin="7" Content="Chakra"></Button>
-        </StackPanel>
-        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="236,228,236,139" >
             <Button Height="50" Width="150" Margin="7" Content="Quickness"></Button>
             <Button Height="50" Width="150" Margin="7" Content="Accuracy"></Button>
-        </StackPanel>
-        <TextBox HorizontalAlignment="Center" Height="28"  TextWrapping="Wrap" VerticalAlignment="Center" Width="328" Name="Hours" Margin="236,116,236,306"/>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Name="Info" VerticalAlignment="Center" Width="328"  Height="68" Background="Orange" Margin="236,48,236,334"/>
+        </WrapPanel>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="328"  Height="22" Background="Orange" Margin="235,88,237,340" Text="How many hours do you want to train?" FontSize="15" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Center" Name="Trainhours" VerticalAlignment="Center" Width="328"  Height="35" Background="Orange" TextAlignment="Center" Margin="235,110,237,305" Text="5" FontSize="20"/>
+        <Button FontFamily="Marlett" FontSize="20" Content="3" Width="30" Height="25"  Click="Training_hprevious" Margin="352,115,418,310"/>
+        <Button FontFamily="Marlett" FontSize="20" Content="4" Width="30" Height="25"   Click="Training_hnext" Margin="418,115,352,310"/>
     </Grid>
 </Page>

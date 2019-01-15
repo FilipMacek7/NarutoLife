@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NinjaLife
+namespace NarutoLife
 {
     /// <summary>
     /// Interakční logika pro Menu.xaml
@@ -31,9 +31,11 @@ namespace NinjaLife
         private void Button_Start(object sender, RoutedEventArgs e)
         {
             int minusenergy = 0;
-            DateTime date = new DateTime(2000, 10, 13, 7, 0, 0);
-            NavigationService.Navigate(new Game(minusenergy, date));
-            menu.Stop();
+            DateTime date = new DateTime(2000, 10, 13, 6, 0, 0);
+            NavigationService.Navigate(new Game(minusenergy, date,0,0,0,0));
+            menu.Stop();       
+            menu.Play("morning.mp3");
+            menu.SetVolume(25);
         }
 
         private void Button_Load(object sender, RoutedEventArgs e)

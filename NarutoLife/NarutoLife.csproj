@@ -131,8 +131,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="img\konoha_afternoon.jpg" />
+    <Resource Include="img\konoha_colorfulevening.jpg" />
+    <Resource Include="img\konoha_evening.jpg" />
+    <Resource Include="img\konoha_night.jpg" />
+    <Resource Include="img\profilebg1.jpg" />
+    <Resource Include="img\red_shuriken.png" />
+    <Resource Include="img\profilebg2.jpg" />
+    <Resource Include="img\profilebg3.jpg" />
+    <Resource Include="img\key_Q.png" />
+    <Resource Include="img\click.gif" />
+    <Resource Include="img\question_mark.png" />
     <Content Include="sounds\punch_trunk.mp3" />
-    <Resource Include="img\game_konoha.jpg" />
     <Resource Include="img\lost_impression__child_naruto_x_child_reader__by_blackfang_124_d7kt8ze_LgY_icon.ico" />
     <Resource Include="img\menu.png" />
     <Resource Include="img\naruto_crouch.gif" />
