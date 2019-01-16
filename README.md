@@ -1,3 +1,3 @@
 # NarutoLife
 
-School project
+My first RPG game for school project
