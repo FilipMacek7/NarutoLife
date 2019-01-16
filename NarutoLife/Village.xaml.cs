@@ -22,46 +22,21 @@ namespace NarutoLife
     /// <summary>
     /// Interakční logika pro Game.xaml
     /// </summary>
-    public partial class Game : Page
-    {
-        //main stats
-        int health = 30;
-        int chakra = 20;
-        int happiness = 70;
-        double energy = 50;
-        int yen = 300;
-
-        //max main stats
-        int maxhealth = 25;
-        int maxchakra = 20;
-        int maxhappiness = 100;
-        int maxenergy = 50;
-
-        //battle stats
-        int taijutsu = 2;
-        int quickness = 2;
-        int vitality = 3;
-        int accuracy = 1;
-
-        //exp frames
-        double btaijutsu = 0;
-        double bquickness = 0;
-        double bvitality = 0;
-        double baccuracy = 0;
-
-        DateTime datetime;
-        public Game(double minusenergy,  DateTime getdatetime, double plustaijutsu, double plusquickness, double plusvitality, double plusaccuracy)
+    public partial class Village : Page
+    {       
+        public Village(double minusenergy,  DateTime getdatetime, double plustaijutsu, double plusquickness, double plusvitality, double plusaccuracy, int vitality)
         {
             InitializeComponent();
-            energy = energy - minusenergy * 0.1;
+            naruto.energy = naruto.energy - minusenergy * 0.1;
             timedate.Text = getdatetime.ToString("HH:mm:ss");
             datetime = getdatetime;
             setInfo();
-            btaijutsu = btaijutsu + plustaijutsu;
-            bquickness = bquickness + plusquickness;
-            bvitality = bvitality + plusvitality;
-            baccuracy = baccuracy + plusaccuracy;
+            naruto.btaijutsu = naruto.btaijutsu + plustaijutsu;
+            naruto.bquickness = naruto.bquickness + plusquickness;
+            naruto.bvitality = naruto.bvitality + plusvitality;
+            naruto.baccuracy = naruto.baccuracy + plusaccuracy;
         }
+        DateTime datetime;
         DispatcherTimer dt = new DispatcherTimer();
         int i = 1;
         private void dtTicker(object sender, EventArgs e)
@@ -76,31 +51,53 @@ namespace NarutoLife
             dt.Tick += dtTicker;
             dt.Start();
         }
+        Character naruto = new Character();
         private void setInfo()
         {
-            healthbar.Value = health / maxhealth * 100;
-            chakrabar.Value = chakra / maxchakra * 100;
-            happinessbar.Value = happiness / maxhappiness * 100;
-            energybar.Value = Math.Round(energy / maxenergy * 100);
+            naruto.health = 30;
+            naruto.chakra = 20;
+            naruto.happiness = 70;
+            naruto.energy = 50;
+            naruto.yen = 300;
 
-            healthtext.Text = health + "/" + maxhealth;
-            chakratext.Text = chakra + "/" + maxchakra;
-            happinesstext.Text = happiness + "/" + maxhappiness;
-            energytext.Text = energy + "/" + maxenergy;
+            naruto.maxhealth = 25;
+            naruto.maxchakra = 20;
+            naruto.maxhappiness = 100;
+            naruto.maxenergy = 50;
 
-            if (happiness < 25 || energy < 10)
+            naruto.taijutsu = 2;
+            naruto.quickness = 2;
+            naruto.vitality = 3;
+            naruto.accuracy = 1;
+
+            naruto.btaijutsu = 0;
+            naruto.bquickness = 0;
+            naruto.bvitality = 0;
+            naruto.baccuracy = 0;
+
+            healthbar.Value = naruto.health / naruto.maxhealth * 100;
+            chakrabar.Value = naruto.chakra / naruto.maxchakra * 100;
+            happinessbar.Value = naruto.happiness;
+            energybar.Value = Math.Round(naruto.energy / naruto.maxenergy * 100);
+
+            healthtext.Text = naruto.health + "/" + naruto.maxhealth;
+            chakratext.Text = naruto.chakra + "/" + naruto.maxchakra;
+            happinesstext.Text = naruto.happiness + "/" + naruto.maxhappiness;
+            energytext.Text = naruto.energy + "/" + naruto.maxenergy;
+
+            if (naruto.happiness < 25 || naruto.energy < 10)
             {
                 StatePic.Source = new BitmapImage(new Uri(@"/img/state_sad.jpg", UriKind.Relative));
             }
-            else if (happiness > 25 & happiness < 50 || energy < 20)
+            else if (naruto.happiness > 25 & naruto.happiness < 50 || naruto.energy < 20)
             {
                 StatePic.Source = new BitmapImage(new Uri(@"/img/state_notok.png", UriKind.Relative));
             }
-            else if (happiness > 50 & happiness < 85 || energy < 30)
+            else if (naruto.happiness > 50 & naruto.happiness < 85 || naruto.energy < 30)
             {
                 StatePic.Source = new BitmapImage(new Uri(@"/img/state_ok.png", UriKind.Relative));
             }
-            else if (happiness >= 85)
+            else if (naruto.happiness >= 85)
             {
                 StatePic.Source = new BitmapImage(new Uri(@"/img/state_happy.png", UriKind.Relative));
             }
@@ -143,12 +140,15 @@ namespace NarutoLife
                     profilebg = 1;
                     break;
             }
-            stats.Content = "\n Taijutsu: " + taijutsu.ToString() + "\n Quickness: " + quickness.ToString() + "\n Vitality: " + vitality.ToString() + "\n Accuracy: " + accuracy.ToString();
+            stats.Content = "\n Taijutsu: " + naruto.taijutsu.ToString() + "\n Quickness: " + naruto.quickness.ToString() + "\n Vitality: " + naruto.vitality.ToString() + "\n Accuracy: " + naruto.accuracy.ToString();
+
+            //LEVEL SYSTEM
+
         }
 
         private void Training_Button(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training(datetime, btaijutsu, bquickness, bvitality,baccuracy));
+            NavigationService.Navigate(new Training(datetime, naruto.btaijutsu, naruto.bquickness, naruto.bvitality, naruto.baccuracy, naruto.vitality));
         }
         private void Profile_Button(object sender, RoutedEventArgs e)
         {

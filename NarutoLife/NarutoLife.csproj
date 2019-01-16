@@ -61,8 +61,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Game.xaml.cs">
-      <DependentUpon>Game.xaml</DependentUpon>
+    <Compile Include="Character.cs" />
+    <Compile Include="Village.xaml.cs">
+      <DependentUpon>Village.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sound.cs" />
     <Compile Include="Training.xaml.cs">
@@ -71,7 +72,7 @@
     <Compile Include="Training_taijutsu.xaml.cs">
       <DependentUpon>Training_taijutsu.xaml</DependentUpon>
     </Compile>
-    <Page Include="Game.xaml">
+    <Page Include="Village.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

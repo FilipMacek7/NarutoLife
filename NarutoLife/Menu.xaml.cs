@@ -32,7 +32,7 @@ namespace NarutoLife
         {
             int minusenergy = 0;
             DateTime date = new DateTime(2000, 10, 13, 6, 0, 0);
-            NavigationService.Navigate(new Game(minusenergy, date,0,0,0,0));
+            NavigationService.Navigate(new Village(minusenergy, date,0,0,0,0));
             menu.Stop();       
             menu.Play("morning.mp3");
             menu.SetVolume(25);

@@ -28,7 +28,8 @@ namespace NarutoLife
         double i;
         double hours;
         double taijutsub;
-        public Training_taijutsu(double num, DateTime getdatetime, double btaijutsu)
+        double Vitality;
+        public Training_taijutsu(double num, DateTime getdatetime, double btaijutsu, double vitality)
         {
             InitializeComponent();
             datetime = getdatetime;
@@ -36,6 +37,7 @@ namespace NarutoLife
             i = hours * 10;
             time.Content = "Time left: " + i.ToString();
             taijutsub = btaijutsu;
+            Vitality = vitality;
         }
         DispatcherTimer dt = new DispatcherTimer();
         private void dtTicker(object sender, EventArgs e)
@@ -47,6 +49,7 @@ namespace NarutoLife
                 table.Visibility = Visibility.Visible;
                 endscore.Content = score.ToString();
                 endexp.Content = taijutsub.ToString() +" + "+ (score / 2).ToString();
+                dt.Stop();
             }
         }
         double score = 0;
@@ -110,7 +113,7 @@ namespace NarutoLife
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-                NavigationService.Navigate(new Game(score, datetime.AddHours(hours), score/2,0,0,0));
+                NavigationService.Navigate(new Village(score, datetime.AddHours(hours), score/2,0,0,0, hours - Vitality / 2 * 10));
         }
     }
 }
