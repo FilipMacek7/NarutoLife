@@ -24,7 +24,7 @@ namespace NarutoLife
     /// </summary>
     public partial class Village : Page
     {       
-        public Village(double minusenergy,  DateTime getdatetime, double plustaijutsu, double plusquickness, double plusvitality, double plusaccuracy, int vitality)
+        public Village(double minusenergy,  DateTime getdatetime, double plustaijutsu, double plusquickness, double plusvitality, double plusaccuracy)
         {
             InitializeComponent();
             naruto.energy = naruto.energy - minusenergy * 0.1;

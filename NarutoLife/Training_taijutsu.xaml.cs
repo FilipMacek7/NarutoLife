@@ -113,7 +113,7 @@ namespace NarutoLife
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-                NavigationService.Navigate(new Village(score, datetime.AddHours(hours), score/2,0,0,0, hours - Vitality / 2 * 10));
+                NavigationService.Navigate(new Village(hours - Vitality / 2 * 10, datetime.AddHours(hours), score/2,0,0,0));
         }
     }
 }

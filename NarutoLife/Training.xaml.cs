@@ -35,8 +35,8 @@ namespace NarutoLife
             }
         }
         double taijutsu;
-        int Vitality;
-        public Training(DateTime getdatetime, double btaijutsu, double bquickness, double bvitality, double baccuracy, int vitality)
+        double Vitality;
+        public Training(DateTime getdatetime, double btaijutsu, double bquickness, double bvitality, double baccuracy, double vitality)
         {
             InitializeComponent();
             Trainhours.Text = num.ToString();
