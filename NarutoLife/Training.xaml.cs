@@ -34,20 +34,18 @@ namespace NarutoLife
                 _num = value;
             }
         }
-        double taijutsu;
-        double Vitality;
-        public Training(DateTime getdatetime, double btaijutsu, double bquickness, double bvitality, double baccuracy, double vitality)
+        Character naruto;
+        public Training(DateTime getdatetime, Character Naruto)
         {
             InitializeComponent();
             Trainhours.Text = num.ToString();
             time = getdatetime;
-            taijutsu = btaijutsu;
-            Vitality = vitality;
+            naruto = Naruto;
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training_taijutsu(num, time, taijutsu, Vitality));     
+            NavigationService.Navigate(new Training_taijutsu(num, time, naruto));     
         }
         private void Training_hnext(object sender,RoutedEventArgs e)
         {

@@ -30,9 +30,30 @@ namespace NarutoLife
 
         private void Button_Start(object sender, RoutedEventArgs e)
         {
-            int minusenergy = 0;
+            Character naruto = new Character();
+            naruto.health = 30;
+            naruto.chakra = 20;
+            naruto.happiness = 70;
+            naruto.energy = 50;
+            naruto.yen = 300;
+
+            naruto.maxhealth = 30;
+            naruto.maxchakra = 20;
+            naruto.maxhappiness = 100;
+            naruto.maxenergy = 50;
+
+            naruto.taijutsu = 2;
+            naruto.quickness = 2;
+            naruto.vitality = 3;
+            naruto.accuracy = 1;
+
+            naruto.btaijutsu = 0;
+            naruto.bquickness = 0;
+            naruto.bvitality = 0;
+            naruto.baccuracy = 0;
+
             DateTime date = new DateTime(2000, 10, 13, 6, 0, 0);
-            NavigationService.Navigate(new Village(minusenergy, date,0,0,0,0));
+            NavigationService.Navigate(new Village(date, naruto));
             menu.Stop();       
             menu.Play("morning.mp3");
             menu.SetVolume(25);

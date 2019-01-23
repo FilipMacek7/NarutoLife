@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NarutoLife
 {
-    class Character
+    public class Character
     {
         //main stats
         public int health { get; set; }

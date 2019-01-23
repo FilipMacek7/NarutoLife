@@ -23,18 +23,15 @@ namespace NarutoLife
     /// Interakční logika pro Game.xaml
     /// </summary>
     public partial class Village : Page
-    {       
-        public Village(double minusenergy,  DateTime getdatetime, double plustaijutsu, double plusquickness, double plusvitality, double plusaccuracy)
+    {
+        Character naruto;
+        public Village(DateTime getdatetime, Character Naruto)
         {
-            InitializeComponent();
-            naruto.energy = naruto.energy - minusenergy * 0.1;
+            InitializeComponent();           
             timedate.Text = getdatetime.ToString("HH:mm:ss");
             datetime = getdatetime;
-            setInfo();
-            naruto.btaijutsu = naruto.btaijutsu + plustaijutsu;
-            naruto.bquickness = naruto.bquickness + plusquickness;
-            naruto.bvitality = naruto.bvitality + plusvitality;
-            naruto.baccuracy = naruto.baccuracy + plusaccuracy;
+            naruto = Naruto;
+            setInfo();          
         }
         DateTime datetime;
         DispatcherTimer dt = new DispatcherTimer();
@@ -51,29 +48,8 @@ namespace NarutoLife
             dt.Tick += dtTicker;
             dt.Start();
         }
-        Character naruto = new Character();
         private void setInfo()
         {
-            naruto.health = 30;
-            naruto.chakra = 20;
-            naruto.happiness = 70;
-            naruto.energy = 50;
-            naruto.yen = 300;
-
-            naruto.maxhealth = 25;
-            naruto.maxchakra = 20;
-            naruto.maxhappiness = 100;
-            naruto.maxenergy = 50;
-
-            naruto.taijutsu = 2;
-            naruto.quickness = 2;
-            naruto.vitality = 3;
-            naruto.accuracy = 1;
-
-            naruto.btaijutsu = 0;
-            naruto.bquickness = 0;
-            naruto.bvitality = 0;
-            naruto.baccuracy = 0;
 
             healthbar.Value = naruto.health / naruto.maxhealth * 100;
             chakrabar.Value = naruto.chakra / naruto.maxchakra * 100;
@@ -148,7 +124,7 @@ namespace NarutoLife
 
         private void Training_Button(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training(datetime, naruto.btaijutsu, naruto.bquickness, naruto.bvitality, naruto.baccuracy, naruto.vitality));
+            NavigationService.Navigate(new Training(datetime, naruto));
         }
         private void Profile_Button(object sender, RoutedEventArgs e)
         {
