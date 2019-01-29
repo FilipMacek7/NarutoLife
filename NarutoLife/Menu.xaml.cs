@@ -47,11 +47,12 @@ namespace NarutoLife
             naruto.vitality = 3;
             naruto.accuracy = 1;
 
-            naruto.btaijutsu = 0;
-            naruto.bquickness = 0;
-            naruto.bvitality = 0;
-            naruto.baccuracy = 0;
+            naruto.exptaijutsu = 0;
+            naruto.expquickness = 0;
+            naruto.expvitality = 0;
+            naruto.expaccuracy = 0;
 
+            naruto.level = 1;
             DateTime date = new DateTime(2000, 10, 13, 6, 0, 0);
             NavigationService.Navigate(new Village(date, naruto));
             menu.Stop();       

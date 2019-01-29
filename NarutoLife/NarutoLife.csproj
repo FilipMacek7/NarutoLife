@@ -62,6 +62,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Character.cs" />
+    <Compile Include="Training_quickness.xaml.cs">
+      <DependentUpon>Training_quickness.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Village.xaml.cs">
       <DependentUpon>Village.xaml</DependentUpon>
     </Compile>
@@ -72,6 +75,10 @@
     <Compile Include="Training_taijutsu.xaml.cs">
       <DependentUpon>Training_taijutsu.xaml</DependentUpon>
     </Compile>
+    <Page Include="Training_quickness.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Village.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,6 +150,8 @@
     <Resource Include="img\key_Q.png" />
     <Resource Include="img\click.gif" />
     <Resource Include="img\question_mark.png" />
+    <Resource Include="img\konoha_run1.jpg" />
+    <Resource Include="img\naruto_run.gif" />
     <Content Include="sounds\punch_trunk.mp3" />
     <Resource Include="img\lost_impression__child_naruto_x_child_reader__by_blackfang_124_d7kt8ze_LgY_icon.ico" />
     <Resource Include="img\menu.png" />

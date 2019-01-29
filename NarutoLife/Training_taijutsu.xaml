@@ -31,7 +31,7 @@
             </Image>
             <Image Source="img/key_Q.png" Height="40" Margin="0,112,0,298" Panel.ZIndex="1"></Image>
         </Grid>
-        <Label FontSize="20" Content="Time left: 0" HorizontalAlignment="Right" Name="time" Margin="0,35,0,-35"></Label>
+        <Label FontSize="20" Content="Time left: 0" HorizontalAlignment="Right" Name="time" Margin="0,35,0,375.6"></Label>
         <Image gif:ImageBehavior.RepeatBehavior="Forever"
                gif:ImageBehavior.AnimatedSource="img/naruto_stand.gif" 
                gif:ImageBehavior.AnimationCompleted="AnimationCompleted"

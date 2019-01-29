@@ -25,19 +25,20 @@ namespace NarutoLife
     public partial class Training_taijutsu : Page
     {
         DateTime datetime;  
-        double i;
-        double hours;
+        int i;
+        int hours;
         Character naruto;
-        public Training_taijutsu(double num, DateTime getdatetime, Character Naruto)
+        public Training_taijutsu(int Hours, DateTime getdatetime, Character Naruto)
         {
             InitializeComponent();
             datetime = getdatetime;
-            hours = num;
             i = hours * 10;
+            hours = Hours;
             time.Content = "Time left: " + i.ToString();
             naruto = Naruto;
         }
         DispatcherTimer dt = new DispatcherTimer();
+        ///END 
         private void dtTicker(object sender, EventArgs e)
         {
             i--;
@@ -46,10 +47,12 @@ namespace NarutoLife
             {
                 table.Visibility = Visibility.Visible;
                 endscore.Content = score.ToString();
-                endexp.Content = naruto.btaijutsu.ToString() +" + "+ (score / 2).ToString();
-                naruto.btaijutsu = naruto.btaijutsu + score / 2;
-                naruto.energy = naruto.energy - hours - (naruto.vitality / 2) * 10;
-                datetime.AddHours(hours);
+                endexp.Content = naruto.exptaijutsu.ToString() +" + "+ (score / 4).ToString() + "%";
+                naruto.exptaijutsu = naruto.exptaijutsu + score / 4;
+                naruto.explevel = naruto.explevel + score / 100;
+                naruto.energy = naruto.energy - score + (naruto.vitality / 2) * 10;
+                naruto.happiness = naruto.happiness - hours * 10;
+                datetime = datetime.AddHours(hours);
                 dt.Stop();
             }
         }
@@ -62,10 +65,10 @@ namespace NarutoLife
             dt.Interval = TimeSpan.FromSeconds(1);
             dt.Tick += dtTicker;
             dt.Start();   
-        }         
+        }
+        Sound punch = new Sound();
         void Page_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            Sound punch = new Sound();
             var image = new BitmapImage();
             if (e.Key == Key.Q & !e.IsRepeat & i > 0)
             {

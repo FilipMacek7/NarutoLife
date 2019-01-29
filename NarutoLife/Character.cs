@@ -8,6 +8,24 @@ namespace NarutoLife
 {
     public class Character
     {
+        //level stats
+        public int level { get; set; }
+        public double explevel
+        {
+            get
+            {
+                return _num;
+            }
+            set
+            {
+                if (value > 100)
+                {
+                    level++;
+                    return;
+                }
+                _num = value;
+            }
+        }
         //main stats
         public int health { get; set; }
         public int chakra { get; set; }
@@ -28,9 +46,70 @@ namespace NarutoLife
         public int accuracy { get; set; }
 
         //exp frames
-        public double btaijutsu { get; set; }
-        public double bquickness { get; set; }
-        public double bvitality { get; set; }
-        public double baccuracy { get; set; }
+        double _num = 0;
+        public double exptaijutsu
+        {
+            get
+            {
+                return _num;
+            }
+            set
+            {
+                if (value > 100)
+                {
+                    taijutsu++;
+                    return;
+                }
+                _num = value;
+            }
+        }
+        public double expquickness
+        {
+            get
+            {
+                return _num;
+            }
+            set
+            {
+                if (value > 100)
+                {
+                    quickness++;
+                    return;
+                }
+                _num = value;
+            }
+        }
+        public double expvitality
+        {
+            get
+            {
+                return _num;
+            }
+            set
+            {
+                if (value > 100)
+                {
+                    vitality++;
+                    return;
+                }
+                _num = value;
+            }
+        }
+        public double expaccuracy
+        {
+            get
+            {
+                return _num;
+            }
+            set
+            {
+                if (value > 100)
+                {
+                    accuracy++;
+                    return;
+                }
+                _num = value;
+            }
+        }
     }
 }

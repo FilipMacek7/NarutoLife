@@ -20,42 +20,41 @@ namespace NarutoLife
     /// </summary>
     public partial class Training : Page
     {
-        DateTime time;
-        double _num = 1; 
-        double num {
-            get {
-                return _num;
-            }
-            set {
-                if(value < 1)
-                {
-                    return;
-                }
-                _num = value;
-            }
-        }
+        DateTime datetime;
+        int num = 1;
         Character naruto;
         public Training(DateTime getdatetime, Character Naruto)
         {
             InitializeComponent();
             Trainhours.Text = num.ToString();
-            time = getdatetime;
+            datetime = getdatetime;
             naruto = Naruto;
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training_taijutsu(num, time, naruto));     
+            NavigationService.Navigate(new Training_taijutsu(num, datetime, naruto));     
         }
         private void Training_hnext(object sender,RoutedEventArgs e)
         {
-            num++;
+            if (naruto.energy - num * 10 > 10)
+            {
+                num++;
+            }         
             Trainhours.Text = num.ToString();
         }
         private void Training_hprevious(object sender, RoutedEventArgs e)
         {
-            num--;
+            if(num > 1)
+            {
+                num--;
+            }
             Trainhours.Text = num.ToString();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Training_quickness(num, datetime, naruto));
         }
     }
 }

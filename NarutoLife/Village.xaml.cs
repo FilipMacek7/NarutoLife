@@ -50,7 +50,7 @@ namespace NarutoLife
         }
         private void setInfo()
         {
-
+            levellabel.Content = "Naruto Uzumaki LV. " + naruto.level;
             healthbar.Value = naruto.health / naruto.maxhealth * 100;
             chakrabar.Value = naruto.chakra / naruto.maxchakra * 100;
             happinessbar.Value = naruto.happiness;
