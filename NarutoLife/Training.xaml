@@ -17,7 +17,7 @@
             <Button Height="50" Width="150" Margin="7" Content="Taijutsu" Click="Button_Click"></Button>
             <Button Height="50" Width="150" Margin="7" Content="Chakra"></Button>
             <Button Height="50" Width="150" Margin="7" Content="Quickness" Click="Button_Click_1"></Button>
-            <Button Height="50" Width="150" Margin="7" Content="Accuracy"></Button>
+            <Button Height="50" Width="150" Margin="7" Content="Accuracy" Click="Button_Click_2"></Button>
         </WrapPanel>
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="328"  Height="22" Background="Orange" Margin="235,88,237,340" Text="How many hours do you want to train?" FontSize="15" TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Center" Name="Trainhours" VerticalAlignment="Center" Width="328"  Height="35" Background="Orange" TextAlignment="Center" Margin="235,110,237,305" Text="5" FontSize="20"/>

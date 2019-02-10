@@ -32,8 +32,8 @@ namespace NarutoLife
         {
             InitializeComponent();
             datetime = getdatetime;
-            i = hours * 10;
             hours = Hours;
+            i = hours * 10;
             time.Content = "Time left: " + i.ToString();
             naruto = Naruto;
         }

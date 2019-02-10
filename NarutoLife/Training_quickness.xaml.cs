@@ -50,17 +50,13 @@ namespace NarutoLife
                 codes.Add(line);
             }
 
-            rndid = rnd.Next(0, 101);
+            rndid = rnd.Next(0, 43);
+            usedid.Add(rndid);
             currentw = codes[rndid];
             currentind = 0;
-            rndid = rnd.Next(0, 101);
-            while (usedid.Contains(rndid))
-            {
-                rndid = rnd.Next(0, 101);
-            }
-
-            currentw = codes[rndid];           
+            time.Content = "Time left: " + i.ToString();
             scorelabel.Content = "Score: " + score.ToString();
+            codex.Text = currentw;
         }
 
         DispatcherTimer dt = new DispatcherTimer();
@@ -81,8 +77,8 @@ namespace NarutoLife
             {
                 table.Visibility = Visibility.Visible;
                 endscore.Content = score.ToString();
-                endexp.Content = naruto.exptaijutsu.ToString() + " + " + (score / 4).ToString() + "%";
-                naruto.exptaijutsu = naruto.exptaijutsu + score / 4;
+                endexp.Content = naruto.expquickness.ToString() + " + " + (score / 4).ToString() + "%";
+                naruto.expquickness = naruto.expquickness + score / 4;
                 naruto.explevel = naruto.explevel + score / 100;
                 naruto.energy = naruto.energy - score + (naruto.vitality / 2) * 10;
                 naruto.happiness = naruto.happiness - hours * 10;
@@ -93,21 +89,32 @@ namespace NarutoLife
         KeyConverter k = new KeyConverter();
         void Page_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            Key mykey = (Key)k.ConvertFromString(currentw[currentind].ToString());
-            if (mykey == e.Key)
+            string str = k.ConvertToString(e.Key);
+            if (str == currentw[currentind].ToString())
             {
                 if(currentind + 1 == currentw.Length)
                 {
+                    currentind = 0;
+                    score = score + currentw.Length;
+                    rndid = rnd.Next(0, 43);
+                    while (usedid.Contains(rndid))
+                    {
+                        rndid = rnd.Next(0, 43);
+                    }
+                    if (!usedid.Contains(rndid))
+                    {
+                        usedid.Add(rndid);
+                    }
                     currentw = codes[rndid];
-                    score++;
-                    codex.Content = currentw;
                     scorelabel.Content = "Score: " + score.ToString();
+                    codex.Text = currentw;
+                    codexpos.PositionStart = 0; 
                 }
                 else
-                {
-                    currentw.Remove(0, 1);
+                {                  
                     currentind++;                  
-                    codex.Content = currentw;
+                    codex.Text = currentw;
+                    codexpos.PositionStart++;
                 }             
             }
         }
