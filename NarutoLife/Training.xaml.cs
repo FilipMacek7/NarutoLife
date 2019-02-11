@@ -61,5 +61,10 @@ namespace NarutoLife
         {
             NavigationService.Navigate(new Training_accuracy(num, datetime, naruto));
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Training_chakra(num, datetime, naruto));
+        }
     }
 }

@@ -1,0 +1,46 @@
+﻿<Page x:Class="NarutoLife.Training_chakra"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NarutoLife"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Training_chakra" Loaded="Page_Loaded">
+    <Page.Background>
+        <ImageBrush ImageSource="img/training_chakra_morning.png"></ImageBrush>
+    </Page.Background>
+    <Grid>
+        <Image Source="img/naruto_chakracharge.png" Height="200" VerticalAlignment="Bottom"></Image>
+        <Label FontSize="20" Content="Time left: 0" HorizontalAlignment="Right" Name="time" Margin="0,35,0,375.6"></Label>
+        <Label Content="Score:" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" Height="44" FontSize="25" Name="Score"  Margin="30"/>
+        <ProgressBar HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="200" Value="0" Name="progressbar">
+            <ProgressBar.Foreground>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" >
+                    <GradientStop Color="Red" Offset="0"/>
+                    <GradientStop Color="Red" Offset="0" x:Name="redend"/>
+                    <GradientStop Offset="0" x:Name="bluestart"/>
+                    <GradientStop Offset="1" x:Name="blueend"/>
+                </LinearGradientBrush>
+            </ProgressBar.Foreground>
+        </ProgressBar>
+        <Grid Panel.ZIndex="3" Width="300" Height="100" Name="table" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="0.5*"></RowDefinition>
+                <RowDefinition Height="0.5*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border BorderThickness="3" BorderBrush="Orange" Grid.ColumnSpan="2" Grid.RowSpan="3">
+                <Rectangle Fill="LightGray"></Rectangle>
+            </Border>
+            <Label Content="Taijutsu"></Label>
+            <Label Content="Score:" Grid.Row="1" Name="endscore"></Label>
+            <Label Content="Exp:" Grid.Row="2" Name="endexp"></Label>
+            <Button  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Height="30" Width="70" Content="OK" Click="Button_Click"></Button>
+        </Grid>
+    </Grid>
+</Page>

@@ -79,7 +79,7 @@ namespace NarutoLife
                 _num = value;
             }
         }
-        public double expvitality
+        public double expchakra
         {
             get
             {
@@ -89,7 +89,7 @@ namespace NarutoLife
             {
                 if (value > 100)
                 {
-                    vitality++;
+                    maxchakra = maxchakra + 20;
                     return;
                 }
                 _num = value;

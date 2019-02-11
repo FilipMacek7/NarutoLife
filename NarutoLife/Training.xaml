@@ -15,7 +15,7 @@
     <Grid>
         <WrapPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="330">
             <Button Height="50" Width="150" Margin="7" Content="Taijutsu" Click="Button_Click"></Button>
-            <Button Height="50" Width="150" Margin="7" Content="Chakra"></Button>
+            <Button Height="50" Width="150" Margin="7" Content="Chakra" Click="Button_Click_3"></Button>
             <Button Height="50" Width="150" Margin="7" Content="Quickness" Click="Button_Click_1"></Button>
             <Button Height="50" Width="150" Margin="7" Content="Accuracy" Click="Button_Click_2"></Button>
         </WrapPanel>

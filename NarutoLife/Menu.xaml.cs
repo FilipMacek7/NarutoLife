@@ -49,7 +49,7 @@ namespace NarutoLife
 
             naruto.exptaijutsu = 0;
             naruto.expquickness = 0;
-            naruto.expvitality = 0;
+            naruto.expchakra = 0;
             naruto.expaccuracy = 0;
 
             naruto.level = 1;
