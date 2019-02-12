@@ -78,7 +78,6 @@ namespace NarutoLife
                 StatePic.Source = new BitmapImage(new Uri(@"/img/state_happy.png", UriKind.Relative));
             }
 
-            ImageBrush myBrush = new ImageBrush();
             if (datetime.Hour < 16 & datetime.Hour > 5)
             {
                 Background.ImageSource = new BitmapImage(new Uri(@"img/konoha_afternoon.jpg", UriKind.Relative));
