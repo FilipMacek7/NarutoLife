@@ -40,10 +40,13 @@ namespace NarutoLife
             i = hours * 10;
             time.Content = "Time left: " + i.ToString();
             naruto = Naruto;
-            
+            canvasx.Content = Canvas.GetLeft(rec1).ToString();
+            canvasy.Content = Canvas.GetTop(rec1).ToString();
         }       
         private void Timer_Tick(object sender, EventArgs e)
         {
+            canvasx.Content = "CanvasX: " + Canvas.GetLeft(rec1).ToString();
+            canvasy.Content = "CanvasY: " + Canvas.GetTop(rec1).ToString();
             if (goUp)
             {
                 Canvas.SetTop(rec1, Canvas.GetTop(rec1) - speed);
@@ -166,22 +169,43 @@ namespace NarutoLife
                     {
                         gettop = Canvas.GetTop(rec1) - Application.Current.MainWindow.Height / 2;
                     }
-                    
-                    plusscore = 50 - gettop;
-                    score = score + plusscore;
+                    if (Canvas.GetTop(rec1) < 351 & Canvas.GetTop(rec1) > 189)
+                    {
+                        if(Canvas.GetTop(rec1) > 270)
+                        {
+                            plusscore = (350 - Canvas.GetTop(rec1)  / 80) * 100;
+                        }
+                        else
+                        {
+                            plusscore = ((Canvas.GetTop(rec1) - 270) / 50) * 80;
+                        }
+                        score = score + plusscore;
+                    }
                     goDown = false;
                     goRight = true;
                     Canvas.SetTop(rec1, Application.Current.MainWindow.Height / 2 - rec1.Height);
                     Canvas.SetLeft(rec1, 0 - Application.Current.MainWindow.Width / 2);
                 }
+                //dodělat x
                 else if(goRight){
                     double getleft = Canvas.GetLeft(rec1);
                     if (Canvas.GetLeft(rec1) < 0)
                     {
                         getleft = 0 - Canvas.GetLeft(rec1);
                     }
-                    plusscore = 50 - getleft;
-                    score = score + plusscore;
+                    if (Canvas.GetLeft(rec1) < 101 & Canvas.GetLeft(rec1) > -101)
+                    {
+                        if (Canvas.GetLeft(rec1) > -101)
+                        {
+                            plusscore = (Canvas.GetLeft(rec1) / 200) * 120;
+                        }
+                        else
+                        {
+                            plusscore = (Canvas.GetTop(rec1) / 120) * 200;
+                        }
+                        score = score + plusscore;
+                    }
+
                     goRight = false;
                     goDown = true;
                     Canvas.SetTop(rec1, 0);
