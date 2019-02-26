@@ -34,6 +34,7 @@ namespace NarutoLife
         int rndid;
         string currentw;
         int currentind;
+        int linecounter = 0;
         public Training_quickness(int Hours, DateTime getdatetime, Character Naruto)
         {
             InitializeComponent();
@@ -42,15 +43,15 @@ namespace NarutoLife
             naruto = Naruto;
             datetime = getdatetime;           
             string line;
-
+            
             // Read the file and display it line by line.  
             System.IO.StreamReader file = new System.IO.StreamReader(@"randomwords.txt");
             while ((line = file.ReadLine()) != null)
             {
                 codes.Add(line);
+                linecounter++;
             }
-
-            rndid = rnd.Next(0, 43);
+            rndid = rnd.Next(0, linecounter);
             usedid.Add(rndid);
             currentw = codes[rndid];
             currentind = 0;
@@ -96,10 +97,10 @@ namespace NarutoLife
                 {
                     currentind = 0;
                     score = score + currentw.Length;
-                    rndid = rnd.Next(0, 43);
+                    rndid = rnd.Next(0, linecounter);
                     while (usedid.Contains(rndid))
                     {
-                        rndid = rnd.Next(0, 43);
+                        rndid = rnd.Next(0, linecounter);
                     }
                     if (!usedid.Contains(rndid))
                     {
