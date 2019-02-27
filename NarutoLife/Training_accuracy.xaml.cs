@@ -46,7 +46,7 @@ namespace NarutoLife
         private void Timer_Tick(object sender, EventArgs e)
         {
             canvasx.Content = "CanvasX: " + Canvas.GetLeft(rec1).ToString();
-            canvasy.Content = "CanvasY: " + Canvas.GetTop(rec1).ToString();
+            canvasy.Content = "CanvasY: " + Canvas.GetTop(rec1).ToString();           
             if (goUp)
             {
                 Canvas.SetTop(rec1, Canvas.GetTop(rec1) - speed);
@@ -108,7 +108,7 @@ namespace NarutoLife
             }
 
         }
-        double score = 0;
+        int score = 0;
         void Page_Loaded(object sender, RoutedEventArgs e)
         {
             this.PreviewKeyDown += Page_PreviewKeyDown;
@@ -146,9 +146,9 @@ namespace NarutoLife
                     break;
             }
             BitmapImage bi = new BitmapImage();
-            double plusscore;
+            double plusscore = 0;
             if (e.Key == Key.Enter)
-            {
+            {             
                 bi.BeginInit();
                 bi.UriSource = new Uri(@"/img/"+ shuriken +".png", UriKind.Relative);
                 bi.EndInit();
@@ -168,18 +168,19 @@ namespace NarutoLife
                     else if(Canvas.GetTop(rec1) > Application.Current.MainWindow.Height / 2)
                     {
                         gettop = Canvas.GetTop(rec1) - Application.Current.MainWindow.Height / 2;
-                    }
+                    }                
                     if (Canvas.GetTop(rec1) < 351 & Canvas.GetTop(rec1) > 189)
                     {
-                        if(Canvas.GetTop(rec1) > 270)
+                        if(Canvas.GetTop(rec1) > 269)
                         {
-                            plusscore = (350 - Canvas.GetTop(rec1)  / 80) * 100;
+                            plusscore = ((350 - Canvas.GetTop(rec1))  / 80) * 50;
                         }
                         else
                         {
-                            plusscore = ((Canvas.GetTop(rec1) - 270) / 50) * 80;
+                            plusscore = ((Canvas.GetTop(rec1) - 190) / 50) * 80;
                         }
-                        score = score + plusscore;
+                        plusscorelabel.Content = "+ " + plusscore.ToString();
+                        score = score + Convert.ToInt32(plusscore);
                     }
                     goDown = false;
                     goRight = true;
@@ -195,15 +196,16 @@ namespace NarutoLife
                     }
                     if (Canvas.GetLeft(rec1) < 101 & Canvas.GetLeft(rec1) > -101)
                     {
-                        if (Canvas.GetLeft(rec1) > -101)
+                        if (Canvas.GetLeft(rec1) >= 0)
                         {
-                            plusscore = (Canvas.GetLeft(rec1) / 200) * 120;
+                            plusscore = (Canvas.GetLeft(rec1) / 100) * 100;
                         }
                         else
                         {
-                            plusscore = (Canvas.GetTop(rec1) / 120) * 200;
+                            plusscore = ((Canvas.GetTop(rec1) * -1) / 100) * 100;
                         }
-                        score = score + plusscore;
+                        plusscorelabel.Content = "+ " + plusscore.ToString();
+                        score = score + Convert.ToInt32(plusscore);
                     }
 
                     goRight = false;
