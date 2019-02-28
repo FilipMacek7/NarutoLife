@@ -26,7 +26,7 @@ namespace NarutoLife
         int i;
         int hours;
         Character naruto;
-        int speed = 20;
+        int speed = 15;
         bool goUp;
         bool goDown = true;
         bool goLeft;
@@ -101,7 +101,7 @@ namespace NarutoLife
                 endexp.Content = naruto.expaccuracy.ToString() + " + " + (score / 4).ToString() + "%";
                 naruto.expaccuracy = naruto.expaccuracy + score / 4;
                 naruto.explevel = naruto.explevel + score / 100;
-                naruto.energy = naruto.energy - hours * 5 + (naruto.vitality / 2) * 10 - score / 8;
+                naruto.energy = naruto.energy - hours * 5 + (naruto.vitality / 2) * 10;
                 naruto.happiness = naruto.happiness - hours * 10;
                 datetime = datetime.AddHours(hours);
                 dt.Stop();
@@ -169,18 +169,18 @@ namespace NarutoLife
                     {
                         gettop = Canvas.GetTop(rec1) - Application.Current.MainWindow.Height / 2;
                     }                
-                    if (Canvas.GetTop(rec1) < 351 & Canvas.GetTop(rec1) > 189)
+                    if (Canvas.GetTop(rec1) < 371 & Canvas.GetTop(rec1) > 169)
                     {
-                        if(Canvas.GetTop(rec1) > 269)
+                        if(Canvas.GetTop(rec1) >= 270)
                         {
-                            plusscore = ((350 - Canvas.GetTop(rec1))  / 80) * 50;
+                            plusscore = ((370 - Canvas.GetTop(rec1))  / 100) * 100;
                         }
                         else
                         {
-                            plusscore = ((Canvas.GetTop(rec1) - 190) / 50) * 80;
+                            plusscore = (Canvas.GetTop(rec1) * 100) / 270;
                         }
-                        plusscorelabel.Content = "+ " + plusscore.ToString();
-                        score = score + Convert.ToInt32(plusscore);
+                        plusscorelabel.Content = "+ " + Convert.ToInt32(plusscore / 8).ToString();
+                        score = score + Convert.ToInt32(plusscore) / 8;
                     }
                     goDown = false;
                     goRight = true;
@@ -196,16 +196,16 @@ namespace NarutoLife
                     }
                     if (Canvas.GetLeft(rec1) < 101 & Canvas.GetLeft(rec1) > -101)
                     {
-                        if (Canvas.GetLeft(rec1) >= 0)
+                        if (Canvas.GetLeft(rec1) > 0)
                         {
-                            plusscore = (Canvas.GetLeft(rec1) / 100) * 100;
+                            plusscore = 100 - Canvas.GetLeft(rec1);
                         }
                         else
                         {
-                            plusscore = ((Canvas.GetTop(rec1) * -1) / 100) * 100;
+                            plusscore = 100 + Canvas.GetLeft(rec1);
                         }
-                        plusscorelabel.Content = "+ " + plusscore.ToString();
-                        score = score + Convert.ToInt32(plusscore);
+                        plusscorelabel.Content = "+ " + Convert.ToInt32(plusscore / 8).ToString();
+                        score = score + Convert.ToInt32(plusscore) / 8;
                     }
 
                     goRight = false;
