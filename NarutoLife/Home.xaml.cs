@@ -20,33 +20,43 @@ using WpfAnimatedGif;
 namespace NarutoLife
 {
     /// <summary>
-    /// Interakční logika pro Game.xaml
+    /// Interakční logika pro Home.xaml
     /// </summary>
-    public partial class Village : Page
+    public partial class Home : Page
     {
-        Character naruto;
-        public Village(DateTime getdatetime, Character Naruto)
-        {
-            InitializeComponent();           
-            timedate.Text = getdatetime.ToString("HH:mm");
-            datetime = getdatetime;
-            naruto = Naruto;
-            setInfo();          
-        }
         DateTime datetime;
+        Character naruto;
+        public Home(DateTime getdateTime, Character Naruto)
+        {
+            InitializeComponent();          
+            datetime = getdateTime;
+            timedate.Text = datetime.ToString("HH:mm");
+            naruto = Naruto;
+            setInfo();
+        }
         DispatcherTimer dt = new DispatcherTimer();
-        int i = 1;
+        int i = 0;
         private void dtTicker(object sender, EventArgs e)
         {
-            timedate.Text = datetime.AddMinutes(i).ToString("HH:mm");
             i++;
+            timedate.Text = datetime.AddMinutes(i).ToString("HH:mm");            
         }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             dt.Interval = TimeSpan.FromSeconds(1);
             dt.Tick += dtTicker;
             dt.Start();
+        }
+        int profilebg = 1;
+        private void Profile_Bgnext(object sender, RoutedEventArgs e)
+        {
+            profilebg++;
+            setInfo();
+        }
+        private void Profile_Bgprevious(object sender, RoutedEventArgs e)
+        {
+            profilebg--;
+            setInfo();
         }
         private void setInfo()
         {
@@ -78,23 +88,6 @@ namespace NarutoLife
                 StatePic.Source = new BitmapImage(new Uri(@"/img/state_happy.png", UriKind.Relative));
             }
 
-            if (datetime.Hour < 16 & datetime.Hour > 5)
-            {
-                Background.ImageSource = new BitmapImage(new Uri(@"img/konoha_afternoon.jpg", UriKind.Relative));
-            }
-            else if (datetime.Hour > 15 & datetime.Hour < 19)
-            {
-                Background.ImageSource = new BitmapImage(new Uri(@"img/konoha_colorfulevening.jpg", UriKind.Relative));
-            }
-            else if (datetime.Hour > 18 & datetime.Hour < 21)
-            {
-                Background.ImageSource = new BitmapImage(new Uri(@"img/konoha_evening.jpg", UriKind.Relative));
-            }
-            else if (datetime.Hour > 21 || datetime.Hour < 5)
-            {
-                Background.ImageSource = new BitmapImage(new Uri(@"img/konoha_night.jpg", UriKind.Relative));
-            }
-
             switch (profilebg)
             {
                 case 0:
@@ -102,7 +95,7 @@ namespace NarutoLife
                     profilebg = 3;
                     break;
                 case 1:
-                    profile_bg.Source= new BitmapImage(new Uri(@"img/profilebg1.jpg", UriKind.Relative));
+                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg1.jpg", UriKind.Relative));
                     break;
                 case 2:
                     profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg2.jpg", UriKind.Relative));
@@ -116,14 +109,16 @@ namespace NarutoLife
                     break;
             }
             stats.Content = "\n Taijutsu: " + naruto.taijutsu.ToString() + "\n Quickness: " + naruto.quickness.ToString() + "\n Vitality: " + naruto.vitality.ToString() + "\n Accuracy: " + naruto.accuracy.ToString();
-
-
         }
-
-        private void Training_Button(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training(datetime, naruto));
+            sleeppanel.Visibility = Visibility.Visible;
         }
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            sleeppanel.Visibility = Visibility.Hidden;
+        }
+        int sleephours = 1;
         private void Profile_Button(object sender, RoutedEventArgs e)
         {
             profile.Visibility = Visibility.Visible;
@@ -132,16 +127,40 @@ namespace NarutoLife
         {
             profile.Visibility = Visibility.Hidden;
         }
-        int profilebg = 1;
-        private void Profile_Bgnext(object sender, RoutedEventArgs e)
+        private void Sleep_next(object sender, RoutedEventArgs e)
         {
-            profilebg++;
-            setInfo();
+            if (sleephours < 10)
+            {
+                sleephours++;
+            }
+            sleephourslabel.Text = sleephours.ToString();
+            sleepinfo.Text = "You will wake up at: " + datetime.Hour + sleephours + ":" + datetime.Minute;
         }
-        private void Profile_Bgprevious(object sender, RoutedEventArgs e)
+        private void Sleep_previous(object sender, RoutedEventArgs e)
         {
-            profilebg--;
-            setInfo();
+            if (sleephours > 1)
+            {
+                sleephours--;
+            }
+            sleephourslabel.Text = sleephours.ToString();
+            sleepinfo.Text = "You will wake up at: " + datetime.Hour + sleephours + ":" + datetime.Minute;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            datetime.AddHours(sleephours);
+            naruto.energy = naruto.energy + sleephours * 20;
+            naruto.chakra = naruto.maxchakra;
+            naruto.health = naruto.health + sleephours * 10;
+            if(naruto.energy < naruto.maxenergy / 4)
+            {
+                naruto.happiness = naruto.maxhappiness;
+            }
+            else
+            {
+                naruto.happiness = naruto.happiness + sleephours * 10;
+            }
+            
         }
         private void AnimationCompleted(object sender, RoutedEventArgs e)
         {
@@ -153,9 +172,9 @@ namespace NarutoLife
             ImageBehavior.SetRepeatBehavior(Naruto, RepeatBehavior.Forever);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Home(datetime, naruto));
+            NavigationService.Navigate(new Village(datetime,naruto));
         }
     }
 }

@@ -23,5 +23,6 @@
         <TextBlock HorizontalAlignment="Center" Name="Trainhours" VerticalAlignment="Center" Width="328"  Height="35" Background="Orange" TextAlignment="Center" Margin="235,110,237,305" Text="5" FontSize="20"/>
         <Button FontFamily="Marlett" FontSize="20" Content="3" Width="30" Height="25"  Click="Training_hprevious" Margin="352,115,418,310"/>
         <Button FontFamily="Marlett" FontSize="20" Content="4" Width="30" Height="25"   Click="Training_hnext" Margin="418,115,352,310"/>
+        <Button Content="Go back" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Margin="0,0,10,10" Click="Button_Click_4"/>
     </Grid>
 </Page>
