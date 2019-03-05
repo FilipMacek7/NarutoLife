@@ -7,7 +7,7 @@
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Home" Loaded="Page_Loaded">
+      Title="Home" Loaded="Page_Loaded" Name="page">
     <Page.Background>
         <ImageBrush ImageSource="img/home_background.png"></ImageBrush>
     </Page.Background>
@@ -66,12 +66,12 @@
             <TextBlock  Background="White" Name="timedate"/>
         </Viewbox>
         <Button Content="Bed" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="112" Height="29" Click="Button_Click" Margin="0,0,114,0" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="2"></Button>
-        <Grid Name="sleeppanel" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Center" Height="129" Width="292" Margin="254,50,254,0" Visibility="Hidden">
+        <Grid Name="sleeppanel" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Center" Height="129" Width="292" Grid.ColumnSpan="4" Grid.Column="1" Grid.RowSpan="3" Grid.Row="2" Visibility="Hidden">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="328"  Height="26"  Margin="-18,2,-18,65" Text="How many hours do you want to sleep?" FontSize="15" TextAlignment="Center" />
-            <TextBlock HorizontalAlignment="Center" Name="sleephourslabel" VerticalAlignment="Center" Width="328"  Height="38" TextAlignment="Center" Margin="-18,28,-18,27" Text="5" FontSize="20"/>
+            <TextBlock HorizontalAlignment="Center" Name="sleephourslabel" VerticalAlignment="Center" Width="328"  Height="38" TextAlignment="Center" Margin="-18,28,-18,27" Text="1" FontSize="20"/>
             <Button FontFamily="Marlett" FontSize="20" Content="3" Width="30" Height="25"  Click="Sleep_previous" Margin="95,46,167,58"/>
             <Button FontFamily="Marlett" FontSize="20" Content="4" Width="30" Height="25"  Click="Sleep_next" Margin="169,46,93,58"/>
-            <TextBlock Text="You will wake up at:" Margin="68,76,93,35" Name="sleepinfo"></TextBlock>
+            <TextBlock Text="You will wake up at:" Margin="68,76,67,35" Name="sleepinfo"></TextBlock>
             <Button Content="Sleep" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="76" Margin="108,0,108,10" Click="Button_Click_1"/>
             <Button Grid.Column="1" Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4" Click="Button_Click_2">
                 <StackPanel>

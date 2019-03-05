@@ -26,6 +26,7 @@ namespace NarutoLife
     {
         DateTime datetime;
         Character naruto;
+        bool timestop = false;
         public Home(DateTime getdateTime, Character Naruto)
         {
             InitializeComponent();          
@@ -35,17 +36,24 @@ namespace NarutoLife
             setInfo();
         }
         DispatcherTimer dt = new DispatcherTimer();
-        int i = 0;
         private void dtTicker(object sender, EventArgs e)
         {
-            i++;
-            timedate.Text = datetime.AddMinutes(i).ToString("HH:mm");            
+            if (!timestop)
+            {
+                datetime = datetime.AddMinutes(1);
+                timedate.Text = datetime.ToString("HH:mm");
+            }
+            if(page.Opacity == 0)
+            {
+                DoubleAnimation animation = new DoubleAnimation(1, TimeSpan.FromSeconds(2));
+                page.BeginAnimation(Page.OpacityProperty, animation);
+            }
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             dt.Interval = TimeSpan.FromSeconds(1);
             dt.Tick += dtTicker;
-            dt.Start();
+            dt.Start();        
         }
         int profilebg = 1;
         private void Profile_Bgnext(object sender, RoutedEventArgs e)
@@ -112,11 +120,16 @@ namespace NarutoLife
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            sleepinfo.Text = "You will wake up at: " + datetime.AddHours(sleephours).ToString("HH:mm");
             sleeppanel.Visibility = Visibility.Visible;
+            timestop = true;
+            dt.Stop();
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             sleeppanel.Visibility = Visibility.Hidden;
+            timestop = false;
+            dt.Start();
         }
         int sleephours = 1;
         private void Profile_Button(object sender, RoutedEventArgs e)
@@ -127,28 +140,32 @@ namespace NarutoLife
         {
             profile.Visibility = Visibility.Hidden;
         }
+
         private void Sleep_next(object sender, RoutedEventArgs e)
         {
             if (sleephours < 10)
             {
                 sleephours++;
+                sleephourslabel.Text = sleephours.ToString();
+                sleepinfo.Text = "You will wake up at: " + datetime.AddHours(sleephours).ToString("HH:mm");
             }
-            sleephourslabel.Text = sleephours.ToString();
-            sleepinfo.Text = "You will wake up at: " + datetime.Hour + sleephours + ":" + datetime.Minute;
         }
         private void Sleep_previous(object sender, RoutedEventArgs e)
         {
             if (sleephours > 1)
             {
                 sleephours--;
+                sleephourslabel.Text = sleephours.ToString();
+                sleepinfo.Text = "You will wake up at: " + datetime.AddHours(sleephours).ToString("HH:mm");
             }
-            sleephourslabel.Text = sleephours.ToString();
-            sleepinfo.Text = "You will wake up at: " + datetime.Hour + sleephours + ":" + datetime.Minute;
         }
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            datetime.AddHours(sleephours);
+            DoubleAnimation animation = new DoubleAnimation(0, TimeSpan.FromSeconds(2));
+            page.BeginAnimation(Page.OpacityProperty, animation);
+            datetime = datetime.AddHours(sleephours);
             naruto.energy = naruto.energy + sleephours * 20;
             naruto.chakra = naruto.maxchakra;
             naruto.health = naruto.health + sleephours * 10;
@@ -156,11 +173,7 @@ namespace NarutoLife
             {
                 naruto.happiness = naruto.maxhappiness;
             }
-            else
-            {
-                naruto.happiness = naruto.happiness + sleephours * 10;
-            }
-            
+            Button_Click_2(sender, e);
         }
         private void AnimationCompleted(object sender, RoutedEventArgs e)
         {

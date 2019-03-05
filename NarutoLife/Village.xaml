@@ -110,7 +110,7 @@
                 <Label Content="Stats" Margin="10,98,10,10" Name="stats" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"/>
             </Grid>
         </Viewbox>
-        <Button Content="Home" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="37" Grid.Column="2" Click="Button_Click"/>
+        <Button Content="Home" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" Height="29" Grid.Column="1" Click="Button_Click" Grid.ColumnSpan="2" Margin="105,10,0,0"/>
     </Grid>
     <Page.Background>
         <ImageBrush ImageSource="/img/konoha_afternoon.jpg" x:Name="Background"></ImageBrush>

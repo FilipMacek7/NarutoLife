@@ -35,11 +35,11 @@ namespace NarutoLife
         }
         DateTime datetime;
         DispatcherTimer dt = new DispatcherTimer();
-        int i = 1;
         private void dtTicker(object sender, EventArgs e)
         {
-            timedate.Text = datetime.AddMinutes(i).ToString("HH:mm");
-            i++;
+            datetime = datetime.AddMinutes(1);
+            timedate.Text = datetime.ToString("HH:mm");          
+            
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

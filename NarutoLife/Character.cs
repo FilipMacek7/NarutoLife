@@ -9,7 +9,14 @@ namespace NarutoLife
     public class Character
     {
         //level stats
+        public int LimitToRange(int value, int inclusiveMinimum, int inclusiveMaximum)
+        {
+            if (value < inclusiveMinimum) { return inclusiveMinimum; }
+            if (value > inclusiveMaximum) { return inclusiveMaximum; }
+            return value;
+        }
         public int level { get; set; }
+        double _num = 0;
         public double explevel
         {
             get
@@ -27,17 +34,73 @@ namespace NarutoLife
             }
         }
         //main stats
-        public int health { get; set; }
-        public int chakra { get; set; }
-        public int happiness { get; set; }
-        public double energy { get; set; }
+        public int health
+        {
+            get
+            {
+                return maxhealth;
+            }
+            set
+            {
+                if (health > maxhealth)
+                {
+                    return;
+                }
+                maxhealth = value;
+            }
+        }
+        public int chakra
+        {
+            get
+            {
+                return maxchakra;
+            }
+            set
+            {
+                if (health > maxchakra)
+                {
+                    return;
+                }
+                maxchakra = value;
+            }
+        }
+        public int happiness
+        {
+            get
+            {
+                return maxhappiness;
+            }
+            set
+            {
+                if (happiness > maxhappiness)
+                {
+                    return;
+                }
+                maxhappiness = value;
+            }
+        }
+        public double energy
+        {
+            get
+            {
+                return maxenergy;
+            }
+            set
+            {
+                if (energy > maxenergy)
+                {
+                    return;
+                }
+                maxenergy = value;
+            }
+        }
         public int yen { get; set; }
 
         //max main stats
         public int maxhealth { get; set; }
         public int maxchakra { get; set; }
         public int maxhappiness { get; set; }
-        public int maxenergy { get; set; }
+        public double maxenergy { get; set; }
 
         //battle stats
         public int taijutsu { get; set; }
@@ -46,7 +109,6 @@ namespace NarutoLife
         public int accuracy { get; set; }
 
         //exp frames
-        double _num = 0;
         public double exptaijutsu
         {
             get
