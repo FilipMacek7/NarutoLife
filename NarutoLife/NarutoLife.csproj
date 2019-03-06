@@ -38,6 +38,9 @@
     <ApplicationIcon>lost_impression__child_naruto_x_child_reader__by_blackfang_124_d7kt8ze_LgY_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -62,9 +65,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Character.cs" />
+    <Compile Include="HokageMansion.xaml.cs">
+      <DependentUpon>HokageMansion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Mission.cs" />
     <Compile Include="Training_accuracy.xaml.cs">
       <DependentUpon>Training_accuracy.xaml</DependentUpon>
     </Compile>
@@ -84,6 +91,10 @@
     <Compile Include="Training_taijutsu.xaml.cs">
       <DependentUpon>Training_taijutsu.xaml</DependentUpon>
     </Compile>
+    <Page Include="HokageMansion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -186,6 +197,7 @@
     <Resource Include="img\naruto_chakracharge.gif" />
     <Resource Include="img\naruto_chakracharge.png" />
     <Resource Include="img\home_background.png" />
+    <Resource Include="img\hokage_mansion.jpg" />
     <Content Include="sounds\punch_trunk.mp3" />
     <Resource Include="img\lost_impression__child_naruto_x_child_reader__by_blackfang_124_d7kt8ze_LgY_icon.ico" />
     <Resource Include="img\menu.png" />
@@ -205,5 +217,6 @@
     <Content Include="sounds\menu.mp3" />
     <Content Include="sounds\morning.mp3" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

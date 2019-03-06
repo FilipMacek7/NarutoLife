@@ -41,7 +41,7 @@ namespace NarutoLife
             timedate.Text = datetime.ToString("HH:mm");          
             
         }
-
+        
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             dt.Interval = TimeSpan.FromSeconds(1);
@@ -54,7 +54,7 @@ namespace NarutoLife
             healthbar.Value = naruto.health / naruto.maxhealth * 100;
             chakrabar.Value = naruto.chakra / naruto.maxchakra * 100;
             happinessbar.Value = naruto.happiness;
-            energybar.Value = Math.Round(naruto.energy / naruto.maxenergy * 100);
+            energybar.Value = naruto.energy / naruto.maxenergy * 100;
 
             healthtext.Text = naruto.health + "/" + naruto.maxhealth;
             chakratext.Text = naruto.chakra + "/" + naruto.maxchakra;
@@ -156,6 +156,11 @@ namespace NarutoLife
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Home(datetime, naruto));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new HokageMansion(datetime, naruto));
         }
     }
 }

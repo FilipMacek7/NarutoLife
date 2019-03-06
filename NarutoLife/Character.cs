@@ -11,7 +11,7 @@ namespace NarutoLife
         //level stats
         public int LimitToRange(int value, int inclusiveMinimum, int inclusiveMaximum)
         {
-            if (value < inclusiveMinimum) { return inclusiveMinimum; }
+            if (value < inclusiveMinimum) { return 0; }
             if (value > inclusiveMaximum) { return inclusiveMaximum; }
             return value;
         }
@@ -34,73 +34,17 @@ namespace NarutoLife
             }
         }
         //main stats
-        public int health
-        {
-            get
-            {
-                return maxhealth;
-            }
-            set
-            {
-                if (health > maxhealth)
-                {
-                    return;
-                }
-                maxhealth = value;
-            }
-        }
-        public int chakra
-        {
-            get
-            {
-                return maxchakra;
-            }
-            set
-            {
-                if (health > maxchakra)
-                {
-                    return;
-                }
-                maxchakra = value;
-            }
-        }
-        public int happiness
-        {
-            get
-            {
-                return maxhappiness;
-            }
-            set
-            {
-                if (happiness > maxhappiness)
-                {
-                    return;
-                }
-                maxhappiness = value;
-            }
-        }
-        public double energy
-        {
-            get
-            {
-                return maxenergy;
-            }
-            set
-            {
-                if (energy > maxenergy)
-                {
-                    return;
-                }
-                maxenergy = value;
-            }
-        }
+        public int health { get; set; }
+        public int chakra { get; set; }
+        public int happiness { get; set; }
+        public int energy { get; set; }
         public int yen { get; set; }
 
         //max main stats
         public int maxhealth { get; set; }
         public int maxchakra { get; set; }
         public int maxhappiness { get; set; }
-        public double maxenergy { get; set; }
+        public int maxenergy { get; set; }
 
         //battle stats
         public int taijutsu { get; set; }

@@ -64,7 +64,7 @@
             <Button Content="Ichiraku Ramen" Width="100"/>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="3" Height="22" >
-            <Button Content="Hokage mansion" Width="100"/>
+            <Button Content="Hokage mansion" Width="100" Click="Button_Click_1"/>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1"   Grid.Row="3" Grid.RowSpan="2" Height="22">
             <Button Content="Academy" Width="100"/>

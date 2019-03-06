@@ -33,7 +33,11 @@ namespace NarutoLife
             datetime = getdateTime;
             timedate.Text = datetime.ToString("HH:mm");
             naruto = Naruto;
-            setInfo();
+            naruto.health = naruto.LimitToRange(naruto.health, 0, naruto.maxhealth);
+            naruto.chakra = naruto.LimitToRange(naruto.chakra, 0, naruto.maxchakra);
+            naruto.happiness = naruto.LimitToRange(naruto.happiness, 0, naruto.maxhappiness);
+            naruto.energy= naruto.LimitToRange(naruto.energy, 0, naruto.maxenergy);
+            setInfo();          
         }
         DispatcherTimer dt = new DispatcherTimer();
         private void dtTicker(object sender, EventArgs e)
@@ -72,7 +76,7 @@ namespace NarutoLife
             healthbar.Value = naruto.health / naruto.maxhealth * 100;
             chakrabar.Value = naruto.chakra / naruto.maxchakra * 100;
             happinessbar.Value = naruto.happiness;
-            energybar.Value = Math.Round(naruto.energy / naruto.maxenergy * 100);
+            energybar.Value = naruto.energy / naruto.maxenergy * 100;
 
             healthtext.Text = naruto.health + "/" + naruto.maxhealth;
             chakratext.Text = naruto.chakra + "/" + naruto.maxchakra;

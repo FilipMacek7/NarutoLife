@@ -75,7 +75,7 @@ namespace NarutoLife
                 endexp.Content = naruto.expchakra.ToString() + " + " + (score / 4).ToString() + "%";
                 naruto.expquickness = naruto.expchakra + score / 4;
                 naruto.explevel = naruto.explevel + score / 100;
-                naruto.energy = naruto.energy - hours * 5 + (naruto.vitality / 2) * 10;
+                naruto.energy = naruto.energy - hours * 5 + naruto.vitality / 2;
                 naruto.happiness = naruto.happiness - hours * 10;
                 datetime = datetime.AddHours(hours);
                 dt.Stop();
