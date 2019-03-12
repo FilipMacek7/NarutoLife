@@ -22,45 +22,54 @@ namespace NarutoLife
     /// </summary>
     public partial class HokageMansion : Page
     {
+        Button bz = new Button();
         public HokageMansion(DateTime getdatetime, Character naruto)
         {
             InitializeComponent();
+
+            bz.VerticalAlignment = VerticalAlignment.Top;
+            bz.HorizontalAlignment = HorizontalAlignment.Left;
+            bz.Height = 40;
+            bz.Width = 50;
+            bz.Margin = new Thickness(20);
+            bz.Click += GoBack;
+            bz.Content = "Go back";
+            missiongrid.Children.Add(bz);
+            bz.Visibility = Visibility.Collapsed;
         }
 
         List<Mission> missions = JsonConvert.DeserializeObject<List<Mission>>(File.ReadAllText(@"..\..\..\MissionCreator\bin\Debug\missions.json"));
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Header.Visibility = Visibility.Hidden;
-           
-            Button bz = new Button();
-            bz.VerticalAlignment = VerticalAlignment.Top;
-            bz.HorizontalAlignment = HorizontalAlignment.Left;
-            bz.Height = 50;
-            bz.Click += GoBack; 
-            Label l = new Label();
-            l.Content = "Type C";
-            l.HorizontalAlignment = HorizontalAlignment.Center;
-            l.VerticalAlignment = VerticalAlignment.Top;
-            l.Height = 50;
-            l.FontSize = 30;
-            l.Name = "Header";
-            missiongrid.Children.Add(l);
-            foreach(Mission m in missions)
-            {
-                if (m.levelType.Equals("C")){
-                    Button b = new Button();
-                    b.Margin = new Thickness(10, 10, 10, 10);
-                    b.Height = 25;
-                    b.Content = m.name;
-                    missionpanel.Children.Add(b);
-                }
-            }
-        }
+      
         private void GoBack(object sender, RoutedEventArgs e)
         {
-            missiongrid.Children.Clear();
+            bz.Visibility = Visibility.Collapsed;
+            bc.Visibility = Visibility.Visible;
+            bb.Visibility = Visibility.Visible;
+            ba.Visibility = Visibility.Visible;
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            bz.Visibility = Visibility.Visible;
+            bc.Visibility = Visibility.Collapsed;
+            bb.Visibility = Visibility.Collapsed;
+            ba.Visibility = Visibility.Collapsed;
+            foreach()
+            
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            bz.Visibility = Visibility.Visible;
+            bc.Visibility = Visibility.Collapsed;
+            bb.Visibility = Visibility.Collapsed;
+            ba.Visibility = Visibility.Collapsed;
+        }
 
-            //missionpanel.Children.Add();
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            bz.Visibility = Visibility.Visible;
+            bc.Visibility = Visibility.Collapsed;
+            bb.Visibility = Visibility.Collapsed;
+            ba.Visibility = Visibility.Collapsed;
         }
     }
 }

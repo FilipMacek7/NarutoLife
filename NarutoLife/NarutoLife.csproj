@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Battleground.xaml.cs">
+      <DependentUpon>Battleground.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Character.cs" />
     <Compile Include="HokageMansion.xaml.cs">
       <DependentUpon>HokageMansion.xaml</DependentUpon>
@@ -91,6 +94,10 @@
     <Compile Include="Training_taijutsu.xaml.cs">
       <DependentUpon>Training_taijutsu.xaml</DependentUpon>
     </Compile>
+    <Page Include="Battleground.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HokageMansion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

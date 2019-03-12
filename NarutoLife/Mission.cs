@@ -10,26 +10,21 @@ namespace NarutoLife
     {
         public string name { get; set; }
         public string description { get; set; }
-        public int level { get; set; }
-        public string levelType { get; set; }
+        public int enemycount { get; set; }
+        public missionType type { get; set; }
 
-        public Mission(string Name, string Description, int Level)
+        public Mission(string Name, string Description,int Enemycount, missionType Type)
         {
             name = Name;
             description = Description;
-            level = Level;
-            if(Level < 11)
-            {
-                levelType = "C";
-            }
-            else if(Level < 21 & Level > 10)
-            {
-                levelType = "B";
-            }
-            else if(Level < 31 & Level > 20)
-            {
-                levelType = "A";
-            }
+            type = Type;
+            enemycount = Enemycount;
         }
+    }
+    public enum missionType
+    {
+        Fight,
+        Minigame,
+        Story,
     }
 }
