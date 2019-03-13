@@ -53,7 +53,6 @@ namespace NarutoLife
             bc.Visibility = Visibility.Collapsed;
             bb.Visibility = Visibility.Collapsed;
             ba.Visibility = Visibility.Collapsed;
-            foreach()
             
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
