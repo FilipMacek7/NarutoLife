@@ -178,7 +178,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="wolf_stand.gif" />
     <Resource Include="img\konoha_afternoon.jpg" />
     <Resource Include="img\konoha_colorfulevening.jpg" />
     <Resource Include="img\konoha_evening.jpg" />

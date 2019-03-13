@@ -47,71 +47,64 @@ namespace NarutoLife
         private void GoBack(object sender, RoutedEventArgs e)
         {
             bz.Visibility = Visibility.Collapsed;
-            bc.Visibility = Visibility.Visible;
-            bb.Visibility = Visibility.Visible;
-            ba.Visibility = Visibility.Visible;
+            typepanel.Visibility = Visibility.Visible;
+            missionpanel.Visibility = Visibility.Collapsed;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             GenerateMissions();
-            bz.Visibility = Visibility.Visible;
-            bc.Visibility = Visibility.Collapsed;
-            bb.Visibility = Visibility.Collapsed;
-            ba.Visibility = Visibility.Collapsed;
-            
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             GenerateMissions();
-            bz.Visibility = Visibility.Visible;
-            bc.Visibility = Visibility.Collapsed;
-            bb.Visibility = Visibility.Collapsed;
-            ba.Visibility = Visibility.Collapsed;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             GenerateMissions();
-            bz.Visibility = Visibility.Visible;
-            bc.Visibility = Visibility.Collapsed;
-            bb.Visibility = Visibility.Collapsed;
-            ba.Visibility = Visibility.Collapsed;
         }
-
+        bool missionson = false;
         private void GenerateMissions()
         {
-            
-            for(int i = missions.Count(); i < 4; i++)
+            bz.Visibility = Visibility.Visible;
+            typepanel.Visibility = Visibility.Collapsed;
+            missionpanel.Visibility = Visibility.Visible;
+            if (!missionson)
             {
-                Random rnd = new Random();
-                int number = rnd.Next(1, 4);
-                Button b = new Button();
-                b.Height = 50;
-                b.Margin = new Thickness(10);
-
-                switch (number)
+                missionson = true;
+                for (int i = 0; i < 4; i++)
                 {
-                    //wolf
-                    case 1:
-                        b.Name = "Wolf";
-                        break;
-                    //spider
-                    case 2:
-                        b.Name = "Spider";
-                        break;
-                    //snake
-                    case 3:
-                        b.Name = "Snake";
-                        break;
-                }
-                b.Content = b.Name + " hunt";
-                Mission mission = new Mission(b.Name + " hunt", missionType.Fight);
-                missions.Add(mission);
-                File.WriteAllText(@"missions.json", JsonConvert.SerializeObject(missions));
-                b.Click += NavigateBattleground;
-                missionpanel.Children.Add(b);
+                    Random rnd = new Random();
+                    int number = rnd.Next(1, 4);
+                    Button b = new Button();
+                    b.Height = 50;
+                    b.Margin = new Thickness(10);
 
+                    switch (number)
+                    {
+                        //wolf
+                        case 1:
+                            b.Name = "Wolf";
+                            break;
+                        //spider
+                        case 2:
+                            b.Name = "Spider";
+                            break;
+                        //snake
+                        case 3:
+                            b.Name = "Snake";
+                            break;
+                    }
+                    b.Content = b.Name + " hunt";
+                    Mission mission = new Mission(b.Name + " hunt", missionType.Fight);
+                    missions.Add(mission);
+                    File.WriteAllText(@"missions.json", JsonConvert.SerializeObject(missions));
+                    b.Click += NavigateBattleground;
+                    missionpanel.Children.Add(b);
+
+                }
             }
+
         }
 
         private void NavigateBattleground(object sender, RoutedEventArgs e)

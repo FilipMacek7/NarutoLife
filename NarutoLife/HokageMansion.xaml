@@ -13,10 +13,12 @@
     <Grid>
         <Grid HorizontalAlignment="Right"  Margin="0,0,40,0" Width="280" Height="400" Background="LightGray" Name="missiongrid">
             <Label Content="Missions" HorizontalAlignment="Center" FontSize="30" Height="50" VerticalAlignment="Top"></Label>
-            <StackPanel Margin="20" Width="250" Name="missionpanel" Height="300">
+            <StackPanel Margin="20" Width="250" Name="typepanel" Height="300">
                 <Button Height="50" Margin="10" Content="Type C" Click="Button_Click" Name="bc"></Button>
                 <Button Height="50" Margin="10" Content="Type B" Click="Button_Click_1" Name="bb"></Button>
                 <Button Height="50" Margin="10" Content="Type A" Click="Button_Click_2" Name="ba"></Button>
+            </StackPanel>
+            <StackPanel Margin="20" Width="250" Name="missionpanel" Height="300" Visibility="Collapsed">
             </StackPanel>
         </Grid>
 
