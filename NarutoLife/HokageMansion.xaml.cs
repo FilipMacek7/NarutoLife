@@ -23,6 +23,7 @@ namespace NarutoLife
     public partial class HokageMansion : Page
     {
         Button bz = new Button();
+        List<Mission> missions = new List<Mission>();
         public HokageMansion(DateTime getdatetime, Character naruto)
         {
             InitializeComponent();
@@ -35,10 +36,13 @@ namespace NarutoLife
             bz.Click += GoBack;
             bz.Content = "Go back";
             missiongrid.Children.Add(bz);
-            bz.Visibility = Visibility.Collapsed;
+            bz.Visibility = Visibility.Collapsed;           
+            if (File.Exists(@"missions.json"))
+            {
+                missions = JsonConvert.DeserializeObject<List<Mission>>(File.ReadAllText(@"missions.json"));
+            }
         }
-
-        List<Mission> missions = JsonConvert.DeserializeObject<List<Mission>>(File.ReadAllText(@"..\..\..\MissionCreator\bin\Debug\missions.json"));
+    
       
         private void GoBack(object sender, RoutedEventArgs e)
         {
@@ -49,6 +53,7 @@ namespace NarutoLife
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            GenerateMissions();
             bz.Visibility = Visibility.Visible;
             bc.Visibility = Visibility.Collapsed;
             bb.Visibility = Visibility.Collapsed;
@@ -57,6 +62,7 @@ namespace NarutoLife
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            GenerateMissions();
             bz.Visibility = Visibility.Visible;
             bc.Visibility = Visibility.Collapsed;
             bb.Visibility = Visibility.Collapsed;
@@ -65,10 +71,53 @@ namespace NarutoLife
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            GenerateMissions();
             bz.Visibility = Visibility.Visible;
             bc.Visibility = Visibility.Collapsed;
             bb.Visibility = Visibility.Collapsed;
             ba.Visibility = Visibility.Collapsed;
+        }
+
+        private void GenerateMissions()
+        {
+            
+            for(int i = missions.Count(); i < 4; i++)
+            {
+                Random rnd = new Random();
+                int number = rnd.Next(1, 4);
+                Button b = new Button();
+                b.Height = 50;
+                b.Margin = new Thickness(10);
+
+                switch (number)
+                {
+                    //wolf
+                    case 1:
+                        b.Name = "Wolf";
+                        break;
+                    //spider
+                    case 2:
+                        b.Name = "Spider";
+                        break;
+                    //snake
+                    case 3:
+                        b.Name = "Snake";
+                        break;
+                }
+                b.Content = b.Name + " hunt";
+                Mission mission = new Mission(b.Name + " hunt", missionType.Fight);
+                missions.Add(mission);
+                File.WriteAllText(@"missions.json", JsonConvert.SerializeObject(missions));
+                b.Click += NavigateBattleground;
+                missionpanel.Children.Add(b);
+
+            }
+        }
+
+        private void NavigateBattleground(object sender, RoutedEventArgs e)
+        {
+            Button b= (Button)sender;
+            NavigationService.Navigate(new Battleground(b.Name));
         }
     }
 }

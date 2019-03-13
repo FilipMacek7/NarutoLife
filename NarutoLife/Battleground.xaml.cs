@@ -9,9 +9,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAnimatedGif;
 
 namespace NarutoLife
 {
@@ -20,10 +22,28 @@ namespace NarutoLife
     /// </summary>
     public partial class Battleground : Page
     {
-        public Battleground()
+        public Battleground(string enemy)
         {
             InitializeComponent();
            
+        }   
+        private void AnimationCompleted(object sender, RoutedEventArgs e)
+        {
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(@"/img/wolf_stand.gif", UriKind.Relative);
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(enemy, image);
+            ImageBehavior.SetRepeatBehavior(enemy, RepeatBehavior.Forever);
+        }
+        private void Naruto_AnimationCompleted(object sender, RoutedEventArgs e)
+        {
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(@"/img/naruto_stand.gif", UriKind.Relative);
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(Naruto, image);
+            ImageBehavior.SetRepeatBehavior(Naruto, RepeatBehavior.Forever);
         }
     }
 }

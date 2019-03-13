@@ -9,6 +9,7 @@ namespace NarutoLife
     public class Mission
     {
         public string name { get; set; }
+        public string description { get; set; }
         public missionType type { get; set; }
 
         public Mission(string Name, missionType Type)
