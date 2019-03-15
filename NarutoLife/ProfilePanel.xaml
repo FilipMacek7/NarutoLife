@@ -1,0 +1,38 @@
+﻿<Page x:Class="NarutoLife.ProfilePanel"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+     xmlns:gif="http://wpfanimatedgif.codeplex.com"
+      xmlns:local="clr-namespace:NarutoLife"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="200"
+      Title="ProfilePanel">
+    <Grid Name="profile">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+        <Border BorderThickness="3" BorderBrush="Orange" Grid.ColumnSpan="2" Grid.RowSpan="3">
+            <Rectangle Fill="LightGray"></Rectangle>
+        </Border>
+        <Label Content="Uzumaki Naruto LV." Grid.ColumnSpan="2" Name="levellabel"/>
+        <Button Grid.Column="1" Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4" Click="Profile_Close">
+            <StackPanel>
+                <Image Source="img/red_shuriken.png"></Image>
+            </StackPanel>
+        </Button>
+        <Image Name="profile_bg" Source="img/profilebg1.jpg" Grid.Row="1" Grid.ColumnSpan="2" Panel.ZIndex="1"/>
+        <Image gif:ImageBehavior.RepeatBehavior="Forever"
+               gif:ImageBehavior.AnimatedSource="img/naruto_stand.gif" 
+               gif:ImageBehavior.AnimationCompleted="AnimationCompleted" Panel.ZIndex="2" Grid.ColumnSpan="2" Grid.Row="1"  HorizontalAlignment="Center" Width="58"  Name="Naruto" Height="60" VerticalAlignment="Bottom"/>
+        <Button FontFamily="Marlett" FontSize="20" Content="3" Width="30" Height="25"  Grid.Row="1" HorizontalAlignment="Left" Margin="41,60,0,35" Panel.ZIndex="1" Click="Profile_Bgprevious"/>
+        <Button FontFamily="Marlett" FontSize="20" Content="4" Width="30" Height="25"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,60,39,35" Panel.ZIndex="1" Click="Profile_Bgnext"/>
+        <Label Content="Stats" Margin="0,0,4,10" Name="stats" Grid.ColumnSpan="2" Grid.Row="2" />
+    </Grid>
+</Page>

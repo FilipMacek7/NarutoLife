@@ -23,6 +23,7 @@ namespace NarutoLife
     /// </summary>
     public partial class Training_quickness : Page
     {
+        static Frame mainframe;
         int i;
         Character naruto;
         int hours;
@@ -35,7 +36,7 @@ namespace NarutoLife
         string currentw;
         int currentind;
         int linecounter = 0;
-        public Training_quickness(int Hours, DateTime getdatetime, Character Naruto)
+        public Training_quickness(int Hours, DateTime getdatetime, Character Naruto, Frame Mainframe)
         {
             InitializeComponent();
             i = Hours * 10;
@@ -43,7 +44,7 @@ namespace NarutoLife
             naruto = Naruto;
             datetime = getdatetime;           
             string line;
-            
+            mainframe = Mainframe;
             // Read the file and display it line by line.  
             System.IO.StreamReader file = new System.IO.StreamReader(@"randomwords.txt");
             while ((line = file.ReadLine()) != null)
@@ -121,7 +122,7 @@ namespace NarutoLife
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Village(datetime, naruto));
+            NavigationService.Navigate(new Village(datetime, naruto, mainframe));
         }
     }
 }

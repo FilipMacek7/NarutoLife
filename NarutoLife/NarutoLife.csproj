@@ -75,6 +75,12 @@
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mission.cs" />
+    <Compile Include="ProfilePanel.xaml.cs">
+      <DependentUpon>ProfilePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Training_accuracy.xaml.cs">
       <DependentUpon>Training_accuracy.xaml</DependentUpon>
     </Compile>
@@ -103,6 +109,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfilePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,6 +221,7 @@
     <Resource Include="img\hokage_mansion.jpg" />
     <Resource Include="img\wolf_stand.gif" />
     <Resource Include="img\meadow.png" />
+    <Resource Include="img\settings.png" />
     <Content Include="sounds\punch_trunk.mp3" />
     <Resource Include="img\lost_impression__child_naruto_x_child_reader__by_blackfang_124_d7kt8ze_LgY_icon.ico" />
     <Resource Include="img\menu.png" />

@@ -28,7 +28,8 @@ namespace NarutoLife
         int i;
         int hours;
         Character naruto;
-        public Training_taijutsu(int Hours, DateTime getdatetime, Character Naruto)
+        static Frame mainframe;
+        public Training_taijutsu(int Hours, DateTime getdatetime, Character Naruto, Frame Mainframe)
         {
             InitializeComponent();
             datetime = getdatetime;
@@ -36,6 +37,7 @@ namespace NarutoLife
             i = hours * 10;
             time.Content = "Time left: " + i.ToString();
             naruto = Naruto;
+            mainframe = Mainframe;
         }
         DispatcherTimer dt = new DispatcherTimer();
         ///END 
@@ -114,10 +116,9 @@ namespace NarutoLife
                 helpticker = 1;
             }
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-                NavigationService.Navigate(new Village(datetime, naruto));
+                NavigationService.Navigate(new Village(datetime, naruto, mainframe));
         }
     }
 }

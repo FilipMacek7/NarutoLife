@@ -16,15 +16,18 @@ using System.Windows.Shapes;
 namespace NarutoLife
 {
     /// <summary>
-    /// Interakční logika pro MainWindow.xaml
+    /// Interakční logika pro Settings.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Settings : Page
     {
-
-        public MainWindow()
+        public Settings()
         {
             InitializeComponent();
-            main.Navigate(new Menu(main));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Village.Exit_menu();
         }
     }
 }

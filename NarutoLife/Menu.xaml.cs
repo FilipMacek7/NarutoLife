@@ -21,13 +21,17 @@ namespace NarutoLife
     public partial class Menu : Page
     {
         Sound menu = new Sound();
+        static Frame fr;
         public Menu()
         {
             InitializeComponent();
             menu.Play("menu.mp3");
             menu.SetVolume(25);
         }
-
+        public Menu(Frame Fr) : this()
+        {
+            fr = Fr;
+        }
         private void Button_Start(object sender, RoutedEventArgs e)
         {
             Character naruto = new Character();
@@ -54,7 +58,7 @@ namespace NarutoLife
 
             naruto.level = 1;
             DateTime date = new DateTime(2000, 10, 13, 6, 0, 0);
-            NavigationService.Navigate(new Village(date, naruto));
+            NavigationService.Navigate(new Village(date, naruto, fr));
             menu.Stop();       
             menu.Play("morning.mp3");
             menu.SetVolume(25);

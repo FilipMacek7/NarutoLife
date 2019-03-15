@@ -27,9 +27,11 @@ namespace NarutoLife
         DateTime datetime;
         Character naruto;
         bool timestop = false;
-        public Home(DateTime getdateTime, Character Naruto)
+        static Frame mainframe;
+        public Home(DateTime getdateTime, Character Naruto, Frame Mainframe)
         {
-            InitializeComponent();          
+            InitializeComponent();
+            mainframe = Mainframe;
             datetime = getdateTime;
             timedate.Text = datetime.ToString("HH:mm");
             naruto = Naruto;
@@ -191,7 +193,7 @@ namespace NarutoLife
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Village(datetime,naruto));
+            NavigationService.Navigate(new Village(datetime,naruto, mainframe));
         }
     }
 }

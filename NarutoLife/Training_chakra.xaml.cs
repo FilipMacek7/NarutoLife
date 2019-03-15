@@ -30,9 +30,11 @@ namespace NarutoLife
         double score;
         int randomred;
         Random rnd = new Random();
-        public Training_chakra(int Hours, DateTime getdatetime, Character Naruto)
+        static Frame mainframe;
+        public Training_chakra(int Hours, DateTime getdatetime, Character Naruto, Frame Mainframe)
         {
             InitializeComponent();
+            mainframe = Mainframe;
             hours = Hours;
             i = hours * 10;
             naruto = Naruto;
@@ -128,7 +130,7 @@ namespace NarutoLife
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Village(datetime, naruto));
+            NavigationService.Navigate(new Village(datetime, naruto, mainframe));
         }
     }
 }

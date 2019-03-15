@@ -24,14 +24,18 @@ namespace NarutoLife
     /// </summary>
     public partial class Village : Page
     {
+        static public Frame st;
+        static public Frame mainframe;
         Character naruto;
-        public Village(DateTime getdatetime, Character Naruto)
+        public Village(DateTime getdatetime, Character Naruto, Frame Mainframe)
         {
             InitializeComponent();           
             timedate.Text = getdatetime.ToString("HH:mm");
             datetime = getdatetime;
             naruto = Naruto;
-            setInfo();          
+            setInfo();
+            mainframe = Mainframe;
+            st = settings;
         }
         DateTime datetime;
         DispatcherTimer dt = new DispatcherTimer();
@@ -50,7 +54,7 @@ namespace NarutoLife
         }
         private void setInfo()
         {
-            levellabel.Content = "Naruto Uzumaki LV. " + naruto.level;
+
             healthbar.Value = naruto.health / naruto.maxhealth * 100;
             chakrabar.Value = naruto.chakra / naruto.maxchakra * 100;
             happinessbar.Value = naruto.happiness;
@@ -60,7 +64,6 @@ namespace NarutoLife
             chakratext.Text = naruto.chakra + "/" + naruto.maxchakra;
             happinesstext.Text = naruto.happiness + "/" + naruto.maxhappiness;
             energytext.Text = naruto.energy + "/" + naruto.maxenergy;
-
             if (naruto.happiness < 25 || naruto.energy < 10)
             {
                 StatePic.Source = new BitmapImage(new Uri(@"/img/state_sad.jpg", UriKind.Relative));
@@ -94,73 +97,33 @@ namespace NarutoLife
             {
                 Background.ImageSource = new BitmapImage(new Uri(@"img/konoha_night.jpg", UriKind.Relative));
             }
-
-            switch (profilebg)
-            {
-                case 0:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg3.jpg", UriKind.Relative));
-                    profilebg = 3;
-                    break;
-                case 1:
-                    profile_bg.Source= new BitmapImage(new Uri(@"img/profilebg1.jpg", UriKind.Relative));
-                    break;
-                case 2:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg2.jpg", UriKind.Relative));
-                    break;
-                case 3:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg3.jpg", UriKind.Relative));
-                    break;
-                case 4:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg1.jpg", UriKind.Relative));
-                    profilebg = 1;
-                    break;
-            }
-            stats.Content = "\n Taijutsu: " + naruto.taijutsu.ToString() + "\n Quickness: " + naruto.quickness.ToString() + "\n Vitality: " + naruto.vitality.ToString() + "\n Accuracy: " + naruto.accuracy.ToString();
-
-
-        }
-
-        private void Training_Button(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Training(datetime, naruto));
         }
         private void Profile_Button(object sender, RoutedEventArgs e)
         {
-            profile.Visibility = Visibility.Visible;
+            profile.Content = new ProfilePanel(naruto);
         }
-        private void Profile_Close(object sender, RoutedEventArgs e)
+        private void Training_Button(object sender, RoutedEventArgs e)
         {
-            profile.Visibility = Visibility.Hidden;
+            NavigationService.Navigate(new Training(datetime, naruto, mainframe));
         }
-        int profilebg = 1;
-        private void Profile_Bgnext(object sender, RoutedEventArgs e)
-        {
-            profilebg++;
-            setInfo();
-        }
-        private void Profile_Bgprevious(object sender, RoutedEventArgs e)
-        {
-            profilebg--;
-            setInfo();
-        }
-        private void AnimationCompleted(object sender, RoutedEventArgs e)
-        {
-            var image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri(@"/img/naruto_stand.gif", UriKind.Relative);
-            image.EndInit();
-            ImageBehavior.SetAnimatedSource(Naruto, image);
-            ImageBehavior.SetRepeatBehavior(Naruto, RepeatBehavior.Forever);
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Home(datetime, naruto));
+            NavigationService.Navigate(new Home(datetime, naruto, mainframe));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new HokageMansion(datetime, naruto));
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            settings.Content = new Settings();
+        }
+        public static void Exit_menu()
+        {
+            st.Navigate(null);
+            mainframe.Navigate(new Menu());
         }
     }
 }

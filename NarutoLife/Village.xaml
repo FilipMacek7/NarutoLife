@@ -81,38 +81,17 @@
         <Viewbox  HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="5">
             <TextBlock  Background="White" Name="timedate"/>
         </Viewbox>
-        <Viewbox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="5" Visibility="Hidden" Name="profile" Panel.ZIndex="3">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="2*" />
-                </Grid.RowDefinitions>
-                <Border BorderThickness="3" BorderBrush="Orange" Grid.ColumnSpan="2" Grid.RowSpan="3">
-                    <Rectangle Fill="LightGray"></Rectangle>
-                </Border>
-                <Label Content="Uzumaki Naruto LV. " Margin="10,0,0,0" Grid.ColumnSpan="2" Name="levellabel"/>
-                <Button Grid.Column="1" Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4" Click="Profile_Close">
-                    <StackPanel>
-                        <Image Source="img/red_shuriken.png"></Image>
-                    </StackPanel>
-                </Button>
-                <Image Name="profile_bg" Source="img/profilebg1.jpg" Height="150" Margin="0,31,0,100" Grid.ColumnSpan="2" Grid.RowSpan="3" Panel.ZIndex="1"></Image>
-                <Image gif:ImageBehavior.RepeatBehavior="Forever"
-               gif:ImageBehavior.AnimatedSource="img/naruto_stand.gif" 
-               gif:ImageBehavior.AnimationCompleted="AnimationCompleted" Panel.ZIndex="2" Grid.ColumnSpan="2" Grid.Row="1"  HorizontalAlignment="Center" Width="58" Margin="100,30.333,100,35.333" Name="Naruto"/>
-                <Button FontFamily="Marlett" FontSize="20" Content="3" Width="30" Height="25"  Grid.Row="1" HorizontalAlignment="Left" Margin="40,-70,0,0" Panel.ZIndex="1" Click="Profile_Bgprevious"/>
-                <Button FontFamily="Marlett" FontSize="20" Content="4" Width="30" Height="25"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,-70,40,0" Panel.ZIndex="1" Click="Profile_Bgnext"/>
-                <Label Content="Stats" Margin="10,98,10,10" Name="stats" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2"/>
-            </Grid>
-        </Viewbox>
         <Button Content="Home" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" Height="29" Grid.Column="1" Click="Button_Click" Grid.ColumnSpan="2" Margin="105,10,0,0"/>
+        <Button  Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" Margin="10" Click="Button_Click_2">
+            <StackPanel>
+                <Image Source="img/settings.png"/>
+            </StackPanel>
+        </Button>
+        <Frame x:Name="settings" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Width="150" Height="100"></Frame>
+        <Frame x:Name="profile" Grid.Row="1" Grid.RowSpan="4" Grid.Column="2" Grid.ColumnSpan="2" Height="300" Width="200"></Frame>
     </Grid>
     <Page.Background>
         <ImageBrush ImageSource="/img/konoha_afternoon.jpg" x:Name="Background"></ImageBrush>
     </Page.Background>
+    
 </Page>

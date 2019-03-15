@@ -31,10 +31,11 @@ namespace NarutoLife
         bool goDown = true;
         bool goLeft;
         bool goRight;
-        public Training_accuracy(int Hours, DateTime getdatetime, Character Naruto)
+        static Frame mainframe;
+        public Training_accuracy(int Hours, DateTime getdatetime, Character Naruto, Frame Mainframe)
         {
             InitializeComponent();
-            InitializeComponent();
+            mainframe = Mainframe;
             datetime = getdatetime;
             hours = Hours;
             i = hours * 10;
@@ -219,7 +220,7 @@ namespace NarutoLife
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Village(datetime, naruto));
+            NavigationService.Navigate(new Village(datetime, naruto, mainframe));
         }
     }
 }

@@ -23,17 +23,19 @@ namespace NarutoLife
         DateTime datetime;
         int num = 1;
         Character naruto;
-        public Training(DateTime getdatetime, Character Naruto)
+        static Frame mainframe;
+        public Training(DateTime getdatetime, Character Naruto, Frame Mainframe)
         {
             InitializeComponent();
             Trainhours.Text = num.ToString();
             datetime = getdatetime;
             naruto = Naruto;
+            mainframe = Mainframe;
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training_taijutsu(num, datetime, naruto));     
+            NavigationService.Navigate(new Training_taijutsu(num, datetime, naruto, mainframe));     
         }
         private void Training_hnext(object sender,RoutedEventArgs e)
         {
@@ -54,22 +56,22 @@ namespace NarutoLife
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training_quickness(num, datetime, naruto));
+            NavigationService.Navigate(new Training_quickness(num, datetime, naruto, mainframe));
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training_accuracy(num, datetime, naruto));
+            NavigationService.Navigate(new Training_accuracy(num, datetime, naruto, mainframe));
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training_chakra(num, datetime, naruto));
+            NavigationService.Navigate(new Training_chakra(num, datetime, naruto, mainframe));
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Village(datetime, naruto));
+            NavigationService.Navigate(new Village(datetime, naruto, mainframe));
         }
     }
 }
