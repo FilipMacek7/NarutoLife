@@ -19,7 +19,7 @@
         </Button>
         <Grid Name="help" Opacity="0">
             <Image gif:ImageBehavior.RepeatBehavior="Forever"
-               gif:ImageBehavior.AnimatedSource="img/click.gif" Height="50" Margin="1,79,-1,321" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="2">
+               gif:ImageBehavior.AnimatedSource="../img/click.gif" Height="50" Margin="1,79,-1,321" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="2">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

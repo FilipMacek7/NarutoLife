@@ -55,8 +55,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WpfAnimatedGif, Version=1.4.17.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WpfAnimatedGif.1.4.17\lib\net\WpfAnimatedGif.dll</HintPath>
+    <Reference Include="WpfAnimatedGif, Version=1.4.18.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.18\lib\net\WpfAnimatedGif.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -64,93 +64,93 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Battleground.xaml.cs">
+    <Compile Include="pages\Battleground.xaml.cs">
       <DependentUpon>Battleground.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Character.cs" />
-    <Compile Include="HokageMansion.xaml.cs">
+    <Compile Include="model\Character.cs" />
+    <Compile Include="pages\HokageMansion.xaml.cs">
       <DependentUpon>HokageMansion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Home.xaml.cs">
+    <Compile Include="pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Mission.cs" />
-    <Compile Include="ProfileBar.xaml.cs">
+    <Compile Include="model\Mission.cs" />
+    <Compile Include="pages\ProfileBar.xaml.cs">
       <DependentUpon>ProfileBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProfilePanel.xaml.cs">
+    <Compile Include="pages\ProfilePanel.xaml.cs">
       <DependentUpon>ProfilePanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings.xaml.cs">
+    <Compile Include="pages\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Time.xaml.cs">
+    <Compile Include="pages\Time.xaml.cs">
       <DependentUpon>Time.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Training_accuracy.xaml.cs">
+    <Compile Include="pages\Training_accuracy.xaml.cs">
       <DependentUpon>Training_accuracy.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Training_chakra.xaml.cs">
+    <Compile Include="pages\Training_chakra.xaml.cs">
       <DependentUpon>Training_chakra.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Training_quickness.xaml.cs">
+    <Compile Include="pages\Training_quickness.xaml.cs">
       <DependentUpon>Training_quickness.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Village.xaml.cs">
+    <Compile Include="pages\Village.xaml.cs">
       <DependentUpon>Village.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sound.cs" />
-    <Compile Include="Training.xaml.cs">
+    <Compile Include="model\Sound.cs" />
+    <Compile Include="pages\Training.xaml.cs">
       <DependentUpon>Training.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Training_taijutsu.xaml.cs">
+    <Compile Include="pages\Training_taijutsu.xaml.cs">
       <DependentUpon>Training_taijutsu.xaml</DependentUpon>
     </Compile>
-    <Page Include="Battleground.xaml">
+    <Page Include="pages\Battleground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HokageMansion.xaml">
+    <Page Include="pages\HokageMansion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Home.xaml">
+    <Page Include="pages\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProfileBar.xaml">
+    <Page Include="pages\ProfileBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProfilePanel.xaml">
+    <Page Include="pages\ProfilePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Settings.xaml">
+    <Page Include="pages\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Time.xaml">
+    <Page Include="pages\Time.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Training_accuracy.xaml">
+    <Page Include="pages\Training_accuracy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Training_chakra.xaml">
+    <Page Include="pages\Training_chakra.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Training_quickness.xaml">
+    <Page Include="pages\Training_quickness.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Village.xaml">
+    <Page Include="pages\Village.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="pages\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -158,25 +158,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="pages\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Menu.xaml">
+    <Page Include="pages\Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Training.xaml">
+    <Page Include="pages\Training.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Training_taijutsu.xaml">
+    <Page Include="pages\Training_taijutsu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu.xaml.cs">
+    <Compile Include="pages\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
