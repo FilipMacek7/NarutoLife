@@ -52,7 +52,6 @@ namespace NarutoLife
             dt.Interval = TimeSpan.FromSeconds(1);
             dt.Tick += dtTicker;
             dt.Start();
-            //
             if (datetime.Hour > 4 & datetime.Hour < 16)
             {
                 Background.ImageSource = new BitmapImage(new Uri(@"img/training_chakra_morning.png", UriKind.Relative));

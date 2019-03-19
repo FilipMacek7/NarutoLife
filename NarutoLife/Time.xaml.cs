@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Threading;
+
+namespace NarutoLife
+{
+    /// <summary>
+    /// Interakční logika pro Time.xaml
+    /// </summary>
+    public partial class Time : Page
+    {
+        public static DateTime datetime;
+        DispatcherTimer dt = new DispatcherTimer();
+        string framekey;
+        public Time(DateTime Datetime, string Framekey)
+        {
+            InitializeComponent();
+            datetime = Datetime;
+            timedate.Text = Datetime.ToString("HH:mm");
+            framekey = Framekey;
+            Village_background();
+        }
+        private void Village_background()
+        {
+            if (framekey.Equals("Village"))
+            {
+                Village.Background_set(datetime);
+            }
+        }
+        private void dtTicker(object sender, EventArgs e)
+        {
+            datetime = datetime.AddMinutes(1);
+            timedate.Text = datetime.ToString("HH:mm");
+            if (framekey.Equals("Home"))
+            {
+                Home.Opacity_on();
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            dt.Interval = TimeSpan.FromSeconds(1);
+            dt.Tick += dtTicker;
+            dt.Start();
+        }
+    }
+}

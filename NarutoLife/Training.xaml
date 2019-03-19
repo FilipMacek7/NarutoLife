@@ -6,23 +6,23 @@
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:local="clr-namespace:NarutoLife"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Training">
-    <Page.Background>
-        <ImageBrush ImageSource="img/training_ground.jpg"></ImageBrush>
-    </Page.Background>
-
+      d:DesignHeight="200" d:DesignWidth="300"
+      Title="Training" Background="Orange">
     <Grid>
-        <WrapPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="330">
-            <Button Height="50" Width="150" Margin="7" Content="Taijutsu" Click="Button_Click"></Button>
-            <Button Height="50" Width="150" Margin="7" Content="Chakra" Click="Button_Click_3"></Button>
-            <Button Height="50" Width="150" Margin="7" Content="Quickness" Click="Button_Click_1"></Button>
-            <Button Height="50" Width="150" Margin="7" Content="Accuracy" Click="Button_Click_2"></Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Top" Background="Orange" Content="How many hours do you want to train?" FontSize="10" Margin="0,7"/>
+        <TextBlock HorizontalAlignment="Center" Name="Trainhours" VerticalAlignment="Center" Background="Orange" TextAlignment="Center" Text="5" FontSize="20"/>
+        <Button FontFamily="Marlett" FontSize="20" Content="3" Width="30" Height="25"  Click="Training_hprevious" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="90,0,0,0"/>
+        <Button FontFamily="Marlett" FontSize="20" Content="4" Width="30" Height="25"   Click="Training_hnext" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,90,0"/>
+        <Label Content="You will finish your training at: " HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="10" Name="finishlabel"></Label>
+        <WrapPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            <Button Height="50" Width="100" Margin="7" Content="Taijutsu" Click="Taijutsu_Button"></Button>
+            <Button Height="50" Width="100" Margin="7" Content="Chakra" Click="Chakra_Button"></Button>
+            <Button Height="50" Width="100" Margin="7" Content="Quickness" Click="Quickness_Button"></Button>
+            <Button Height="50" Width="100" Margin="7" Content="Accuracy" Click="Accuracy_button"></Button>
         </WrapPanel>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="328"  Height="22" Background="Orange" Margin="235,88,237,340" Text="How many hours do you want to train?" FontSize="15" TextAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Center" Name="Trainhours" VerticalAlignment="Center" Width="328"  Height="35" Background="Orange" TextAlignment="Center" Margin="235,110,237,305" Text="5" FontSize="20"/>
-        <Button FontFamily="Marlett" FontSize="20" Content="3" Width="30" Height="25"  Click="Training_hprevious" Margin="352,115,418,310"/>
-        <Button FontFamily="Marlett" FontSize="20" Content="4" Width="30" Height="25"   Click="Training_hnext" Margin="418,115,352,310"/>
-        <Button Content="Go back" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Margin="0,0,10,10" Click="Button_Click_4"/>
     </Grid>
 </Page>

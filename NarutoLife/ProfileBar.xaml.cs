@@ -31,10 +31,13 @@ namespace NarutoLife
         }
         private void setInfo()
         {
-            healthbar.Value = naruto.health / naruto.maxhealth * 100;
-            chakrabar.Value = naruto.chakra / naruto.maxchakra * 100;
+            decimal decimalhealthbar = (decimal)naruto.health / (decimal)naruto.maxhealth * 100;
+            healthbar.Value = (int)decimalhealthbar;
+            decimal decimalchakrabar = (decimal)naruto.chakra / (decimal)naruto.maxchakra * 100;
+            chakrabar.Value = (int)decimalchakrabar;
             happinessbar.Value = naruto.happiness;
-            energybar.Value = naruto.energy / naruto.maxenergy * 100;
+            decimal decimalenergybar = (decimal)naruto.energy / (decimal)naruto.maxenergy * 100;
+            energybar.Value = (int)decimalenergybar;
 
             healthtext.Text = naruto.health + "/" + naruto.maxhealth;
             chakratext.Text = naruto.chakra + "/" + naruto.maxchakra;

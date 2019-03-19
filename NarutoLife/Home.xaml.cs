@@ -27,64 +27,51 @@ namespace NarutoLife
         DateTime datetime;
         public static Character naruto;
         static Frame pr;
-        bool timestop = false;
+        static Frame st;
+        static string framekey = "Home";
         static Frame mainframe;
-        public Home(DateTime getdateTime, Character Naruto, Frame Mainframe)
+        static Page pg;    
+        public Home(DateTime Datetime, Character Naruto, Frame Mainframe)
         {
             InitializeComponent();
+            pg = page;
             pr = profile;
+            st = settings;
             mainframe = Mainframe;
-            datetime = getdateTime;
-            timedate.Text = datetime.ToString("HH:mm");
+            datetime = Datetime;           
             naruto = Naruto;
+            profilebar.Navigate(new ProfileBar(naruto, framekey));
+            time.Navigate(new Time(datetime, framekey));
+        }
+        DispatcherTimer dt = new DispatcherTimer();
+
+        private void setInfo()
+        {
             naruto.health = naruto.LimitToRange(naruto.health, 0, naruto.maxhealth);
             naruto.chakra = naruto.LimitToRange(naruto.chakra, 0, naruto.maxchakra);
             naruto.happiness = naruto.LimitToRange(naruto.happiness, 0, naruto.maxhappiness);
-            naruto.energy= naruto.LimitToRange(naruto.energy, 0, naruto.maxenergy);
-            profilebar.Navigate(new ProfileBar(naruto,"Home"));          
+            naruto.energy = naruto.LimitToRange(naruto.energy, 0, naruto.maxenergy);
         }
-        DispatcherTimer dt = new DispatcherTimer();
-        private void dtTicker(object sender, EventArgs e)
+        public static void Settings_Close()
         {
-            if (!timestop)
-            {
-                datetime = datetime.AddMinutes(1);
-                timedate.Text = datetime.ToString("HH:mm");
-            }
-            if(page.Opacity == 0)
-            {
-                DoubleAnimation animation = new DoubleAnimation(1, TimeSpan.FromSeconds(2));
-                page.BeginAnimation(Page.OpacityProperty, animation);
-            }
+            st.Navigate(null);
         }
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void Settings_On(object sender, RoutedEventArgs e)
         {
-            dt.Interval = TimeSpan.FromSeconds(1);
-            dt.Tick += dtTicker;
-            dt.Start();        
+            settings.Navigate(new Settings(mainframe,framekey));
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             sleepinfo.Text = "You will wake up at: " + datetime.AddHours(sleephours).ToString("HH:mm");
             sleeppanel.Visibility = Visibility.Visible;
-            timestop = true;
             dt.Stop();
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             sleeppanel.Visibility = Visibility.Hidden;
-            timestop = false;
             dt.Start();
         }
         int sleephours = 1;
-        private void Profile_Button(object sender, RoutedEventArgs e)
-        {
-            profile.Visibility = Visibility.Visible;
-        }
-        private void Profile_Close(object sender, RoutedEventArgs e)
-        {
-            profile.Visibility = Visibility.Hidden;
-        }
 
         private void Sleep_next(object sender, RoutedEventArgs e)
         {
@@ -104,8 +91,6 @@ namespace NarutoLife
                 sleepinfo.Text = "You will wake up at: " + datetime.AddHours(sleephours).ToString("HH:mm");
             }
         }
-
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             DoubleAnimation animation = new DoubleAnimation(0, TimeSpan.FromSeconds(2));
@@ -119,20 +104,27 @@ namespace NarutoLife
                 naruto.happiness = naruto.maxhappiness;
             }
             Button_Click_2(sender, e);
+            setInfo();
         }
-
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            mainframe.Navigate(new Village(datetime,naruto,mainframe));
+            mainframe.Navigate(new Village(Time.datetime,naruto,mainframe));
         }
         public static void Profile_on()
-        {
-            
-            pr.Navigate(new ProfilePanel("Home"));
+        {     
+            pr.Navigate(new ProfilePanel(framekey));
         }
         public static void Profile_off()
         {
             pr.Navigate(null);
+        }
+        public static void Opacity_on()
+        {
+            if (pg.Opacity == 0)
+            {
+                DoubleAnimation animation = new DoubleAnimation(1, TimeSpan.FromSeconds(2));
+                pg.BeginAnimation(Page.OpacityProperty, animation);
+            }
         }
     }
 }

@@ -23,20 +23,17 @@ namespace NarutoLife
         DateTime datetime;
         int num = 1;
         Character naruto;
-        static Frame mainframe;
-        public Training(DateTime getdatetime, Character Naruto, Frame Mainframe)
+        static Frame frame;
+        public Training(DateTime Datetime, Character Naruto, Frame FRame)
         {
             InitializeComponent();
             Trainhours.Text = num.ToString();
-            datetime = getdatetime;
+            datetime = Datetime;
             naruto = Naruto;
-            mainframe = Mainframe;
+            frame = FRame;
+            finishlabel.Content = "You will finish your training at: " + datetime.AddHours(num).ToString("HH:mm");
         }
         
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Training_taijutsu(num, datetime, naruto, mainframe));     
-        }
         private void Training_hnext(object sender,RoutedEventArgs e)
         {
             if (naruto.energy - num * 10 > 10)
@@ -44,6 +41,7 @@ namespace NarutoLife
                 num++;
             }         
             Trainhours.Text = num.ToString();
+            finishlabel.Content = "You will finish your training at: " +  datetime.AddHours(num).ToString("HH:mm");
         }
         private void Training_hprevious(object sender, RoutedEventArgs e)
         {
@@ -52,26 +50,25 @@ namespace NarutoLife
                 num--;
             }
             Trainhours.Text = num.ToString();
+            finishlabel.Content = "You will finish your training at: " + datetime.AddHours(num).ToString("HH:mm");
+        }
+        private void Taijutsu_Button(object sender, RoutedEventArgs e)
+        {
+            Village.Taijutsu_Navigate(num);
+        }
+        private void Quickness_Button(object sender, RoutedEventArgs e)
+        {
+            Village.Quickness_Navigate(num);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Accuracy_button(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training_quickness(num, datetime, naruto, mainframe));
+            Village.Accuracy_Navigate(num);
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Chakra_Button(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Training_accuracy(num, datetime, naruto, mainframe));
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Training_chakra(num, datetime, naruto, mainframe));
-        }
-
-        private void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Village(datetime, naruto, mainframe));
+            Village.Chakra_Navigate(num);
         }
     }
 }

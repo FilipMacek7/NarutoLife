@@ -7,7 +7,7 @@
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Home" Loaded="Page_Loaded" Name="page">
+      Title="Home" x:Name="page">
     <Page.Background>
         <ImageBrush ImageSource="img/home_background.png"></ImageBrush>
     </Page.Background>
@@ -29,10 +29,11 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <Frame x:Name="profilebar" Grid.ColumnSpan="2"></Frame>
-        <Viewbox  HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Height="50" Grid.Column="5">
-            <TextBlock  Background="White" Name="timedate"/>
-        </Viewbox>
+        <Button  Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" Margin="10" Click="Settings_On">
+            <StackPanel>
+                <Image Source="img/settings.png"/>
+            </StackPanel>
+        </Button>
         <Button Content="Bed" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="112" Height="29" Click="Button_Click" Margin="0,0,114,0" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="2"></Button>
         <Grid Name="sleeppanel" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Center" Height="129" Width="292" Grid.ColumnSpan="4" Grid.Column="1" Grid.RowSpan="3" Grid.Row="2" Visibility="Hidden">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="328"  Height="26"  Margin="-18,2,-18,65" Text="How many hours do you want to sleep?" FontSize="15" TextAlignment="Center" />
@@ -47,7 +48,10 @@
                 </StackPanel>
             </Button>
         </Grid>
+        <Frame x:Name="profilebar" Grid.ColumnSpan="2"></Frame>
+        <Frame x:Name="settings" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Width="150" Height="100" Panel.ZIndex="2"></Frame>
         <Frame x:Name="profile" Grid.Row="1" Grid.RowSpan="4" Grid.Column="2" Grid.ColumnSpan="2" Height="300" Width="200"></Frame>
+        <Frame x:Name="time" Grid.Column="5" Height="15" Width="50" HorizontalAlignment="Right" Margin="0,0,5,0"></Frame>
         <Button Content="Village" Grid.Column="2" HorizontalAlignment="Left" Margin="108,30,0,0" VerticalAlignment="Top" Width="76" Grid.ColumnSpan="2" Click="Button_Click_3"/>
     </Grid>
 </Page>
