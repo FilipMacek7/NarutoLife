@@ -128,7 +128,7 @@ namespace NarutoLife
         public static void Profile_on()
         {
             
-            pr.Navigate(new ProfilePanel("Village"));
+            pr.Navigate(new ProfilePanel("Home"));
         }
         public static void Profile_off()
         {

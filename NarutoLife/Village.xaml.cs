@@ -42,6 +42,10 @@ namespace NarutoLife
         }
         private void setInfo()
         {
+            naruto.health = naruto.LimitToRange(naruto.health, 0, naruto.maxhealth);
+            naruto.chakra = naruto.LimitToRange(naruto.chakra, 0, naruto.maxchakra);
+            naruto.happiness = naruto.LimitToRange(naruto.happiness, 0, naruto.maxhappiness);
+            naruto.energy = naruto.LimitToRange(naruto.energy, 0, naruto.maxenergy);
             if (datetime.Hour < 16 & datetime.Hour > 5)
             {
                 Background.ImageSource = new BitmapImage(new Uri(@"img/konoha_afternoon.jpg", UriKind.Relative));
