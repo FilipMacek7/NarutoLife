@@ -1,0 +1,48 @@
+﻿<Page x:Class="NarutoLife.ProfileBar"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NarutoLife"
+      mc:Ignorable="d" 
+      d:DesignHeight="200" d:DesignWidth="400"
+      Title="ProfileBar">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Border BorderThickness="10" BorderBrush="Orange">
+            <Button Click="Profile_Button">
+                <StackPanel>
+                    <Image Source="img/state_ok.png" Name="StatePic"/>
+                </StackPanel>
+            </Button>
+        </Border>
+        <Viewbox Grid.Column="1" HorizontalAlignment="Left" Margin="5,7,0,7">
+            <StackPanel >
+                <Label Content="Health:"  FontSize="15" Name="healthlabel" />
+                <Grid>
+                    <ProgressBar Height="30" Width="200" Name="healthbar" Foreground="Red"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="healthtext" FontSize="15"/>
+                </Grid>
+                <Label Content="Chakra:"  FontSize="15" Name="chakralabel"/>
+                <Grid>
+                    <ProgressBar Height="30" Width="200" Name="chakrabar" Foreground="LightBlue"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="chakratext" FontSize="15"/>
+                </Grid>
+                <Label Content="Happiness:" FontSize="15" Name="happinesslabel"/>
+                <Grid>
+                    <ProgressBar Height="30" Width="200" Name="happinessbar" Foreground="Pink"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="happinesstext" FontSize="15"/>
+                </Grid>
+                <Label Content="Energy:" FontSize="15" Name="energylabel"/>
+                <Grid>
+                    <ProgressBar Height="30" Width="200" Name="energybar" Foreground="Green"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="energytext" FontSize="15"/>
+                </Grid>
+            </StackPanel>
+        </Viewbox>
+    </Grid>
+</Page>

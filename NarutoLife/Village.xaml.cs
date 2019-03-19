@@ -25,62 +25,23 @@ namespace NarutoLife
     public partial class Village : Page
     {
         static public Frame st;
+        static public Frame pr;
         static public Frame mainframe;
-        Character naruto;
+        static public Character naruto;
         public Village(DateTime getdatetime, Character Naruto, Frame Mainframe)
         {
             InitializeComponent();           
             timedate.Text = getdatetime.ToString("HH:mm");
             datetime = getdatetime;
-            naruto = Naruto;
-            setInfo();
-            mainframe = Mainframe;
+            naruto = Naruto;           
             st = settings;
-        }
-        DateTime datetime;
-        DispatcherTimer dt = new DispatcherTimer();
-        private void dtTicker(object sender, EventArgs e)
-        {
-            datetime = datetime.AddMinutes(1);
-            timedate.Text = datetime.ToString("HH:mm");          
-            
-        }
-        
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            dt.Interval = TimeSpan.FromSeconds(1);
-            dt.Tick += dtTicker;
-            dt.Start();
+            pr = profile;
+            mainframe = Mainframe;
+            setInfo();
+            profilebar.Navigate(new ProfileBar(naruto,"Village"));
         }
         private void setInfo()
         {
-
-            healthbar.Value = naruto.health / naruto.maxhealth * 100;
-            chakrabar.Value = naruto.chakra / naruto.maxchakra * 100;
-            happinessbar.Value = naruto.happiness;
-            energybar.Value = naruto.energy / naruto.maxenergy * 100;
-
-            healthtext.Text = naruto.health + "/" + naruto.maxhealth;
-            chakratext.Text = naruto.chakra + "/" + naruto.maxchakra;
-            happinesstext.Text = naruto.happiness + "/" + naruto.maxhappiness;
-            energytext.Text = naruto.energy + "/" + naruto.maxenergy;
-            if (naruto.happiness < 25 || naruto.energy < 10)
-            {
-                StatePic.Source = new BitmapImage(new Uri(@"/img/state_sad.jpg", UriKind.Relative));
-            }
-            else if (naruto.happiness > 25 & naruto.happiness < 50 || naruto.energy < 20)
-            {
-                StatePic.Source = new BitmapImage(new Uri(@"/img/state_notok.png", UriKind.Relative));
-            }
-            else if (naruto.happiness > 50 & naruto.happiness < 85 || naruto.energy < 30)
-            {
-                StatePic.Source = new BitmapImage(new Uri(@"/img/state_ok.png", UriKind.Relative));
-            }
-            else if (naruto.happiness >= 85)
-            {
-                StatePic.Source = new BitmapImage(new Uri(@"/img/state_happy.png", UriKind.Relative));
-            }
-
             if (datetime.Hour < 16 & datetime.Hour > 5)
             {
                 Background.ImageSource = new BitmapImage(new Uri(@"img/konoha_afternoon.jpg", UriKind.Relative));
@@ -98,9 +59,20 @@ namespace NarutoLife
                 Background.ImageSource = new BitmapImage(new Uri(@"img/konoha_night.jpg", UriKind.Relative));
             }
         }
-        private void Profile_Button(object sender, RoutedEventArgs e)
+        DateTime datetime;
+        DispatcherTimer dt = new DispatcherTimer();
+        private void dtTicker(object sender, EventArgs e)
         {
-            profile.Content = new ProfilePanel(naruto);
+            datetime = datetime.AddMinutes(1);
+            timedate.Text = datetime.ToString("HH:mm");          
+            
+        }
+        
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            dt.Interval = TimeSpan.FromSeconds(1);
+            dt.Tick += dtTicker;
+            dt.Start();
         }
         private void Training_Button(object sender, RoutedEventArgs e)
         {
@@ -108,7 +80,7 @@ namespace NarutoLife
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Home(datetime, naruto, mainframe));
+            mainframe.Navigate(new Home(datetime, naruto, mainframe));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -124,6 +96,14 @@ namespace NarutoLife
         {
             st.Navigate(null);
             mainframe.Navigate(new Menu());
+        }
+        public static void Profile_on()
+        {
+            pr.Navigate(new ProfilePanel("Village"));
+        }
+        public static void Profile_off()
+        {
+            pr.Navigate(null);
         }
     }
 }

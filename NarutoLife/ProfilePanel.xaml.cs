@@ -22,15 +22,23 @@ namespace NarutoLife
     /// </summary>
     public partial class ProfilePanel : Page
     {
-        Character naruto;
-        public ProfilePanel(Character Naruto)
+        string mainframe;
+        public ProfilePanel(string Mainframe)
         {
             InitializeComponent();
-            naruto = Naruto;
+            mainframe = Mainframe;
             setInfo();
         }
         private void Profile_Close(object sender, RoutedEventArgs e)
         {
+            if (mainframe.Equals("Village"))
+            {
+                Village.Profile_off();
+            }
+            else if (mainframe.Equals("Home"))
+            {
+                Home.Profile_off();
+            }            
         }
         int profilebg = 1;
         private void Profile_Bgnext(object sender, RoutedEventArgs e)
@@ -54,7 +62,7 @@ namespace NarutoLife
         }
         private void setInfo()
         {
-            levellabel.Content = "Naruto Uzumaki LV. " + naruto.level;
+            levellabel.Content = "Naruto Uzumaki LV. " + Village.naruto.level;
             switch (profilebg)
             {
                 case 0:
@@ -75,7 +83,26 @@ namespace NarutoLife
                     profilebg = 1;
                     break;
             }
-            stats.Content = "\n Taijutsu: " + naruto.taijutsu.ToString() + "\n Quickness: " + naruto.quickness.ToString() + "\n Vitality: " + naruto.vitality.ToString() + "\n Accuracy: " + naruto.accuracy.ToString();
+            string taijutsu = "";
+            string quickness = "";
+            string vitality = "";
+            string accuracy = "";
+            switch (mainframe)
+            {
+                case "Village":
+                    taijutsu = Village.naruto.taijutsu.ToString();
+                    quickness = Village.naruto.quickness.ToString();
+                    vitality = Village.naruto.vitality.ToString();
+                    accuracy = Village.naruto.accuracy.ToString();
+                    break;
+                case "Home":
+                    taijutsu = Home.naruto.taijutsu.ToString();
+                    quickness = Home.naruto.quickness.ToString();
+                    vitality = Home.naruto.vitality.ToString();
+                    accuracy = Home.naruto.accuracy.ToString();
+                    break;
+            }
+            stats.Content = "\n Taijutsu: " + taijutsu + "\n Quickness: " + quickness + "\n Vitality: " + vitality + "\n Accuracy: " + accuracy;
         }
     }
 }

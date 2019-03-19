@@ -25,7 +25,7 @@ namespace NarutoLife
         public Menu()
         {
             InitializeComponent();
-            menu.Play("menu.mp3");
+            //menu.Play("menu.mp3");
             menu.SetVolume(25);
         }
         public Menu(Frame Fr) : this()
@@ -60,7 +60,7 @@ namespace NarutoLife
             DateTime date = new DateTime(2000, 10, 13, 6, 0, 0);
             NavigationService.Navigate(new Village(date, naruto, fr));
             menu.Stop();       
-            menu.Play("morning.mp3");
+            //menu.Play("morning.mp3");
             menu.SetVolume(25);
         }
 

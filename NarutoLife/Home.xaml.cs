@@ -25,12 +25,14 @@ namespace NarutoLife
     public partial class Home : Page
     {
         DateTime datetime;
-        Character naruto;
+        public static Character naruto;
+        static Frame pr;
         bool timestop = false;
         static Frame mainframe;
         public Home(DateTime getdateTime, Character Naruto, Frame Mainframe)
         {
             InitializeComponent();
+            pr = profile;
             mainframe = Mainframe;
             datetime = getdateTime;
             timedate.Text = datetime.ToString("HH:mm");
@@ -39,7 +41,7 @@ namespace NarutoLife
             naruto.chakra = naruto.LimitToRange(naruto.chakra, 0, naruto.maxchakra);
             naruto.happiness = naruto.LimitToRange(naruto.happiness, 0, naruto.maxhappiness);
             naruto.energy= naruto.LimitToRange(naruto.energy, 0, naruto.maxenergy);
-            setInfo();          
+            profilebar.Navigate(new ProfileBar(naruto,"Home"));          
         }
         DispatcherTimer dt = new DispatcherTimer();
         private void dtTicker(object sender, EventArgs e)
@@ -60,69 +62,6 @@ namespace NarutoLife
             dt.Interval = TimeSpan.FromSeconds(1);
             dt.Tick += dtTicker;
             dt.Start();        
-        }
-        int profilebg = 1;
-        private void Profile_Bgnext(object sender, RoutedEventArgs e)
-        {
-            profilebg++;
-            setInfo();
-        }
-        private void Profile_Bgprevious(object sender, RoutedEventArgs e)
-        {
-            profilebg--;
-            setInfo();
-        }
-        private void setInfo()
-        {
-            levellabel.Content = "Naruto Uzumaki LV. " + naruto.level;
-            healthbar.Value = naruto.health / naruto.maxhealth * 100;
-            chakrabar.Value = naruto.chakra / naruto.maxchakra * 100;
-            happinessbar.Value = naruto.happiness;
-            energybar.Value = naruto.energy / naruto.maxenergy * 100;
-
-            healthtext.Text = naruto.health + "/" + naruto.maxhealth;
-            chakratext.Text = naruto.chakra + "/" + naruto.maxchakra;
-            happinesstext.Text = naruto.happiness + "/" + naruto.maxhappiness;
-            energytext.Text = naruto.energy + "/" + naruto.maxenergy;
-
-            if (naruto.happiness < 25 || naruto.energy < 10)
-            {
-                StatePic.Source = new BitmapImage(new Uri(@"/img/state_sad.jpg", UriKind.Relative));
-            }
-            else if (naruto.happiness > 25 & naruto.happiness < 50 || naruto.energy < 20)
-            {
-                StatePic.Source = new BitmapImage(new Uri(@"/img/state_notok.png", UriKind.Relative));
-            }
-            else if (naruto.happiness > 50 & naruto.happiness < 85 || naruto.energy < 30)
-            {
-                StatePic.Source = new BitmapImage(new Uri(@"/img/state_ok.png", UriKind.Relative));
-            }
-            else if (naruto.happiness >= 85)
-            {
-                StatePic.Source = new BitmapImage(new Uri(@"/img/state_happy.png", UriKind.Relative));
-            }
-
-            switch (profilebg)
-            {
-                case 0:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg3.jpg", UriKind.Relative));
-                    profilebg = 3;
-                    break;
-                case 1:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg1.jpg", UriKind.Relative));
-                    break;
-                case 2:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg2.jpg", UriKind.Relative));
-                    break;
-                case 3:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg3.jpg", UriKind.Relative));
-                    break;
-                case 4:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg1.jpg", UriKind.Relative));
-                    profilebg = 1;
-                    break;
-            }
-            stats.Content = "\n Taijutsu: " + naruto.taijutsu.ToString() + "\n Quickness: " + naruto.quickness.ToString() + "\n Vitality: " + naruto.vitality.ToString() + "\n Accuracy: " + naruto.accuracy.ToString();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -181,19 +120,19 @@ namespace NarutoLife
             }
             Button_Click_2(sender, e);
         }
-        private void AnimationCompleted(object sender, RoutedEventArgs e)
-        {
-            var image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri(@"/img/naruto_stand.gif", UriKind.Relative);
-            image.EndInit();
-            ImageBehavior.SetAnimatedSource(Naruto, image);
-            ImageBehavior.SetRepeatBehavior(Naruto, RepeatBehavior.Forever);
-        }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Village(datetime,naruto, mainframe));
+            mainframe.Navigate(new Village(datetime,naruto,mainframe));
+        }
+        public static void Profile_on()
+        {
+            
+            pr.Navigate(new ProfilePanel("Village"));
+        }
+        public static void Profile_off()
+        {
+            pr.Navigate(null);
         }
     }
 }

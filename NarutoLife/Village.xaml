@@ -27,39 +27,6 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <Viewbox Margin="0,5,0,0">
-            <Border BorderThickness="10" BorderBrush="Orange">
-                <Button Click="Profile_Button">
-                    <StackPanel>
-                        <Image Source="img/state_ok.png" Name="StatePic"/>
-                    </StackPanel>
-                </Button>
-            </Border>
-        </Viewbox>
-        <Viewbox Grid.Column="1" HorizontalAlignment="Left" Margin="5,7,0,7">
-            <StackPanel >
-                <Label Content="Health:"  FontSize="15" Name="healthlabel" />
-                <Grid>
-                    <ProgressBar Height="30" Width="200" Name="healthbar" Foreground="Red"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="healthtext" FontSize="15"/>
-                </Grid>
-                <Label Content="Chakra:"  FontSize="15" Name="chakralabel"/>
-                <Grid>
-                    <ProgressBar Height="30" Width="200" Name="chakrabar" Foreground="LightBlue"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="chakratext" FontSize="15"/>
-                </Grid>
-                <Label Content="Happiness:" FontSize="15" Name="happinesslabel"/>
-                <Grid>
-                    <ProgressBar Height="30" Width="200" Name="happinessbar" Foreground="Pink"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="happinesstext" FontSize="15"/>
-                </Grid>
-                <Label Content="Energy:" FontSize="15" Name="energylabel"/>
-                <Grid>
-                    <ProgressBar Height="30" Width="200" Name="energybar" Foreground="Green"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="energytext" FontSize="15"/>
-                </Grid>
-            </StackPanel>
-        </Viewbox>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="2"  Grid.Row="5" Height="22" >
             <Button Content="Ichiraku Ramen" Width="100"/>
         </Viewbox>
@@ -87,8 +54,9 @@
                 <Image Source="img/settings.png"/>
             </StackPanel>
         </Button>
-        <Frame x:Name="settings" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Width="150" Height="100"></Frame>
+        <Frame x:Name="settings" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Width="150" Height="100" Panel.ZIndex="2"></Frame>
         <Frame x:Name="profile" Grid.Row="1" Grid.RowSpan="4" Grid.Column="2" Grid.ColumnSpan="2" Height="300" Width="200"></Frame>
+        <Frame x:Name="profilebar"  Grid.ColumnSpan="2"></Frame>
     </Grid>
     <Page.Background>
         <ImageBrush ImageSource="/img/konoha_afternoon.jpg" x:Name="Background"></ImageBrush>
