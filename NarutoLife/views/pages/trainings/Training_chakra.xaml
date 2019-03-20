@@ -28,23 +28,6 @@
                 </LinearGradientBrush>
             </ProgressBar.Foreground>
         </ProgressBar>
-        <Grid Panel.ZIndex="3" Width="300" Height="100" Name="table" Visibility="Hidden">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="0.5*"></RowDefinition>
-                <RowDefinition Height="0.5*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Border BorderThickness="3" BorderBrush="Orange" Grid.ColumnSpan="2" Grid.RowSpan="3">
-                <Rectangle Fill="LightGray"></Rectangle>
-            </Border>
-            <Label Content="Taijutsu"></Label>
-            <Label Content="Score:" Grid.Row="1" Name="endscore"></Label>
-            <Label Content="Exp:" Grid.Row="2" Name="endexp"></Label>
-            <Button  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Height="30" Width="70" Content="OK" Click="Button_Click"></Button>
-        </Grid>
+        <Frame Name="trainingdone" Height="100" Width="300" Panel.ZIndex="10"></Frame>
     </Grid>
 </Page>

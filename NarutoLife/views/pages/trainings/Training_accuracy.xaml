@@ -18,11 +18,11 @@
         </Canvas>
         <Label FontSize="20" Content="Time left: 0" HorizontalAlignment="Right" Name="time" Margin="0,0,0,418.6"></Label>
         <Canvas Name="MyCanvas" Focusable="True" HorizontalAlignment="Center" VerticalAlignment="Top" Width="25" Height="25">
-            <Image Name="rec1" Width="25" Height="25" Source="../img/red_shuriken.png" Canvas.Top="0" Canvas.Left="0"></Image>
+            <Image Name="rec1" Width="25" Height="25" Source="../../../img/red_shuriken.png" Canvas.Top="0" Canvas.Left="0"></Image>
         </Canvas>
         <Label Content="CanvasX:" HorizontalAlignment="Left" VerticalAlignment="Top" Name="canvasx"/>
         <Label Content="CanvasY:" HorizontalAlignment="Left" VerticalAlignment="Top" Name="canvasy" Margin="0,32,0,0"/>
         <Label Content="Plusscore: " HorizontalAlignment="Left" Margin="0,63,0,0" VerticalAlignment="Top" Name="plusscorelabel"/>
-        <Frame Name="trainingdone" Height="100" Width="300"></Frame>
+        <Frame Name="trainingdone" Height="100" Width="300" Panel.ZIndex="10"></Frame>
     </Grid>
 </Page>

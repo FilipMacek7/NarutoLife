@@ -77,14 +77,12 @@ namespace NarutoLife
             time.Content = "Time left: " + i.ToString();
             if (i == 0)
             {
-                table.Visibility = Visibility.Visible;
-                endscore.Content = score.ToString();
-                endexp.Content = naruto.expquickness.ToString() + " + " + (score / 4).ToString() + "%";
                 naruto.expquickness = naruto.expquickness + score / 4;
                 naruto.explevel = naruto.explevel + score / 100;
                 naruto.energy = naruto.energy - hours * 5 + naruto.vitality / 2 ;
                 naruto.happiness = naruto.happiness - hours * 10;
                 datetime = datetime.AddHours(hours);
+                trainingdone.Navigate(new Training_done(datetime, naruto, mainframe, "Quickness training", score));
                 dt.Stop();
             }
         }
