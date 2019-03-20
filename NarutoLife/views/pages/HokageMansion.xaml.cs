@@ -14,16 +14,21 @@ namespace NarutoLife
     public partial class HokageMansion : Page
     {
         Button bz = new Button();
-        List<Mission> missions = new List<Mission>();
-        public HokageMansion(DateTime getdatetime, Character naruto)
+        List<Mission> missions;
+        static Frame mainframe;
+        DateTime datetime;
+        Character naruto;
+        public HokageMansion(DateTime Datetime, Character Naruto, Frame Mainframe)
         {
             InitializeComponent();
-
+            naruto = Naruto;
+            datetime = Datetime;
+            mainframe = Mainframe;
             bz.VerticalAlignment = VerticalAlignment.Top;
             bz.HorizontalAlignment = HorizontalAlignment.Left;
-            bz.Height = 40;
+            bz.Height = 20;
             bz.Width = 50;
-            bz.Margin = new Thickness(20);
+            bz.Margin = new Thickness(10,10,0,0);
             bz.Click += GoBack;
             bz.Content = "Go back";
             missiongrid.Children.Add(bz);
@@ -31,6 +36,10 @@ namespace NarutoLife
             if (File.Exists(@"missions.json"))
             {
                 missions = JsonConvert.DeserializeObject<List<Mission>>(File.ReadAllText(@"missions.json"));
+            }
+            else
+            {
+                missions = new List<Mission>();
             }
         }
     
@@ -68,7 +77,8 @@ namespace NarutoLife
                     Random rnd = new Random();
                     int number = rnd.Next(1, 4);
                     Button b = new Button();
-                    b.Height = 50;
+                    b.Height = 30;
+                    b.Width = 70;
                     b.Margin = new Thickness(10);
 
                     switch (number)
@@ -89,7 +99,7 @@ namespace NarutoLife
                     b.Content = b.Name + " hunt";
                     Mission mission = new Mission(b.Name + " hunt", missionType.Fight);
                     missions.Add(mission);
-                    File.WriteAllText(@"missions.json", JsonConvert.SerializeObject(missions));
+                    File.WriteAllText(@"../../missions.json", JsonConvert.SerializeObject(missions));
                     b.Click += NavigateBattleground;
                     missionpanel.Children.Add(b);
 
@@ -100,8 +110,17 @@ namespace NarutoLife
 
         private void NavigateBattleground(object sender, RoutedEventArgs e)
         {
-            Button b= (Button)sender;
+            Button b = (Button)sender;
             NavigationService.Navigate(new Battleground(b.Name));
+        }
+
+        private void GoVillage(object sender, RoutedEventArgs e)
+        {
+            mainframe.Navigate(new Village(datetime, naruto, mainframe));
+        }
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            missionson = false;
         }
     }
 }

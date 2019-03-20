@@ -70,5 +70,9 @@ namespace NarutoLife
         {
             Village.Chakra_Navigate(num);
         }
+        private void Training_close(object sender, RoutedEventArgs e)
+        {
+            Village.Training_close();
+        }
     }
 }

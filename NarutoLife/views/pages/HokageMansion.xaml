@@ -5,21 +5,26 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="HokageMansion">
+      Title="HokageMansion" Unloaded="Page_Unloaded">
     <Page.Background>
         <ImageBrush ImageSource="../../img/hokage_mansion.jpg"></ImageBrush>
     </Page.Background>
     <Grid>
-        <Grid HorizontalAlignment="Right"  Margin="0,0,40,0" Width="280" Height="400" Background="LightGray" Name="missiongrid">
+        <Grid HorizontalAlignment="Left"  Margin="40,0,0,0" Width="280" Height="350" Background="LightGray" Name="missiongrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+            </Grid.RowDefinitions>
             <Label Content="Missions" HorizontalAlignment="Center" FontSize="30" Height="50" VerticalAlignment="Top"></Label>
-            <StackPanel Margin="20" Width="250" Name="typepanel" Height="300">
+            <StackPanel Margin="20" Width="250" Name="typepanel" Grid.Row="1">
                 <Button Height="50" Margin="10" Content="Type C" Click="Button_Click" Name="bc"></Button>
                 <Button Height="50" Margin="10" Content="Type B" Click="Button_Click_1" Name="bb"></Button>
                 <Button Height="50" Margin="10" Content="Type A" Click="Button_Click_2" Name="ba"></Button>
             </StackPanel>
-            <StackPanel Margin="20" Width="250" Name="missionpanel" Height="300" Visibility="Collapsed">
+            <StackPanel Margin="20" Width="250" Name="missionpanel" Height="300" Visibility="Collapsed" Grid.Row="1">
             </StackPanel>
         </Grid>
+        <Button Content="Village" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="75" Margin="20" Click="GoVillage"/>
 
     </Grid>
 </Page>

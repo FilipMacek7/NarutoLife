@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 namespace NarutoLife
@@ -13,6 +14,7 @@ namespace NarutoLife
         static public Frame st;
         static public Frame pr;
         static public Frame mainframe;
+        static Frame tr;
         static string framekey = "Village";
         static public Character naruto;
         static DateTime datetime;
@@ -26,7 +28,10 @@ namespace NarutoLife
             pr = profile;
             mainframe = Mainframe;
             ib = background;
-            setInfo();         
+            tr = training;
+            setInfo();
+            NavigationCommands.BrowseBack.InputGestures.Clear();
+            NavigationCommands.BrowseForward.InputGestures.Clear();
         }
         private void setInfo()
         {
@@ -48,7 +53,7 @@ namespace NarutoLife
 
         private void HokageMansion_Button(object sender, RoutedEventArgs e)
         {
-            mainframe.Navigate(new HokageMansion(Time.datetime, naruto));
+            mainframe.Navigate(new HokageMansion(Time.datetime, naruto,mainframe));
         }
 
         private void Settings_On(object sender, RoutedEventArgs e)
@@ -107,6 +112,10 @@ namespace NarutoLife
         public static void Accuracy_Navigate(int Num)
         {
             mainframe.Navigate(new Training_accuracy(Num, Time.datetime, naruto, mainframe));
+        }
+        public static void Training_close()
+        {
+            tr.Navigate(null);
         }
     }
 }

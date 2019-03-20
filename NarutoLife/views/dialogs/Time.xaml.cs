@@ -51,9 +51,15 @@ namespace NarutoLife
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+
             dt.Interval = TimeSpan.FromSeconds(1);
             dt.Tick += dtTicker;
             dt.Start();
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            dt.Stop();
         }
     }
 }
