@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace NarutoLife.pages
+namespace NarutoLife
 {
     /// <summary>
     /// Interakční logika pro HokageMansion.xaml

@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:NarutoLife"
-      xmlns:gif="http://wpfanimatedgif.codeplex.com"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Game">
@@ -48,7 +47,7 @@
         <Button Content="Home" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" Height="29" Grid.Column="1" Click="Home_Button" Grid.ColumnSpan="2" Margin="105,10,0,0"/>
         <Button  Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" Margin="10" Click="Settings_On">
             <StackPanel>
-                <Image Source="img/settings.png"/>
+                <Image Source="../../img/settings.png"/>
             </StackPanel>
         </Button>
         <Frame x:Name="settings" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Width="150" Height="100" Panel.ZIndex="2"></Frame>

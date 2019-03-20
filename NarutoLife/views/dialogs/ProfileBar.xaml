@@ -16,7 +16,7 @@
         <Border BorderThickness="10" BorderBrush="Orange">
             <Button Click="Profile_Button">
                 <StackPanel>
-                    <Image Source="img/state_ok.png" Name="StatePic"/>
+                    <Image Source="../../img/state_ok.png" Name="StatePic"/>
                 </StackPanel>
             </Button>
         </Border>

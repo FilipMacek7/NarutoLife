@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Menu">
     <Page.Background>
-        <ImageBrush ImageSource="img/menu.png"></ImageBrush>
+        <ImageBrush ImageSource="../../img/menu.png"></ImageBrush>
     </Page.Background>
     <Grid>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="25">

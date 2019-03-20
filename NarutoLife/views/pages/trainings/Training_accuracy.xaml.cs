@@ -97,14 +97,12 @@ namespace NarutoLife
                 goUp = false;
                 goLeft = false;
                 goRight = false;
-                table.Visibility = Visibility.Visible;
-                endscore.Content = score.ToString();
-                endexp.Content = naruto.expaccuracy.ToString() + " + " + (score / 4).ToString() + "%";
                 naruto.expaccuracy = naruto.expaccuracy + score / 4;
                 naruto.explevel = naruto.explevel + score / 100;
                 naruto.energy = naruto.energy - hours * 5 + naruto.vitality / 2;
                 naruto.happiness = naruto.happiness - hours * 10;
                 datetime = datetime.AddHours(hours);
+                trainingdone.Navigate(new Training_done(datetime, naruto, mainframe,"Accuracy training", score));
                 dt.Stop();
             }
 
@@ -216,11 +214,6 @@ namespace NarutoLife
                 }
                 Score.Content = "Score: " + score.ToString();
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Village(datetime, naruto, mainframe));
         }
     }
 }

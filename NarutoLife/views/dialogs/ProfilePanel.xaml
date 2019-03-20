@@ -24,13 +24,13 @@
         <Label Content="Uzumaki Naruto LV." Grid.ColumnSpan="2" Name="levellabel"/>
         <Button Grid.Column="1" Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4" Click="Profile_Close">
             <StackPanel>
-                <Image Source="img/red_shuriken.png"></Image>
+                <Image Source="../../img/red_shuriken.png"></Image>
             </StackPanel>
         </Button>
-        <Image Name="profile_bg" Source="img/profilebg1.jpg" Grid.Row="1" Grid.ColumnSpan="2" Panel.ZIndex="1"/>
+        <Image Name="profile_bg" Source="../../img/profilebg1.jpg" Grid.Row="1" Grid.ColumnSpan="2" Panel.ZIndex="1" Width="170"/>
         <Image gif:ImageBehavior.RepeatBehavior="Forever"
-               gif:ImageBehavior.AnimatedSource="../img/naruto_stand.gif" 
-               gif:ImageBehavior.AnimationCompleted="AnimationCompleted" Panel.ZIndex="2" Grid.ColumnSpan="2" Grid.Row="1"  HorizontalAlignment="Center" Width="58"  Name="Naruto" Height="60" VerticalAlignment="Bottom"/>
+               gif:ImageBehavior.AnimatedSource="../../img/naruto_stand.gif" 
+               gif:ImageBehavior.AnimationCompleted="AnimationCompleted" Panel.ZIndex="2" Grid.ColumnSpan="2" Grid.Row="1"  HorizontalAlignment="Center" Width="58"  Name="Naruto" Height="60" VerticalAlignment="Bottom" Margin="0,0,0,8"/>
         <Button FontFamily="Marlett" FontSize="20" Content="3" Width="30" Height="25"  Grid.Row="1" HorizontalAlignment="Left" Margin="41,60,0,35" Panel.ZIndex="1" Click="Profile_Bgprevious"/>
         <Button FontFamily="Marlett" FontSize="20" Content="4" Width="30" Height="25"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,60,39,35" Panel.ZIndex="1" Click="Profile_Bgnext"/>
         <Label Content="Stats" Margin="0,0,4,10" Name="stats" Grid.ColumnSpan="2" Grid.Row="2" />

@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfAnimatedGif;
 
 namespace NarutoLife
@@ -66,20 +56,20 @@ namespace NarutoLife
             switch (profilebg)
             {
                 case 0:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg3.jpg", UriKind.Relative));
+                    profile_bg.Source = new BitmapImage(new Uri(@"../../img/profilebg3.jpg", UriKind.Relative));
                     profilebg = 3;
                     break;
                 case 1:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg1.jpg", UriKind.Relative));
+                    profile_bg.Source = new BitmapImage(new Uri(@"../../img/profilebg1.jpg", UriKind.Relative));
                     break;
                 case 2:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg2.jpg", UriKind.Relative));
+                    profile_bg.Source = new BitmapImage(new Uri(@"../../img/profilebg2.jpg", UriKind.Relative));
                     break;
                 case 3:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg3.jpg", UriKind.Relative));
+                    profile_bg.Source = new BitmapImage(new Uri(@"../../img/profilebg3.jpg", UriKind.Relative));
                     break;
                 case 4:
-                    profile_bg.Source = new BitmapImage(new Uri(@"img/profilebg1.jpg", UriKind.Relative));
+                    profile_bg.Source = new BitmapImage(new Uri(@"../../img/profilebg1.jpg", UriKind.Relative));
                     profilebg = 1;
                     break;
             }
