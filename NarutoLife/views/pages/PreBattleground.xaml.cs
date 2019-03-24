@@ -23,20 +23,31 @@ namespace NarutoLife.views.pages
     /// </summary>
     public partial class PreBattleground : Page
     {
+        DispatcherTimer dt = new DispatcherTimer();
         public PreBattleground(string name)
         {
             InitializeComponent();
             Parallax.BackgroundMove(background1, background2, background3, background4, background5, background11, background21, background31, background41, background51,rect8,jg2, 3);
+            dt.Interval = TimeSpan.FromMilliseconds(500);
+            dt.Tick += dtTicker;
+            dt.Start();
         }
-        private void AnimationCompleted(object sender, RoutedEventArgs e)
+        int i = 0;//362,638
+        private void dtTicker(object sender, EventArgs e)
         {
-            var image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri(@"/img/naruto_stand.gif", UriKind.Relative);
-            image.EndInit();
-            ImageBehavior.SetAnimatedSource(Naruto, image);
-            ImageBehavior.SetRepeatBehavior(Naruto, RepeatBehavior.Forever);
+            if (Canvas.GetLeft(narutocursed) == 638)
+            {
+                dt.Stop();
+                Parallax.parallaxStop();
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.UriSource = new Uri(@"/img/naruto_stand.gif", UriKind.Relative);
+                image.EndInit();
+                ImageBehavior.SetAnimatedSource(Naruto, image);
+                ImageBehavior.SetRepeatBehavior(Naruto, RepeatBehavior.Forever);
+            }
+            i++;
+            Canvas.SetLeft(narutocursed, Canvas.GetLeft(narutocursed) + i);
         }
-
     }
 }

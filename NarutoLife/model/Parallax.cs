@@ -87,7 +87,7 @@ namespace NarutoLife
 
         }
 
-        public void parallaxStop()
+        public static void parallaxStop()
         {
             dt.Stop();
         }

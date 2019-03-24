@@ -6,7 +6,7 @@
       mc:Ignorable="d" 
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       d:DesignHeight="600" d:DesignWidth="800"
-      Title="PreBattleground" >
+      Title="PreBattleground">
 
     <Grid>
         <Canvas x:Name="Parralex_canvas" Height="600" Width="30000">
@@ -28,11 +28,21 @@
                             <ImageBrush ImageSource="../../img/jungle1.png" />
                         </Rectangle.Fill>
                     </Rectangle>
+                    <Rectangle   Canvas.Top="211" Width="387" Height="60" Canvas.Left="316" RenderTransformOrigin="0.5,0.5">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="../../img/prebattlegroundbar.png" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle x:Name="narutocursed" Canvas.Top="205" Width="70" Height="80" Canvas.Left="362" >
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="../../img/naruto_cursed.png" />
+                        </Rectangle.Fill>
+                    </Rectangle>
                 </Canvas>
             </ScrollViewer>
         </Canvas>
         <Image gif:ImageBehavior.RepeatBehavior="Forever"
                gif:ImageBehavior.AnimatedSource="../../img/naruto_run.gif" 
-               gif:ImageBehavior.AnimationCompleted="AnimationCompleted"  HorizontalAlignment="Left" Width="130"  Name="Naruto" Height="130" VerticalAlignment="Bottom" Margin="48,0,0,10" />
+               HorizontalAlignment="Left" Width="130"  Name="Naruto" Height="130" VerticalAlignment="Bottom" Margin="48,0,0,10" />
     </Grid>
 </Page>
