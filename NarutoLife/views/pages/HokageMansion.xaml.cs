@@ -1,9 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using NarutoLife.views.pages;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
 namespace NarutoLife
@@ -77,10 +80,8 @@ namespace NarutoLife
                     Random rnd = new Random();
                     int number = rnd.Next(1, 4);
                     Button b = new Button();
-                    b.Height = 30;
-                    b.Width = 70;
                     b.Margin = new Thickness(10);
-
+                    
                     switch (number)
                     {
                         //wolf
@@ -96,11 +97,23 @@ namespace NarutoLife
                             b.Name = "Snake";
                             break;
                     }
-                    b.Content = b.Name + " hunt";
+
+                    Grid gr = new Grid();
+                    TextBlock tb = new TextBlock();
+                    tb.Text = b.Name + " hunt";
+                    tb.HorizontalAlignment = HorizontalAlignment.Center;
+                    tb.VerticalAlignment = VerticalAlignment.Center;
+                    gr.Children.Add(tb);
+                    Image img = new Image();
+                    img.Source = new BitmapImage(new Uri(@"../../img/button_scroll.png", UriKind.Relative));
+                    img.Stretch = Stretch.Fill;
+                    gr.Children.Add(img);
+                    b.Content = gr;
+                    b.Background = Brushes.Transparent;
+                    b.Click += NavigateBattleground;
                     Mission mission = new Mission(b.Name + " hunt", missionType.Fight);
                     missions.Add(mission);
                     File.WriteAllText(@"../../missions.json", JsonConvert.SerializeObject(missions));
-                    b.Click += NavigateBattleground;
                     missionpanel.Children.Add(b);
 
                 }
@@ -111,7 +124,7 @@ namespace NarutoLife
         private void NavigateBattleground(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
-            NavigationService.Navigate(new Battleground(b.Name));
+            NavigationService.Navigate(new PreBattleground(b.Name));
         }
 
         private void GoVillage(object sender, RoutedEventArgs e)

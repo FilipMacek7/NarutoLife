@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="model\Parallax.cs" />
     <Compile Include="views\pages\Battleground.xaml.cs">
       <DependentUpon>Battleground.xaml</DependentUpon>
     </Compile>
@@ -86,6 +87,9 @@
     </Compile>
     <Compile Include="views\dialogs\Time.xaml.cs">
       <DependentUpon>Time.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\pages\PreBattleground.xaml.cs">
+      <DependentUpon>PreBattleground.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\pages\trainings\Training_accuracy.xaml.cs">
       <DependentUpon>Training_accuracy.xaml</DependentUpon>
@@ -134,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\dialogs\Time.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\pages\PreBattleground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,6 +251,13 @@
     <Resource Include="img\wolf_stand.gif" />
     <Resource Include="img\meadow.png" />
     <Resource Include="img\settings.png" />
+    <Resource Include="img\button_scroll.png" />
+    <Resource Include="img\plx-1.png" />
+    <Resource Include="img\plx-2.png" />
+    <Resource Include="img\plx-3.png" />
+    <Resource Include="img\plx-4.png" />
+    <Resource Include="img\plx-5.png" />
+    <Resource Include="img\jungle1.png" />
     <Content Include="sounds\punch_trunk.mp3" />
     <Resource Include="img\lost_impression__child_naruto_x_child_reader__by_blackfang_124_d7kt8ze_LgY_icon.ico" />
     <Resource Include="img\menu.png" />

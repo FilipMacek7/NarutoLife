@@ -44,7 +44,7 @@
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="0"   Grid.Row="3" Height="22">
             <Button Content="Training ground" Width="100" Click="Training_Button"/>
         </Viewbox>
-        <Button Content="Home" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" Height="29" Grid.Column="1" Click="Home_Button" Grid.ColumnSpan="2" Margin="105,10,0,0"/>
+        <Button Content="Home" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" Height="29" Grid.Column="1" Click="Home_Button" Grid.ColumnSpan="2" Margin="105,10,0,0" />
         <Button  Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" Margin="10" Click="Settings_On">
             <StackPanel>
                 <Image Source="../../img/settings.png"/>
