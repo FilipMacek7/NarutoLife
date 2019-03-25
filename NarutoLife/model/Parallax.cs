@@ -13,9 +13,10 @@ namespace NarutoLife
     class Parallax
     {
         static DispatcherTimer dt = new DispatcherTimer();
-        public static void BackgroundMove(Image a, Image b, Image c, Image d, Image f, Image a1, Image b1, Image c1, Image d1, Image f1, Rectangle jg, Image jg2, double speed)
+        static List<Image> mobs;
+        public static void BackgroundMove(Image a, Image b, Image c, Image d, Image f, Image a1, Image b1, Image c1, Image d1, Image f1, Rectangle jg, Image jg2, List<Image> Mobs, double speed)
         {
-
+            mobs = Mobs;
             dt.Tick += dt_Tick;
             dt.Interval = new TimeSpan(0, 0, 0, 0, 10);
             dt.Start();
@@ -34,6 +35,10 @@ namespace NarutoLife
                 Canvas.SetLeft(f1, Canvas.GetLeft(f1) - speed);
                 Canvas.SetLeft(jg, Canvas.GetLeft(jg) - speed);
                 Canvas.SetLeft(jg2, Canvas.GetLeft(jg2) - speed);
+                foreach(Image m in mobs)
+                {
+                    Canvas.SetLeft(m, Canvas.GetLeft(m) - speed);
+                }
 
                 if (Canvas.GetLeft(a) < -a.ActualWidth)
                 {
@@ -86,7 +91,10 @@ namespace NarutoLife
             }
 
         }
-
+        public static void parallaxStart()
+        {
+            dt.Start();
+        }
         public static void parallaxStop()
         {
             dt.Stop();

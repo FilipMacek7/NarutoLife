@@ -4,18 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NarutoLife
+namespace NarutoLife.model
 {
-    public class Character
+     public class Character: Mob
     {
-        //level stats
-        public int LimitToRange(int value, int inclusiveMinimum, int inclusiveMaximum)
-        {
-            if (value < inclusiveMinimum) { return 0; }
-            if (value > inclusiveMaximum) { return inclusiveMaximum; }
-            return value;
-        }
-        public int level { get; set; }
         double _num = 0;
         public double explevel
         {
@@ -33,24 +25,15 @@ namespace NarutoLife
                 _num = value;
             }
         }
-        //main stats
-        public int health { get; set; }
-        public int chakra { get; set; }
+
         public int happiness { get; set; }
         public int energy { get; set; }
         public int yen { get; set; }
 
-        //max main stats
-        public int maxhealth { get; set; }
-        public int maxchakra { get; set; }
         public int maxhappiness { get; set; }
         public int maxenergy { get; set; }
-
         //battle stats
         public int taijutsu { get; set; }
-        public int quickness { get; set; }
-        public int vitality { get; set; }
-        public int accuracy { get; set; }
 
         //exp frames
         public double exptaijutsu

@@ -1,8 +1,10 @@
-﻿using NarutoLife.views.pages;
+﻿using NarutoLife.model;
+using NarutoLife.views.pages;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -21,6 +23,7 @@ namespace NarutoLife
         static Frame mainframe;
         DateTime datetime;
         Character naruto;
+        Mission clickedmission;
         public HokageMansion(DateTime Datetime, Character Naruto, Frame Mainframe)
         {
             InitializeComponent();
@@ -67,64 +70,110 @@ namespace NarutoLife
             GenerateMissions();
         }
         bool missionson = false;
+        Random rnd = new Random();
         private void GenerateMissions()
         {
             bz.Visibility = Visibility.Visible;
             typepanel.Visibility = Visibility.Collapsed;
             missionpanel.Visibility = Visibility.Visible;
+            int lastid = 0;
+            if (missions.Any())
+            {
+                foreach (Mission m in missions)
+                {
+                    if (m.id > lastid)
+                    {
+                        lastid = m.id;
+                    }
+                }
+            }
             if (!missionson)
             {
                 missionson = true;
-                for (int i = 0; i < 4; i++)
+                List<int> currentids = new List<int>();
+                for (int id = lastid; id < lastid + 4; id++)
                 {
-                    Random rnd = new Random();
+                    currentids.Add(id);
+                }
+                for (int i = missions.Count(); i < 4; i++)
+                {
+                    string mob = "";
                     int number = rnd.Next(1, 4);
-                    Button b = new Button();
-                    b.Margin = new Thickness(10);
-                    
                     switch (number)
                     {
                         //wolf
                         case 1:
-                            b.Name = "Wolf";
+                            mob = "Wolf";
                             break;
                         //spider
                         case 2:
-                            b.Name = "Spider";
+                            mob = "Spider";
                             break;
                         //snake
                         case 3:
-                            b.Name = "Snake";
+                            mob = "Snake";
                             break;
                     }
 
-                    Grid gr = new Grid();
+                    Button b = new Button();
+                    b.Margin = new Thickness(5);
+                    b.Tag = currentids[i].ToString();
+                    b.Background = Brushes.Transparent;
+                    b.Click += missionInfoOn;
+
                     TextBlock tb = new TextBlock();
-                    tb.Text = b.Name + " hunt";
+                    tb.Text = mob + " hunt";
                     tb.HorizontalAlignment = HorizontalAlignment.Center;
                     tb.VerticalAlignment = VerticalAlignment.Center;
-                    gr.Children.Add(tb);
+                    tb.FontSize = 20;
+                    tb.FontFamily = new FontFamily("Ninja Naruto");
+
                     Image img = new Image();
                     img.Source = new BitmapImage(new Uri(@"../../img/button_scroll.png", UriKind.Relative));
                     img.Stretch = Stretch.Fill;
+
+                    Grid gr = new Grid();               
                     gr.Children.Add(img);
+                    gr.Children.Add(tb);
+                    gr.Height = 50;
                     b.Content = gr;
-                    b.Background = Brushes.Transparent;
-                    b.Click += NavigateBattleground;
-                    Mission mission = new Mission(b.Name + " hunt", missionType.Fight);
+
+                    int enemyCount = rnd.Next(1, 4);
+                    string description = "Defeat " + enemyCount.ToString() + "x " + mob;
+                    Mission mission = new Mission(currentids[i], mob + " hunt", description, enemyCount, missionType.Fight);
                     missions.Add(mission);
+
                     File.WriteAllText(@"../../missions.json", JsonConvert.SerializeObject(missions));
                     missionpanel.Children.Add(b);
-
                 }
             }
-
         }
 
-        private void NavigateBattleground(object sender, RoutedEventArgs e)
+        private void missionInfoOn(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
-            NavigationService.Navigate(new PreBattleground(b.Name));
+            foreach (Mission m in missions)
+            {
+                if (m.id == int.Parse(b.Tag.ToString()))
+                {
+                    clickedmission = m;
+                }
+            }
+            mission_info.Visibility = Visibility.Visible;
+            infoname.Text = clickedmission.name;
+            //img
+
+            //
+            infodescription.Text = clickedmission.description;
+            enterBattle.Click += EnterBattle_Click;
+        }
+        private void missionInfoOff(object sender, RoutedEventArgs e)
+        {
+            mission_info.Visibility = Visibility.Hidden;
+        }
+        private void EnterBattle_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PreBattleground(datetime, naruto, clickedmission, mainframe));
         }
 
         private void GoVillage(object sender, RoutedEventArgs e)

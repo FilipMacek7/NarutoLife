@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HokageMansion" Unloaded="Page_Unloaded">
@@ -10,6 +11,10 @@
         <ImageBrush ImageSource="../../img/hokage_mansion.jpg"></ImageBrush>
     </Page.Background>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <Grid HorizontalAlignment="Left"  Margin="40,0,0,0" Width="280" Height="350" Background="LightGray" Name="missiongrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
@@ -21,10 +26,22 @@
                 <Button Height="50" Margin="10" Content="Type B" Click="Button_Click_1" Name="bb"></Button>
                 <Button Height="50" Margin="10" Content="Type A" Click="Button_Click_2" Name="ba"></Button>
             </StackPanel>
-            <StackPanel Margin="20" Width="250" Name="missionpanel" Height="300" Visibility="Collapsed" Grid.Row="1">
+            <StackPanel Width="250" Name="missionpanel" Height="270"   Grid.Row="1">
             </StackPanel>
         </Grid>
-        <Button Content="Village" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="75" Margin="20" Click="GoVillage"/>
-
+        <Button Content="Village" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="75" Margin="20" Click="GoVillage" Grid.Column="1"/>
+        <Grid Grid.Column="1" Height="300" Width="300" Background="LightGray"  Name="mission_info" Visibility="Hidden">
+            <Button Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4" Click="missionInfoOff">
+                <StackPanel>
+                    <Image Source="../../img/red_shuriken.png"></Image>
+                </StackPanel>
+            </Button>
+            <TextBlock FontSize="30" TextAlignment="Center" Margin="0,15,0,0" Name="infoname">Wolf hunt</TextBlock>
+            <Image Source="../../img/mission_background.png" Height="150"></Image>
+            <Image gif:ImageBehavior.RepeatBehavior="Forever"
+               gif:ImageBehavior.AnimatedSource="../../img/wolf_stand.gif" Margin="75,102,78,75" Name="mobimg"/>
+            <TextBlock VerticalAlignment="Bottom" Height="19" Width="150" Margin="0,0,0,51" TextAlignment="Center" Name="infodescription">Description</TextBlock>
+            <Button Content="ESKEREE" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="76" Margin="0,0,0,26" Name="enterBattle"/>
+        </Grid>
     </Grid>
 </Page>

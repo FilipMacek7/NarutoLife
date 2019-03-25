@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NarutoLife.model;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -11,7 +12,7 @@ namespace NarutoLife
     /// </summary>
     public partial class Battleground : Page
     {
-        public Battleground(string enemy)
+        public Battleground(Character Naruto, Enemy mob, Frame mainframe)
         {
             InitializeComponent();
            

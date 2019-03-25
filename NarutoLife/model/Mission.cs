@@ -8,13 +8,18 @@ namespace NarutoLife
 {
     public class Mission
     {
+        public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
+        public int numberOfEnemy { get; set; }
         public missionType type { get; set; }
 
-        public Mission(string Name, missionType Type)
+        public Mission(int ID,string Name,string Description,int NumberOfEnemy, missionType Type)
         {
+            id = ID;
             name = Name;
+            description = Description;
+            numberOfEnemy = NumberOfEnemy;
             type = Type;
         }
     }

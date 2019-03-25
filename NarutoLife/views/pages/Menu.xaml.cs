@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NarutoLife.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,16 +36,17 @@ namespace NarutoLife
         private void Button_Start(object sender, RoutedEventArgs e)
         {
             Character naruto = new Character();
-            naruto.health = 30;
-            naruto.chakra = 20;
-            naruto.happiness = 70;
-            naruto.energy = 50;
             naruto.yen = 300;
 
             naruto.maxhealth = 30;
             naruto.maxchakra = 20;
             naruto.maxhappiness = 100;
             naruto.maxenergy = 50;
+
+            naruto.health = naruto.maxhealth;
+            naruto.chakra = naruto.maxchakra;
+            naruto.happiness = 70;
+            naruto.energy = 45;
 
             naruto.taijutsu = 2;
             naruto.quickness = 2;
