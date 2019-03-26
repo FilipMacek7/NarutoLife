@@ -42,6 +42,10 @@ namespace NarutoLife.views.pages
         int i = 0;//362,638
         private void dtTicker(object sender, EventArgs e)
         {
+            if(Canvas.GetLeft(Naruto) == 3000)
+            {
+                Parallax.turnAround();
+            }
             //mob detect
             foreach (Enemy mob in mobs)
             {
