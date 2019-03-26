@@ -30,7 +30,7 @@ namespace NarutoLife.views.pages
             mission = Mis;
             naruto = Naruto;
             generateMobs();
-            Parallax.BackgroundMove(background1, background2, background3, background4, background5, background11, background21, background31, background41, background51,rect8,jg2,mobsimg, 3);
+            Parallax p = new Parallax(Narutoimg,narutocursed, background1, background2, background3, background4, background5, background11, background21, background31, background41, background51,background12, background22, background32, background42,background52,rect8,jg2,jg3,mobsimg, 3);
             dt.Interval = TimeSpan.FromMilliseconds(500);
             dt.Tick += dtTicker;
             dt.Start();
@@ -39,19 +39,14 @@ namespace NarutoLife.views.pages
             dt2.Tick += dtTicker2;
             dt2.Start();
         }
-        int i = 0;//362,638
         private void dtTicker(object sender, EventArgs e)
         {
-            if(Canvas.GetLeft(Naruto) == 3000)
-            {
-                Parallax.turnAround();
-            }
             //mob detect
             foreach (Enemy mob in mobs)
             {
                 foreach(Image img in mobsimg)
                 {
-                    if (Canvas.GetLeft(img) - Canvas.GetLeft(Naruto) < 300 & !mob.pass)
+                    if (Canvas.GetLeft(img) - Canvas.GetLeft(Narutoimg) < 300 & !mob.pass)
                     {
                         stopMove();
                         TextBlock tb = new TextBlock();
@@ -87,13 +82,6 @@ namespace NarutoLife.views.pages
                 }
 
             }
-            //end map
-            if (Canvas.GetLeft(narutocursed) == 638)
-            {
-                stopMove();
-            }
-            i++;
-            Canvas.SetLeft(narutocursed, Canvas.GetLeft(narutocursed) + i);
         }
         private void enterBattle(object sender, EventArgs e)
         {
@@ -102,7 +90,7 @@ namespace NarutoLife.views.pages
         Random rnd = new Random();
         private void generateMobs()
         {
-            for(int i = 0; i < mission.numberOfEnemy; i++)
+            for(int i = 0; i < 1; i++)
             {
                 if(mission.name.Equals("Wolf hunt"))
                 {
@@ -117,7 +105,7 @@ namespace NarutoLife.views.pages
                     ImageBehavior.SetRepeatBehavior(img, RepeatBehavior.Forever);
                     img.Source = bitmap;
                     Background_Canvas.Children.Add(img);
-                    Canvas.SetLeft(img, rnd.Next(250,2500));
+                    Canvas.SetLeft(img, rnd.Next(250,1500));
                     Canvas.SetTop(img, 425);
                     mobsimg.Add(img);
                     Enemy wolf = new Enemy(i,naruto.level,Canvas.GetLeft(img),Canvas.GetTop(img));
@@ -146,8 +134,8 @@ namespace NarutoLife.views.pages
             image.BeginInit();
             image.UriSource = new Uri(@"/img/naruto_run.gif", UriKind.Relative);
             image.EndInit();
-            ImageBehavior.SetAnimatedSource(Naruto, image);
-            ImageBehavior.SetRepeatBehavior(Naruto, RepeatBehavior.Forever);
+            ImageBehavior.SetAnimatedSource(Narutoimg, image);
+            ImageBehavior.SetRepeatBehavior(Narutoimg, RepeatBehavior.Forever);
         }
         private void stopMove()
         {
@@ -158,8 +146,8 @@ namespace NarutoLife.views.pages
             image.BeginInit();
             image.UriSource = new Uri(@"/img/naruto_stand.gif", UriKind.Relative);
             image.EndInit();
-            ImageBehavior.SetAnimatedSource(Naruto, image);
-            ImageBehavior.SetRepeatBehavior(Naruto, RepeatBehavior.Forever);
+            ImageBehavior.SetAnimatedSource(Narutoimg, image);
+            ImageBehavior.SetRepeatBehavior(Narutoimg, RepeatBehavior.Forever);
         }
         public partial class NativeMethods
         {

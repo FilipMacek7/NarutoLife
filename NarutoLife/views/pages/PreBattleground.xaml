@@ -9,7 +9,7 @@
       Title="PreBattleground">
 
     <Grid>
-        <Canvas x:Name="Parralex_canvas" Height="600" Width="30000">
+        <Canvas x:Name="Parralex_canvas" Height="600" Width="2130">
             <Image x:Name="background1" Source="../../img/plx-1.png" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1" Canvas.Top="1" Panel.ZIndex="-5" />
             <Image x:Name="background2" Source="../../img/plx-2.png" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1" Canvas.Top="1" Panel.ZIndex="-4" />
             <Image x:Name="background3" Source="../../img/plx-3.png" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1" Canvas.Top="1" Panel.ZIndex="-3" />
@@ -20,7 +20,13 @@
             <Image x:Name="background31" Source="../../img/plx-3.png" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1067" Canvas.Top="1" Panel.ZIndex="-3"/>
             <Image x:Name="background41" Source="../../img/plx-4.png" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1067" Canvas.Top="1" Panel.ZIndex="-2"/>
             <Image x:Name="background51" Source="../../img/plx-5.png" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1067" Canvas.Top="1" Panel.ZIndex="-1"/>
+            <Image x:Name="background12" Source="../../img/plx-1.png" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="-1067" Canvas.Top="1" Panel.ZIndex="-5"/>
+            <Image x:Name="background22" Source="../../img/plx-2.png" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="-1067" Canvas.Top="1" Panel.ZIndex="-4"/>
+            <Image x:Name="background32" Source="../../img/plx-3.png" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="-1067" Canvas.Top="1" Panel.ZIndex="-3"/>
+            <Image x:Name="background42" Source="../../img/plx-4.png" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="-1067" Canvas.Top="1" Panel.ZIndex="-2"/>
+            <Image x:Name="background52" Source="../../img/plx-5.png" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="-1067" Canvas.Top="1" Panel.ZIndex="-1"/>
             <Image Source="../../img/jungle1.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Canvas.Left="1067" Canvas.Bottom="0" Panel.ZIndex="-1" Height="48" Width="1068" Stretch="Fill" Canvas.Top="513" x:Name="jg2"/>
+            <Image Source="../../img/jungle1.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Canvas.Left="-1067" Canvas.Bottom="0" Panel.ZIndex="-1" Height="48" Width="1068" Stretch="Fill" Canvas.Top="513" x:Name="jg3"/>
             <ScrollViewer Name="Scroller" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"  Width="1067" Height="600">
                 <Canvas x:Name="Background_Canvas" Height="600" Width="30351">
                     <Rectangle x:Name="rect8" Height="48" Canvas.Bottom="0" Canvas.Top="513" Stretch="Fill" Width="1067" Canvas.Left="0">
@@ -40,7 +46,7 @@
                     </Rectangle>
                     <Image gif:ImageBehavior.RepeatBehavior="Forever"
                gif:ImageBehavior.AnimatedSource="../../img/naruto_run.gif" 
-                Width="130"  Name="Naruto" Height="130" Canvas.Top="415" Canvas.Left="100"/>
+                Width="130"  Name="Narutoimg" Height="130" Canvas.Top="415" Canvas.Left="200" />
                 </Canvas>
             </ScrollViewer>
         </Canvas>
