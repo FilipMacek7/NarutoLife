@@ -94,7 +94,7 @@ namespace NarutoLife.views.pages
                     Canvas.SetLeft(img, rnd.Next(250,1500));
                     Canvas.SetTop(img, 425);
                     mobsimg.Add(img);
-                    Enemy wolf = new Enemy(i,"Wolf",naruto.level,Canvas.GetLeft(img),Canvas.GetTop(img));
+                    Enemy wolf = new Enemy(i,"wolf",naruto.level,Canvas.GetLeft(img),Canvas.GetTop(img));
                     wolf.LimitToRange(wolf.level, 1, 5);
                     mobs.Add(wolf);
                     mobssorted = mobs.OrderByDescending(o => o.positionx).ToList();

@@ -28,12 +28,12 @@
                             <ImageBrush ImageSource="../../img/jungle1.png" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Rectangle   Canvas.Top="211" Width="387" Height="60" Canvas.Left="316" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle   Canvas.Top="211" Width="387" Height="80" Canvas.Left="316" RenderTransformOrigin="0.5,0.5">
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="../../img/prebattlegroundbar.png" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Rectangle x:Name="narutocursed" Canvas.Top="205" Width="70" Height="80" Canvas.Left="362" >
+                    <Rectangle x:Name="narutocursed" Canvas.Top="220" Width="70" Height="70" Canvas.Left="320" >
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="../../img/naruto_cursed.png" />
                         </Rectangle.Fill>

@@ -11,6 +11,29 @@
     <Page.Background>
         <ImageBrush ImageSource="../../img/meadow.png"></ImageBrush>
     </Page.Background>
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="kunai">
+            <Setter Property="Button.Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../../img/kunai_button.png" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="fist">
+            <Setter Property="Button.Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../../img/fist_button.png" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="chakra">
+            <Setter Property="Button.Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../../img/chakra_button.png" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Image gif:ImageBehavior.RepeatBehavior="Forever"
                gif:ImageBehavior.AnimatedSource="../../img/naruto_stand.gif" 
@@ -20,10 +43,10 @@
                gif:ImageBehavior.AnimatedSource="../../img/wolf_stand.gif" 
                gif:ImageBehavior.AnimationCompleted="AnimationCompleted"
                 Name="enemyimg" Height="150" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,42,-26" />
-        <Image Source="../../img/fight_bar.png" Width="400" VerticalAlignment="Top"></Image>
-        <Canvas Height="70" VerticalAlignment="Top" Width="430" Margin="0,10,0,0">
-            <Image Source="../../img/naruto_cursed.png" Height="70" VerticalAlignment="Top" Canvas.Left="0" Name="narutot"></Image>
-            <Image Source="../../img/wolf_stand.gif" Height="60" Canvas.Left="60" Width="59" Name="enemyt">
+        <Image Source="../../img/fight_bar.png" Width="300" VerticalAlignment="Top" Margin="0,30,0,0"></Image>
+        <Canvas Height="50" VerticalAlignment="Top" Width="300" Margin="0,40,0,0">
+            <Image Source="../../img/naruto_cursed.png" Height="50" VerticalAlignment="Top" Canvas.Left="0" Name="narutot"></Image>
+            <Image Source="../../img/wolf_stand.gif" Height="50" Canvas.Left="40" Width="59" Name="enemyt">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="-1"/>
@@ -34,7 +57,56 @@
                 </Image.RenderTransform>
             </Image>
         </Canvas>
-        <Frame x:Name="playerbar" Height="130" Width="300"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"></Frame>
-        
+        <Frame x:Name="playerbar" Height="130" Width="300"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-10,10,0,0"></Frame>
+        <Grid Width="265"  Height="130" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="160" />
+            </Grid.ColumnDefinitions>
+            <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="130" VerticalAlignment="Center" Width="160" Grid.Column="1">
+                <Image Name="enemyfightimg" Stretch="Fill"/>
+            </Border>
+            <StackPanel  Width="100" HorizontalAlignment="Left" Margin="0,0,5,0">
+                <Label Width="100">Health</Label>
+                <ProgressBar  Height="15"  Width="100" Foreground="Red" Name="healthbar"/>
+                <Label Width="100">Chakra</Label>
+                <ProgressBar  Height="15"  Width="100" Foreground="LightBlue" Name="chakrabar"/>
+                <Label Width="100">Combat</Label>
+                <ProgressBar  Height="15"  Width="100" Foreground="Orange" Name="combatbar" />
+            </StackPanel>
+            <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+        </Grid>
+        <Grid HorizontalAlignment="Center" Height="150" VerticalAlignment="Bottom" Width="250" Margin="0,0,0,20">
+            <DockPanel Width="81" Height="80">
+                <Button Width="40" Height="40" Style="{StaticResource chakra}" DockPanel.Dock="Top">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid>
+                                <Ellipse Name="Ellipse" Fill="{TemplateBinding Background}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Width="40" Height="40" Style="{StaticResource kunai}" DockPanel.Dock="Left">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid>
+                                <Ellipse Name="Ellipse" Fill="{TemplateBinding Background}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Width="40" Height="40" Style="{StaticResource fist}" DockPanel.Dock="Right">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid>
+                                <Ellipse Name="Ellipse" Fill="{TemplateBinding Background}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </DockPanel>
+
+        </Grid>
     </Grid>
 </Page>

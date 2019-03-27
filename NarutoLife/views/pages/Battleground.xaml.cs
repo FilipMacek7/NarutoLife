@@ -17,31 +17,53 @@ namespace NarutoLife
     {
         Character naruto;
         Enemy enemy;
+        DispatcherTimer game = new DispatcherTimer();
         DispatcherTimer timer = new DispatcherTimer();
         bool playerturn = false;
         bool enemyturn = false;
+        static Uri uri;
         public Battleground(Character Naruto, Enemy enemy2, Frame mainframe)
         {
             InitializeComponent();
+            game.Interval = TimeSpan.FromSeconds(1);
+            game.Tick += gameTicker;
+            game.Start();
+            if (enemy2.name == "wolf")
+            {
+                uri = new Uri(@"../../img/wolf_fightimg.png", UriKind.Relative);
+            }
+            BitmapImage image = new BitmapImage(uri);
+            enemyfightimg.Source = image;
             playerbar.Navigate(new NarutoFightbar(Naruto));
             naruto = Naruto;
             enemy = enemy2;
             timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Tick += timerTicker;
             timer.Start();
+            void gameTicker(object sender, EventArgs e)
+            {
+                if(playerturn == true)
+                {
+
+                }
+                else if(enemyturn == true)
+                {
+
+                }
+            }
             void timerTicker(object sender, EventArgs e)
             {
-                if (Canvas.GetLeft(narutot) >= 330)
+                if (Canvas.GetLeft(narutot) >= 230)
                 {
                     timer.Stop();
                     Canvas.SetLeft(narutot, -20);
                     playerturn = true;
                     enemyturn = false;
                 }
-                if (Canvas.GetLeft(enemyt) >= 395)
+                if (Canvas.GetLeft(enemyt) >= 295)
                 {
                     timer.Stop();
-                    Canvas.SetLeft(enemyt, 45);
+                    Canvas.SetLeft(enemyt, 40);
                     playerturn = false;
                     enemyturn = true;
                 }
@@ -53,7 +75,7 @@ namespace NarutoLife
         {
             var image = new BitmapImage();
             image.BeginInit();
-            image.UriSource = new Uri(@"/img/wolf_stand.gif", UriKind.Relative);
+            image.UriSource = new Uri(@"/img/"+enemy.name+"_stand.gif", UriKind.Relative);
             image.EndInit();
             ImageBehavior.SetAnimatedSource(enemyimg, image);
             ImageBehavior.SetRepeatBehavior(enemyimg, RepeatBehavior.Forever);
