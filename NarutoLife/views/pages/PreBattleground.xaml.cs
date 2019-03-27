@@ -8,6 +8,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using WpfAnimatedGif;
 using System.Windows;
+using System.Linq;
+
 namespace NarutoLife.views.pages
 {
     /// <summary>
@@ -15,82 +17,66 @@ namespace NarutoLife.views.pages
     /// </summary>
     public partial class PreBattleground : Page
     {
-        DispatcherTimer dt = new DispatcherTimer();
+        static DispatcherTimer dt = new DispatcherTimer();
+        static DateTime datetime;
         Mission mission;
-        Character naruto;
-        Frame mainframe;
-        List<Enemy> mobs = new List<Enemy>();
+        static Character naruto;
+        static Frame mainframe;
+        static List<Enemy> mobs = new List<Enemy>();
         List<Image> mobsimg = new List<Image>();
+        List<Enemy> mobssorted = new List<Enemy>();
+        static Image narutoimg;
         Enemy currentEnemy;
-        static Grid currentGrid;
+
         public PreBattleground(DateTime Datetime, Character Naruto, Mission Mis, Frame Mainframe)
         {
             InitializeComponent();
+            narutoimg = Narutoimg;
+            datetime = Datetime;
             mainframe = Mainframe;
             mission = Mis;
             naruto = Naruto;
             generateMobs();
-            Parallax p = new Parallax(Narutoimg,narutocursed, background1, background2, background3, background4, background5, background11, background21, background31, background41, background51,background12, background22, background32, background42,background52,rect8,jg2,jg3,mobsimg, 3);
+            Parallax p = new Parallax(Narutoimg,narutocursed, background1, background2, background3, background4, background5, background11, background21, background31, background41, background51,rect8,jg2,mobsimg, 3);
             dt.Interval = TimeSpan.FromMilliseconds(500);
             dt.Tick += dtTicker;
             dt.Start();
-
-            dt2.Interval = TimeSpan.FromTicks(1);
-            dt2.Tick += dtTicker2;
-            dt2.Start();
         }
+        public static void navigateVillage()
+        {
+            stopMove();
+            mainframe.Navigate(new Village(datetime, naruto, mainframe));
+        }
+        DispatcherTimer dt2 = new DispatcherTimer();
         private void dtTicker(object sender, EventArgs e)
         {
             //mob detect
-            foreach (Enemy mob in mobs)
+            foreach(Image img in mobsimg)
             {
-                foreach(Image img in mobsimg)
+                if (Canvas.GetLeft(img) - Canvas.GetLeft(Narutoimg) < 300)
                 {
-                    if (Canvas.GetLeft(img) - Canvas.GetLeft(Narutoimg) < 300 & !mob.pass)
+                    int i = 0;
+                    dt2.Interval = TimeSpan.FromSeconds(1);
+                    dt2.Tick += dt2Ticker;
+                    dt2.Start();
+                    stopMove();
+                    void dt2Ticker(object sender2, EventArgs e2)
                     {
-                        stopMove();
-                        TextBlock tb = new TextBlock();
-                        tb.Text = mission.name.Substring(mission.name.Length - 5) + " LV:" + mob.level;
-                        Button yes = new Button();
-                        yes.Click += enterBattle;
-                        yes.Height = 30;
-                        yes.Width = 60;
-                        yes.Content = "Battle";
-                        yes.Margin = new Thickness(10);
-                        yes.HorizontalAlignment = HorizontalAlignment.Left;
-                        Button no = new Button();
-                        no.Click += startMove;
-                        no.Height = 30;
-                        no.Width = 60;
-                        no.Content = "Pass";
-                        no.Tag = mob.id;
-                        no.Margin = new Thickness(10);
-                        no.HorizontalAlignment = HorizontalAlignment.Right;
-                        Grid gr = new Grid();
-                        gr.Background = Brushes.LightGray;
-                        gr.Height = 100;
-                        gr.Width = 150;
-                        Canvas.SetLeft(gr, Canvas.GetLeft(img));
-                        Canvas.SetTop(gr, Canvas.GetTop(img) - 100);
-                        gr.Children.Add(tb);
-                        gr.Children.Add(yes);
-                        gr.Children.Add(no);
-                        currentGrid = gr;
-                        Background_Canvas.Children.Add(gr);
-                        currentEnemy = mob;
+                        i++; 
+                        if(i == 2)
+                        {
+                            mainframe.Navigate(new Battleground(naruto, currentEnemy, mainframe));
+                            dt2.Stop();
+                        }
                     }
-                }
-
+                }                        
             }
-        }
-        private void enterBattle(object sender, EventArgs e)
-        {
-            mainframe.Navigate(new Battleground(naruto, currentEnemy, mainframe));
+            
         }
         Random rnd = new Random();
         private void generateMobs()
         {
-            for(int i = 0; i < 1; i++)
+            for(int i = 0; i < rnd.Next(1,6); i++)
             {
                 if(mission.name.Equals("Wolf hunt"))
                 {
@@ -108,26 +94,26 @@ namespace NarutoLife.views.pages
                     Canvas.SetLeft(img, rnd.Next(250,1500));
                     Canvas.SetTop(img, 425);
                     mobsimg.Add(img);
-                    Enemy wolf = new Enemy(i,naruto.level,Canvas.GetLeft(img),Canvas.GetTop(img));
+                    Enemy wolf = new Enemy(i,"Wolf",naruto.level,Canvas.GetLeft(img),Canvas.GetTop(img));
+                    wolf.LimitToRange(wolf.level, 1, 5);
                     mobs.Add(wolf);
+                    mobssorted = mobs.OrderByDescending(o => o.positionx).ToList();
+                    currentEnemy = mobssorted[0];
                 }
             }
         }
         private void startMove(object sender, EventArgs e)
         {
             Button b = (Button)sender;
-            currentGrid.Visibility = Visibility.Hidden;
             foreach (Enemy m in mobs)
             {
                 if(m.id == int.Parse(b.Tag.ToString()))
                 {
                     mobs.Remove(m);
                     break;
-                }
-            }          
-            currentEnemy.pass = true;
+                }        
+            }
             mobs.Add(currentEnemy);
-            mouseControl = true;
             dt.Start();
             Parallax.parallaxStart();
             var image = new BitmapImage();
@@ -137,30 +123,16 @@ namespace NarutoLife.views.pages
             ImageBehavior.SetAnimatedSource(Narutoimg, image);
             ImageBehavior.SetRepeatBehavior(Narutoimg, RepeatBehavior.Forever);
         }
-        private void stopMove()
+        private static void stopMove()
         {
-            mouseControl = false;
             dt.Stop();
             Parallax.parallaxStop();
             var image = new BitmapImage();
             image.BeginInit();
             image.UriSource = new Uri(@"/img/naruto_stand.gif", UriKind.Relative);
             image.EndInit();
-            ImageBehavior.SetAnimatedSource(Narutoimg, image);
-            ImageBehavior.SetRepeatBehavior(Narutoimg, RepeatBehavior.Forever);
+            ImageBehavior.SetAnimatedSource(narutoimg, image);
+            ImageBehavior.SetRepeatBehavior(narutoimg, RepeatBehavior.Forever);
         }
-        public partial class NativeMethods
-        {
-            [System.Runtime.InteropServices.DllImportAttribute("user32.dll", EntryPoint = "SetCursorPos")]
-            [return: System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.Bool)]
-            public static extern bool SetCursorPos(int X, int Y);
-        }
-        bool mouseControl = true;
-        DispatcherTimer dt2 = new DispatcherTimer();
-        private void dtTicker2(object sender, EventArgs e)
-        {
-            if(mouseControl == true) NativeMethods.SetCursorPos(0,0);
-        }
-
     }
 }

@@ -67,6 +67,9 @@
     <Compile Include="model\Enemy.cs" />
     <Compile Include="model\Character.cs" />
     <Compile Include="model\Parallax.cs" />
+    <Compile Include="views\frames\NarutoFightBar.xaml.cs">
+      <DependentUpon>NarutoFightBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\pages\Battleground.xaml.cs">
       <DependentUpon>Battleground.xaml</DependentUpon>
     </Compile>
@@ -78,16 +81,16 @@
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
     <Compile Include="model\Mission.cs" />
-    <Compile Include="views\dialogs\ProfileBar.xaml.cs">
+    <Compile Include="views\frames\ProfileBar.xaml.cs">
       <DependentUpon>ProfileBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="views\dialogs\ProfilePanel.xaml.cs">
+    <Compile Include="views\frames\ProfilePanel.xaml.cs">
       <DependentUpon>ProfilePanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="views\dialogs\Settings.xaml.cs">
+    <Compile Include="views\frames\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="views\dialogs\Time.xaml.cs">
+    <Compile Include="views\frames\Time.xaml.cs">
       <DependentUpon>Time.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\pages\PreBattleground.xaml.cs">
@@ -99,7 +102,7 @@
     <Compile Include="views\pages\trainings\Training_chakra.xaml.cs">
       <DependentUpon>Training_chakra.xaml</DependentUpon>
     </Compile>
-    <Compile Include="views\dialogs\Training_done.xaml.cs">
+    <Compile Include="views\frames\Training_done.xaml.cs">
       <DependentUpon>Training_done.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\pages\trainings\Training_quickness.xaml.cs">
@@ -109,12 +112,16 @@
       <DependentUpon>Village.xaml</DependentUpon>
     </Compile>
     <Compile Include="model\Sound.cs" />
-    <Compile Include="views\dialogs\Training.xaml.cs">
+    <Compile Include="views\frames\Training.xaml.cs">
       <DependentUpon>Training.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\pages\trainings\Training_taijutsu.xaml.cs">
       <DependentUpon>Training_taijutsu.xaml</DependentUpon>
     </Compile>
+    <Page Include="views\frames\NarutoFightBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="views\pages\Battleground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -127,19 +134,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="views\dialogs\ProfileBar.xaml">
+    <Page Include="views\frames\ProfileBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="views\dialogs\ProfilePanel.xaml">
+    <Page Include="views\frames\ProfilePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="views\dialogs\Settings.xaml">
+    <Page Include="views\frames\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="views\dialogs\Time.xaml">
+    <Page Include="views\frames\Time.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,7 +162,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="views\dialogs\Training_done.xaml">
+    <Page Include="views\frames\Training_done.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -183,7 +190,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="views\dialogs\Training.xaml">
+    <Page Include="views\frames\Training.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -264,6 +271,8 @@
     <Resource Include="img\prebattlegroundbar.png" />
     <Resource Include="img\naruto_cursed.png" />
     <Resource Include="img\mission_background.png" />
+    <Resource Include="img\fight_bar.png" />
+    <Resource Include="img\naruto_fightimg.png" />
     <Content Include="sounds\punch_trunk.mp3" />
     <Resource Include="img\lost_impression__child_naruto_x_child_reader__by_blackfang_124_d7kt8ze_LgY_icon.ico" />
     <Resource Include="img\menu.png" />

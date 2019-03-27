@@ -19,7 +19,7 @@ namespace NarutoLife
         public int quickness { get; set; }
         public int vitality { get; set; }
         public int accuracy { get; set; }
-
+        public int combat { get; set; }
         public int level { get; set; }
         //main stats
         public int health { get; set; }
@@ -28,5 +28,6 @@ namespace NarutoLife
         //max main stats
         public int maxhealth { get; set; }
         public int maxchakra { get; set; }
+        public int maxcombat { get; set; }
     }
 }

@@ -38,10 +38,12 @@ namespace NarutoLife
             Character naruto = new Character();
             naruto.yen = 300;
 
+            naruto.maxcombat = 100;
             naruto.maxhealth = 30;
             naruto.maxchakra = 20;
             naruto.maxhappiness = 100;
             naruto.maxenergy = 50;
+            naruto.combat = 0;
 
             naruto.health = naruto.maxhealth;
             naruto.chakra = naruto.maxchakra;
