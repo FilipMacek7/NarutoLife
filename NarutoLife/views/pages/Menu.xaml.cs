@@ -38,29 +38,33 @@ namespace NarutoLife
             Character naruto = new Character();
             naruto.yen = 300;
 
-            naruto.maxcombat = 100;
-            naruto.maxhealth = 30;
-            naruto.maxchakra = 20;
+            naruto.taijutsu = 3;
+            naruto.quickness = 3;
+            naruto.vitality = 4;
+            naruto.accuracy = 3;
+            naruto.chakracontrol = 2;
+
+            naruto.maxhealth = 30 + naruto.vitality + naruto.vitality / 1.5;
+            naruto.maxchakra = 20 + naruto.chakracontrol + naruto.chakracontrol / 1.5;
             naruto.maxhappiness = 100;
             naruto.maxenergy = 50;
-            naruto.combat = 0;
 
-            naruto.health = naruto.maxhealth;
-            naruto.chakra = naruto.maxchakra;
+            naruto.health = (int)naruto.maxhealth;
+            naruto.chakra = (int)naruto.maxchakra;
             naruto.happiness = 70;
             naruto.energy = 45;
 
-            naruto.taijutsu = 2;
-            naruto.quickness = 2;
-            naruto.vitality = 3;
-            naruto.accuracy = 1;
+            naruto.mindamage = 2;
+            naruto.maxdamage = 5 + naruto.taijutsu;
 
             naruto.exptaijutsu = 0;
             naruto.expquickness = 0;
             naruto.expchakra = 0;
             naruto.expaccuracy = 0;
+            naruto.explevel = 0;
 
             naruto.level = 1;
+            naruto.maxcombat += naruto.level;
             DateTime date = new DateTime(2000, 10, 13, 6, 0, 0);
             NavigationService.Navigate(new Village(date, naruto, fr));
             menu.Stop();       

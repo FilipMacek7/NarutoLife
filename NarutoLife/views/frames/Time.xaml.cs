@@ -21,14 +21,12 @@ namespace NarutoLife
     /// </summary>
     public partial class Time : Page
     {
-        public static DateTime datetime;
         DispatcherTimer dt = new DispatcherTimer();
         string framekey;
-        public Time(DateTime Datetime, string Framekey)
+        public Time(string Framekey)
         {
             InitializeComponent();
-            datetime = Datetime;
-            timedate.Text = Datetime.ToString("HH:mm");
+            timedate.Text = Village.datetime.ToString("HH:mm");
             framekey = Framekey;
             Village_background();
         }
@@ -36,13 +34,18 @@ namespace NarutoLife
         {
             if (framekey.Equals("Village"))
             {
-                Village.Background_set(datetime);
+                Village.Background_set(Village.datetime);
             }
         }
         private void dtTicker(object sender, EventArgs e)
         {
-            datetime = datetime.AddMinutes(1);
-            timedate.Text = datetime.ToString("HH:mm");
+            Village.datetime = Village.datetime.AddMinutes(1);
+            if(Village.datetime.Minute == 59)
+            {
+                Village.naruto.energy -= 3;
+                ProfileBar.updateStats();
+            }
+            timedate.Text = Village.datetime.ToString("HH:mm");
             if (framekey.Equals("Home"))
             {
                 Home.Opacity_on();

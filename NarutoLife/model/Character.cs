@@ -8,6 +8,7 @@ namespace NarutoLife.model
 {
      public class Character: Mob
     {
+        public List<Item> inventory = new List<Item>();
         double _num = 0;
         public double explevel
         {
@@ -17,15 +18,16 @@ namespace NarutoLife.model
             }
             set
             {
-                if (value > 100)
+                if (value > maxexplevel)
                 {
+                    maxexplevel += 100;
                     level++;
                     return;
                 }
                 _num = value;
             }
         }
-
+        public double maxexplevel = 100;
         public int happiness { get; set; }
         public int energy { get; set; }
         public int yen { get; set; }
@@ -34,7 +36,6 @@ namespace NarutoLife.model
         public int maxenergy { get; set; }
         //battle stats
         public int taijutsu { get; set; }
-
         //exp frames
         public double exptaijutsu
         {
@@ -79,6 +80,7 @@ namespace NarutoLife.model
                 if (value > 100)
                 {
                     maxchakra = maxchakra + 20;
+                    chakracontrol++;
                     return;
                 }
                 _num = value;

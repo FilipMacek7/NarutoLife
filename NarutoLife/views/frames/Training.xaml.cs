@@ -21,28 +21,22 @@ namespace NarutoLife
     /// </summary>
     public partial class Training : Page
     {
-        DateTime datetime;
         int num = 1;
-        Character naruto;
-        static Frame frame;
-        public Training(DateTime Datetime, Character Naruto, Frame FRame)
+        public Training()
         {
             InitializeComponent();
             Trainhours.Text = num.ToString();
-            datetime = Datetime;
-            naruto = Naruto;
-            frame = FRame;
-            finishlabel.Content = "You will finish your training at: " + datetime.AddHours(num).ToString("HH:mm");
+            finishlabel.Content = "You will finish your training at: " + Village.datetime.AddHours(num).ToString("HH:mm");
         }
         
         private void Training_hnext(object sender,RoutedEventArgs e)
         {
-            if (naruto.energy - num * 10 > 10)
+            if (Village.naruto.energy - num * 10 > 10)
             {
                 num++;
             }         
             Trainhours.Text = num.ToString();
-            finishlabel.Content = "You will finish your training at: " +  datetime.AddHours(num).ToString("HH:mm");
+            finishlabel.Content = "You will finish your training at: " + Village.datetime.AddHours(num).ToString("HH:mm");
         }
         private void Training_hprevious(object sender, RoutedEventArgs e)
         {
@@ -51,7 +45,7 @@ namespace NarutoLife
                 num--;
             }
             Trainhours.Text = num.ToString();
-            finishlabel.Content = "You will finish your training at: " + datetime.AddHours(num).ToString("HH:mm");
+            finishlabel.Content = "You will finish your training at: " + Village.datetime.AddHours(num).ToString("HH:mm");
         }
         private void Taijutsu_Button(object sender, RoutedEventArgs e)
         {

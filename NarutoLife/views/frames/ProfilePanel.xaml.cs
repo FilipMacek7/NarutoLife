@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NarutoLife.views.pages;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -28,7 +29,11 @@ namespace NarutoLife
             else if (mainframe.Equals("Home"))
             {
                 Home.Profile_off();
-            }            
+            }
+            else if (mainframe.Equals("Battleground"))
+            {
+                Battleground.Profile_Off();
+            }
         }
         int profilebg = 1;
         private void Profile_Bgnext(object sender, RoutedEventArgs e)
@@ -73,26 +78,14 @@ namespace NarutoLife
                     profilebg = 1;
                     break;
             }
-            string taijutsu = "";
-            string quickness = "";
-            string vitality = "";
-            string accuracy = "";
-            switch (mainframe)
-            {
-                case "Village":
-                    taijutsu = Village.naruto.taijutsu.ToString();
-                    quickness = Village.naruto.quickness.ToString();
-                    vitality = Village.naruto.vitality.ToString();
-                    accuracy = Village.naruto.accuracy.ToString();
-                    break;
-                case "Home":
-                    taijutsu = Home.naruto.taijutsu.ToString();
-                    quickness = Home.naruto.quickness.ToString();
-                    vitality = Home.naruto.vitality.ToString();
-                    accuracy = Home.naruto.accuracy.ToString();
-                    break;
-            }
-            stats.Content = "\n Taijutsu: " + taijutsu + "\n Quickness: " + quickness + "\n Vitality: " + vitality + "\n Accuracy: " + accuracy;
+            decimal decimalexpbar = (decimal)Village.naruto.explevel / (decimal)Village.naruto.maxexplevel * 100;
+            explevelbar.Value = (int)decimalexpbar;
+            string taijutsu = Village.naruto.taijutsu.ToString();
+            string quickness = Village.naruto.quickness.ToString();
+            string vitality = Village.naruto.vitality.ToString();
+            string accuracy = Village.naruto.accuracy.ToString();
+            string chakracontrol = Village.naruto.chakracontrol.ToString();
+            stats.Content = "\n Taijutsu: " + taijutsu + "\n Quickness: " + quickness + "\n Chakra control: " + chakracontrol + "\n Accuracy: " + accuracy + "\n Vitality: " + vitality;
         }
     }
 }

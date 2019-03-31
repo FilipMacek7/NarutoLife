@@ -8,8 +8,10 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using WpfAnimatedGif;
 
 namespace NarutoLife
 {
@@ -20,16 +22,10 @@ namespace NarutoLife
     {
         Button bz = new Button();
         List<Mission> missions;
-        static Frame mainframe;
-        DateTime datetime;
-        Character naruto;
-        Mission clickedmission;
-        public HokageMansion(DateTime Datetime, Character Naruto, Frame Mainframe)
+        public static Mission clickedmission;
+        public HokageMansion()
         {
             InitializeComponent();
-            naruto = Naruto;
-            datetime = Datetime;
-            mainframe = Mainframe;
             bz.VerticalAlignment = VerticalAlignment.Top;
             bz.HorizontalAlignment = HorizontalAlignment.Left;
             bz.Height = 20;
@@ -46,6 +42,19 @@ namespace NarutoLife
             else
             {
                 missions = new List<Mission>();
+            }
+            if(Village.naruto.level < 10)
+            {
+                bb.IsEnabled = false;
+                ba.IsEnabled = false;
+            }
+            else if(Village.naruto.level > 10)
+            {
+                bb.IsEnabled = true;
+            }
+            else if(Village.naruto.level > 20)
+            {
+                ba.IsEnabled = true;
             }
         }
     
@@ -97,21 +106,21 @@ namespace NarutoLife
                 }
                 for (int i = missions.Count(); i < 4; i++)
                 {
-                    string mob = "";
+                    string mobname = "";
                     int number = rnd.Next(1, 4);
                     switch (number)
                     {
                         //wolf
                         case 1:
-                            mob = "Wolf";
+                            mobname = "wolf";
                             break;
                         //spider
                         case 2:
-                            mob = "Spider";
+                            mobname = "spider";
                             break;
                         //snake
                         case 3:
-                            mob = "Snake";
+                            mobname = "snake";
                             break;
                     }
 
@@ -122,7 +131,7 @@ namespace NarutoLife
                     b.Click += missionInfoOn;
 
                     TextBlock tb = new TextBlock();
-                    tb.Text = mob + " hunt";
+                    tb.Text = mobname + " hunt";
                     tb.HorizontalAlignment = HorizontalAlignment.Center;
                     tb.VerticalAlignment = VerticalAlignment.Center;
                     tb.FontSize = 20;
@@ -137,10 +146,10 @@ namespace NarutoLife
                     gr.Children.Add(tb);
                     gr.Height = 50;
                     b.Content = gr;
-
                     int enemyCount = rnd.Next(1, 4);
-                    string description = "Defeat " + enemyCount.ToString() + "x " + mob;
-                    Mission mission = new Mission(currentids[i], mob + " hunt", description, enemyCount, missionType.Fight);
+                    string description = "Defeat " + enemyCount.ToString() + "x " + mobname;
+                    Mission mission = new Mission(currentids[i], mobname + " hunt", description, enemyCount,enemyCount*100, missionType.Fight);
+                    
                     missions.Add(mission);
 
                     File.WriteAllText(@"../../missions.json", JsonConvert.SerializeObject(missions));
@@ -162,7 +171,12 @@ namespace NarutoLife
             mission_info.Visibility = Visibility.Visible;
             infoname.Text = clickedmission.name;
             //img
-
+            var bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(@"../../img/" + clickedmission.name.Substring(0, clickedmission.name.Length - 5) + "_stand.gif", UriKind.Relative);
+            bitmap.EndInit();
+            ImageBehavior.SetAnimatedSource(mobimg, bitmap);
+            ImageBehavior.SetRepeatBehavior(mobimg, RepeatBehavior.Forever);
             //
             infodescription.Text = clickedmission.description;
             enterBattle.Click += EnterBattle_Click;
@@ -173,12 +187,12 @@ namespace NarutoLife
         }
         private void EnterBattle_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PreBattleground(datetime, naruto, clickedmission, mainframe));
+            NavigationService.Navigate(new PreBattleground());
         }
 
         private void GoVillage(object sender, RoutedEventArgs e)
         {
-            mainframe.Navigate(new Village(datetime, naruto, mainframe));
+            Village.mainframe.Navigate(new Village(Village.datetime, Village.naruto, Village.mainframe));
         }
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {

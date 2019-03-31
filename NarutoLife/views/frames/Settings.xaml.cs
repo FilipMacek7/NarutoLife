@@ -21,29 +21,30 @@ namespace NarutoLife
     public partial class Settings : Page
     {
         string framekey;
-        static Frame mainframe;
-        public Settings(Frame Mainframe,string Framekey)
+        public Settings(string Framekey)
         {
             InitializeComponent();
             framekey = Framekey;
-            mainframe = Mainframe;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            mainframe.Navigate(new Menu());
+            Village.mainframe.Navigate(new Menu());
         }
         private void Settings_Close(object sender, RoutedEventArgs e)
         {
             if (framekey.Equals("Village"))
             {
-                Village.Settings_Close();
+                Village.Settings_Off();
             }
             else if (framekey.Equals("Home"))
             {
                 Home.Settings_Close();
             }
-            
+            else if (framekey.Equals("Battleground"))
+            {
+                Battleground.Settings_Close();
+            }
         }
     }
 }

@@ -11,23 +11,26 @@ namespace NarutoLife
         //level stats
         public int LimitToRange(int value, int inclusiveMinimum, int inclusiveMaximum)
         {
-            if (value < inclusiveMinimum) { return 0; }
+            if (value < inclusiveMinimum) { return inclusiveMinimum; }
             if (value > inclusiveMaximum) { return inclusiveMaximum; }
             return value;
         }
 
-        public int quickness { get; set; }
-        public int vitality { get; set; }
-        public int accuracy { get; set; }
-        public int combat { get; set; }
+        public int quickness = 1;
+        public int vitality = 1;
+        public int accuracy = 1;
+        public int chakracontrol = 1;
+        public int combat = 0;
         public int level { get; set; }
         //main stats
         public int health { get; set; }
         public int chakra { get; set; }
 
         //max main stats
-        public int maxhealth { get; set; }
-        public int maxchakra { get; set; }
-        public int maxcombat { get; set; }
+        public double maxhealth { get; set; } 
+        public double maxchakra { get; set; }
+        public int maxcombat = 5;
+        public int mindamage { get; set; }
+        public int maxdamage { get; set; }
     }
 }

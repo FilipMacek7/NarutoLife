@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:NarutoLife"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Battleground">
+      Title="Battleground" Unloaded="Page_Unloaded">
     <Page.Background>
         <ImageBrush ImageSource="../../img/meadow.png"></ImageBrush>
     </Page.Background>
@@ -33,80 +33,149 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="{x:Type Button}" x:Key="dodge">
+            <Setter Property="Button.Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../../img/dodge_button.png" />
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
     <Grid>
-        <Image gif:ImageBehavior.RepeatBehavior="Forever"
+        <Canvas Height="150" VerticalAlignment="Bottom">
+            <Image gif:ImageBehavior.RepeatBehavior="Forever"
                gif:ImageBehavior.AnimatedSource="../../img/naruto_stand.gif" 
                gif:ImageBehavior.AnimationCompleted="Naruto_AnimationCompleted"
-                Name="Naruto" Height="150" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,0"/>
-        <Image gif:ImageBehavior.RepeatBehavior="Forever"
+                Name="narutoimg" Height="162" VerticalAlignment="Bottom" Canvas.Left="70"/>
+            <Image gif:ImageBehavior.RepeatBehavior="Forever"
                gif:ImageBehavior.AnimatedSource="../../img/wolf_stand.gif" 
-               gif:ImageBehavior.AnimationCompleted="AnimationCompleted"
-                Name="enemyimg" Height="150" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,42,-26" />
+               gif:ImageBehavior.AnimationCompleted="EnemyAnimationCompleted"
+                Name="enemyimg" Height="162" VerticalAlignment="Bottom" Canvas.Left="750"/>
+            <Label Content="-1" Foreground="White" Canvas.Left="750" Canvas.Top="10" FontSize="20" Name="plusminusenemy" Visibility="Hidden"/>
+            <Label Content="-2" Foreground="White" Canvas.Left="153" Canvas.Top="-15" FontSize="20" Name="plusminusplayer" Visibility="Hidden"/>
+        </Canvas>
         <Image Source="../../img/fight_bar.png" Width="300" VerticalAlignment="Top" Margin="0,30,0,0"></Image>
         <Canvas Height="50" VerticalAlignment="Top" Width="300" Margin="0,40,0,0">
-            <Image Source="../../img/naruto_cursed.png" Height="50" VerticalAlignment="Top" Canvas.Left="0" Name="narutot"></Image>
-            <Image Source="../../img/wolf_stand.gif" Height="50" Canvas.Left="40" Width="59" Name="enemyt">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
+            <Image Source="../../img/naruto_cursed.png" Height="50" VerticalAlignment="Top" Canvas.Left="0" Name="narutot" Width="50"></Image>
+            <Image Source="../../img/wolf_timer.png" Height="50" Canvas.Left="0" Width="50" Name="enemyt"></Image>
         </Canvas>
-        <Frame x:Name="playerbar" Height="130" Width="300"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-10,10,0,0"></Frame>
+        <Grid  Width="265"  Height="130" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="130" VerticalAlignment="Center" Width="160">
+                <Button Click="Profile_Button" Background="Transparent">
+                    <Image Name="Fightimg" Source="../../img/naruto_fightimg.png" />
+                </Button>
+            </Border>
+            <StackPanel Grid.Column="1" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0">
+                <Label Width="100" Height="23">Health</Label>
+                <Grid>
+                    <ProgressBar  Height="15"  Width="100" Foreground="Red" Name="healthbar"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="healthtext" FontSize="15"/>
+                </Grid>
+                <Label Width="100" Height="23">Chakra</Label>
+                <Grid>
+                    <ProgressBar  Height="15"  Width="100" Foreground="LightBlue" Name="chakrabar"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="chakratext" FontSize="15"/>
+                </Grid>
+                <Label Width="100" Height="23">Combat</Label>
+                <Grid>
+                    <ProgressBar  Height="15"  Width="100" Foreground="Orange" Name="combatbar" />
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="combattext" FontSize="15"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
         <Grid Width="265"  Height="130" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="160" />
             </Grid.ColumnDefinitions>
             <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="130" VerticalAlignment="Center" Width="160" Grid.Column="1">
-                <Image Name="enemyfightimg" Stretch="Fill"/>
+                <Button Click="Enemyprofile_Button" Background="Transparent">
+                    <Image Name="enemyfightimg" Stretch="Fill" />
+                </Button>
             </Border>
             <StackPanel  Width="100" HorizontalAlignment="Left" Margin="0,0,5,0">
-                <Label Width="100">Health</Label>
-                <ProgressBar  Height="15"  Width="100" Foreground="Red" Name="healthbar"/>
-                <Label Width="100">Chakra</Label>
-                <ProgressBar  Height="15"  Width="100" Foreground="LightBlue" Name="chakrabar"/>
-                <Label Width="100">Combat</Label>
-                <ProgressBar  Height="15"  Width="100" Foreground="Orange" Name="combatbar" />
+                <Label Width="100" Height="23">Health</Label>
+                <Grid>
+                    <ProgressBar  Height="15"  Width="100" Foreground="Red" Name="enemyhealthbar"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="enemyhealthtext" FontSize="15"/>
+                </Grid>
+                <Label Width="100" Height="23">Chakra</Label>
+                <Grid>
+                    <ProgressBar  Height="15"  Width="100" Foreground="LightBlue" Name="enemychakrabar"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="enemychakratext" FontSize="15"/>
+                </Grid>
+                <Label Width="100" Height="23">Combat</Label>
+                <Grid>
+                    <ProgressBar  Height="15"  Width="100" Foreground="Orange" Name="enemycombatbar" />
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Name="enemycombattext" FontSize="15"/>
+                </Grid>
             </StackPanel>
             <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
         </Grid>
-        <Grid HorizontalAlignment="Center" Height="150" VerticalAlignment="Bottom" Width="250" Margin="0,0,0,20">
-            <DockPanel Width="81" Height="80">
-                <Button Width="40" Height="40" Style="{StaticResource chakra}" DockPanel.Dock="Top">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Grid>
-                                <Ellipse Name="Ellipse" Fill="{TemplateBinding Background}" />
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Width="40" Height="40" Style="{StaticResource kunai}" DockPanel.Dock="Left">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Grid>
-                                <Ellipse Name="Ellipse" Fill="{TemplateBinding Background}" />
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Width="40" Height="40" Style="{StaticResource fist}" DockPanel.Dock="Right">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Grid>
-                                <Ellipse Name="Ellipse" Fill="{TemplateBinding Background}" />
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </DockPanel>
-
+        <Grid HorizontalAlignment="Center" Height="190" VerticalAlignment="Bottom" Width="250" Margin="0,0,0,20" Name="Fightbuttons" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "1*" />
+                <ColumnDefinition Width = "1*" />
+                <ColumnDefinition Width = "1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height = "*" />
+                <RowDefinition Height = "*" />
+                <RowDefinition Height = "*" />
+            </Grid.RowDefinitions>
+            <Button Width="60" Height="60" Style="{StaticResource kunai}" Grid.Column="2"  Grid.Row="1" Click="Kunai_Button" >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Ellipse Name="Ellipse" Fill="{TemplateBinding Background}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Width="60" Height="60" Style="{StaticResource fist}"  Grid.Row="1" Click="Punch_Button"  >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Ellipse Name="Ellipse" Fill="{TemplateBinding Background}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Width="60" Height="60" Style="{StaticResource chakra}" Grid.Column="1"  Grid.Row="2" Click="Chakra_Button" >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Ellipse Name="Ellipse" Fill="{TemplateBinding Background}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Width="60" Height="60" Style="{StaticResource dodge}" Grid.Column="1" Click="Dodge_Button"  >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Ellipse Name="Ellipse" Fill="{TemplateBinding Background}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
+        <StackPanel HorizontalAlignment="Center" Height="200" VerticalAlignment="Center" Width="200" Background="LightGray" Name="enemyinfo">
+            <Button  Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" Click="Enemyinfo_Close">
+                <StackPanel>
+                    <Image Source="../../img/red_shuriken.png"></Image>
+                </StackPanel>
+            </Button>
+            <TextBlock Name="enemyinfotext"></TextBlock>
+        </StackPanel>
+        <Button Content="Continue in mission" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="138" Name="continuebutton" Click="ContinueMission" Visibility="Hidden"/>
+        <Frame x:Name="inventory" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden" Width="515" Height="300"></Frame>
+        <Frame x:Name="profile" Height="300" Width="200" Visibility="Hidden"></Frame>
+        <Frame x:Name="listpanel" Height="50" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center"></Frame>
+        <Frame x:Name="settings" Width="150" Height="100" Panel.ZIndex="3" Visibility="Hidden"></Frame>
     </Grid>
 </Page>

@@ -23,25 +23,18 @@ namespace NarutoLife
     /// </summary>
     public partial class Training_accuracy : Page
     {
-        DateTime datetime;
         int i;
         int hours;
-        Character naruto;
         int speed = 15;
         bool goUp;
         bool goDown = true;
         bool goLeft;
         bool goRight;
-        static Frame mainframe;
-        public Training_accuracy(int Hours, DateTime getdatetime, Character Naruto, Frame Mainframe)
+        public Training_accuracy(int Hours)
         {
             InitializeComponent();
-            mainframe = Mainframe;
-            datetime = getdatetime;
-            hours = Hours;
             i = hours * 10;
             time.Content = "Time left: " + i.ToString();
-            naruto = Naruto;
             canvasx.Content = Canvas.GetLeft(rec1).ToString();
             canvasy.Content = Canvas.GetTop(rec1).ToString();
         }       
@@ -98,12 +91,12 @@ namespace NarutoLife
                 goUp = false;
                 goLeft = false;
                 goRight = false;
-                naruto.expaccuracy = naruto.expaccuracy + score / 4;
-                naruto.explevel = naruto.explevel + score / 100;
-                naruto.energy = naruto.energy - hours * 5 + naruto.vitality / 2;
-                naruto.happiness = naruto.happiness - hours * 10;
-                datetime = datetime.AddHours(hours);
-                trainingdone.Navigate(new Training_done(datetime, naruto, mainframe,"Accuracy training", score));
+                Village.naruto.expaccuracy = Village.naruto.expaccuracy + score / 4;
+                Village.naruto.explevel = Village.naruto.explevel + score / 100;
+                Village.naruto.energy = Village.naruto.energy - hours * 5 + Village.naruto.vitality / 2;
+                Village.naruto.happiness = Village.naruto.happiness - hours * 10;
+                Village.datetime = Village.datetime.AddHours(hours);
+                trainingdone.Navigate(new Training_done("Accuracy training", score));
                 dt.Stop();
             }
 

@@ -10,22 +10,16 @@ namespace NarutoLife
     /// </summary>
     public partial class Training_done : Page
     {
-        DateTime datetime;
-        Character naruto;
-        Frame mainframe;
-        public Training_done(DateTime Datetime, Character Naruto, Frame Mainframe,string Trainingname, int score)
+        public Training_done(string Trainingname, int score)
         {
             InitializeComponent();
-            datetime = Datetime;
-            naruto = Naruto;
-            mainframe = Mainframe;
             trainingname.Content = Trainingname;
             endscore.Content = "Score: " + score.ToString();
-            endexp.Content = "Exp: " + naruto.expaccuracy.ToString() + " + " + (score / 4).ToString() + "%";
+            endexp.Content = "Exp: " + Village.naruto.expaccuracy.ToString() + " + " + (score / 4).ToString() + "%";
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            mainframe.Navigate(new Village(datetime, naruto, mainframe));
+            Village.mainframe.Navigate(new Village(Village.datetime, Village.naruto, Village.mainframe));
         }
     }
 }

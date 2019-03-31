@@ -36,28 +36,82 @@
             <Button Content="Academy" Width="100"/>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="2"   Grid.Row="4" Height="22">
-            <Button Content="Medical centre" Width="100"/>
-        </Viewbox>
-        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="4"   Grid.Row="5" Height="22">
-            <Button Content="Hot springs" Width="100"/>
+            <Button Content="Medical centre" Click="GoHospital" Width="100"/>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="0"   Grid.Row="3" Height="22">
             <Button Content="Training ground" Width="100" Click="Training_Button"/>
         </Viewbox>
         <Button Content="Home" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" Height="29" Grid.Column="1" Click="Home_Button" Grid.ColumnSpan="2" Margin="105,10,0,0" />
-        <Button  Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" Margin="10" Click="Settings_On">
-            <StackPanel>
-                <Image Source="../../img/settings.png"/>
-            </StackPanel>
-        </Button>
-        <Frame x:Name="settings" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Width="150" Height="100" Panel.ZIndex="2"></Frame>
+        <Frame x:Name="settings" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Width="150" Height="100" Panel.ZIndex="3"></Frame>
         <Frame x:Name="profile" Grid.Row="1" Grid.RowSpan="4" Grid.Column="2" Grid.ColumnSpan="2" Height="300" Width="200"></Frame>
         <Frame x:Name="profilebar"  Grid.ColumnSpan="2"></Frame>
+        <Frame x:Name="inventory"  Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Panel.ZIndex="2" Width="515" Height="300"></Frame>
+        <Frame x:Name="listpanel" Height="50" Width="100" Grid.Column="5" VerticalAlignment="Top" HorizontalAlignment="Right"></Frame>
         <Frame x:Name="training"  Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" Grid.RowSpan="4" Height="300" Width="300"></Frame>
         <Frame x:Name="time" Grid.Column="5" Height="15" Width="50" HorizontalAlignment="Right" Margin="0,0,5,0"></Frame>
+        <Button Content="Shop" Grid.Column="4" HorizontalAlignment="Left" Margin="10,24,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="Shop_open"/>
+        <Grid Name="shopbar" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Background="White" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <TextBlock TextAlignment="Center" Name="buyinfo" Grid.ColumnSpan="3"></TextBlock>
+            <Button Grid.Column="2" Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4" Click="Shop_Close">
+                <StackPanel>
+                    <Image Source="../../img/red_shuriken.png"></Image>
+                </StackPanel>
+            </Button>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock TextAlignment="Center" Text="Heal potion - 50 yen" ></TextBlock>
+                <Image Source="../../img/healpotion.png" Height="50" Width="50"></Image>
+                <Button Height="20" Width="50" Content="Buy" Tag="healpotion" Click="Buy_Button"></Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock Text="Sushi - 60 yen" TextAlignment="Center"></TextBlock>
+                <Image Source="../../img/sushi.png" Height="50" Width="50"></Image>
+                <Button Height="20" Width="50" Content="Buy" Click="Buy_Button" Tag="sushi"></Button>
+            </StackPanel>
+            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                <TextBlock Text="Item3"></TextBlock>
+                <Image></Image>
+                <Button Height="20" Width="50" Content="Buy"></Button>
+            </StackPanel>
+            <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
+                <TextBlock Text="Kunai - 30 yen" TextAlignment="Center"></TextBlock>
+                <Image Source="../../img/kunai.png" Height="50" Width="50"></Image>
+                <Button Height="20" Width="50" Content="Buy" Click="Buy_Button" Tag="kunai"></Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
+                <TextBlock Text="Shuriken - 20 yen" TextAlignment="Center"></TextBlock>
+                <Image Source="../../img/shuriken.png" Height="50" Width="50"></Image>
+                <Button Height="20" Width="50" Content="Buy" Click="Buy_Button" Tag="shuriken"></Button>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center">
+                <TextBlock Text="Item6"></TextBlock>
+                <Image></Image>
+                <Button Height="20" Width="50" Content="Buy"></Button>
+            </StackPanel>
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Height="100" Width="200" Background="LightGray" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3" Name="buyconfirm" Visibility="Hidden">
+                <TextBlock TextAlignment="Center">How many?</TextBlock>
+                <TextBlock HorizontalAlignment="Center" Name="numberbuyst" VerticalAlignment="Center" TextAlignment="Center" Text="5" FontSize="20"/>
+                <Button FontFamily="Marlett" FontSize="20" Content="3" Width="30" Height="25"  Click="Numberbuy_previous" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Button FontFamily="Marlett" FontSize="20" Content="4" Width="30" Height="25"   Click="Numberbuy_next" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <Button Content="Confirm buy" Width="70" Height="25"   Click="Confirm_buy" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+                <Button Grid.Column="1" Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4" Click="Buyconfirm_Close">
+                    <StackPanel>
+                        <Image Source="../../img/red_shuriken.png"></Image>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Grid>
     </Grid>
     <Page.Background>
         <ImageBrush ImageSource="/img/konoha_afternoon.jpg" x:Name="background"></ImageBrush>
     </Page.Background>
-    
+
 </Page>

@@ -16,20 +16,14 @@ namespace NarutoLife
     /// </summary>
     public partial class Training_taijutsu : Page
     {
-        DateTime datetime;  
         int i;
         int hours;
-        Character naruto;
-        static Frame mainframe;
-        public Training_taijutsu(int Hours, DateTime getdatetime, Character Naruto, Frame Mainframe)
+        public Training_taijutsu(int Hours)
         {
             InitializeComponent();
-            datetime = getdatetime;
             hours = Hours;
             i = hours * 10;
             time.Content = "Time left: " + i.ToString();
-            naruto = Naruto;
-            mainframe = Mainframe;
         }
         DispatcherTimer dt = new DispatcherTimer();
         ///END 
@@ -39,12 +33,12 @@ namespace NarutoLife
             time.Content = "Time left: " + i.ToString();
             if (i == 0)
             {
-                naruto.exptaijutsu = naruto.exptaijutsu + score / 4;
-                naruto.explevel = naruto.explevel + score / 100;
-                naruto.energy = naruto.energy - hours * 5 + naruto.vitality / 2;
-                naruto.happiness = naruto.happiness - hours * 10;
-                datetime = datetime.AddHours(hours);
-                trainingdone.Navigate(new Training_done(datetime, naruto, mainframe, "Taijutsu training", (int)score));
+                Village.naruto.exptaijutsu = Village.naruto.exptaijutsu + score / 4;
+                Village.naruto.explevel = Village.naruto.explevel + score / 100;
+                Village.naruto.energy = Village.naruto.energy - hours * 5 + Village.naruto.vitality / 2;
+                Village.naruto.happiness = Village.naruto.happiness - hours * 10;
+                Village.datetime = Village.datetime.AddHours(hours);
+                trainingdone.Navigate(new Training_done("Taijutsu training", (int)score));
                 dt.Stop();
             }
         }
@@ -69,7 +63,7 @@ namespace NarutoLife
                 score++;
                 Score.Content = "Punches: " + score.ToString();
                 image.BeginInit();
-                image.UriSource = new Uri(@"/img/naruto_fight.gif", UriKind.Relative);
+                image.UriSource = new Uri(@"/img/naruto_punch.gif", UriKind.Relative);
                 image.EndInit();
                 ImageBehavior.SetAnimatedSource(Naruto, image);
                 ImageBehavior.SetRepeatBehavior(Naruto, new RepeatBehavior(1));
@@ -108,7 +102,7 @@ namespace NarutoLife
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-                NavigationService.Navigate(new Village(datetime, naruto, mainframe));
+                NavigationService.Navigate(new Village(Village.datetime, Village.naruto, Village.mainframe));
         }
     }
 }

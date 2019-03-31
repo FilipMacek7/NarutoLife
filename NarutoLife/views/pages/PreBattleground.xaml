@@ -6,7 +6,7 @@
       mc:Ignorable="d" 
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       d:DesignHeight="600" d:DesignWidth="800"
-      Title="PreBattleground">
+      Title="PreBattleground" Unloaded="Page_Unloaded">
 
     <Grid>
         <Canvas x:Name="Parralex_canvas" Height="600" Width="2130">
@@ -22,13 +22,13 @@
             <Image x:Name="background51" Source="../../img/plx-5.png" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="1067" Canvas.Top="1" Panel.ZIndex="-1"/>
             <Image Source="../../img/jungle1.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Canvas.Left="1067" Canvas.Bottom="0" Panel.ZIndex="-1" Height="48" Width="1068" Stretch="Fill" Canvas.Top="513" x:Name="jg2"/>
             <ScrollViewer Name="Scroller" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"  Width="1067" Height="600">
-                <Canvas x:Name="Background_Canvas" Height="600" Width="30351">
+                <Canvas x:Name="Background_Canvas" Height="600" Width="2135">
                     <Rectangle x:Name="rect8" Height="48" Canvas.Bottom="0" Canvas.Top="513" Stretch="Fill" Width="1067" Canvas.Left="0">
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="../../img/jungle1.png" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Rectangle   Canvas.Top="211" Width="387" Height="80" Canvas.Left="316" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle   Canvas.Top="211" Width="387" Height="80" Canvas.Left="316">
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="../../img/prebattlegroundbar.png" />
                         </Rectangle.Fill>
@@ -43,7 +43,10 @@
                 Width="130"  Name="Narutoimg" Height="130" Canvas.Top="415" Canvas.Left="200" />
                 </Canvas>
             </ScrollViewer>
+            <Grid Height="100" Canvas.Left="380" Canvas.Top="100" Width="300" Background="White" Visibility="Hidden" Name="missionfinish">
+                <Label Name="missionfinishtext"></Label>
+                <Button Width="50" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Content="Village" Click="Navigate_Village"></Button>
+            </Grid>
         </Canvas>
-
     </Grid>
 </Page>

@@ -13,14 +13,16 @@ namespace NarutoLife
         public string description { get; set; }
         public int numberOfEnemy { get; set; }
         public missionType type { get; set; }
+        public int reward { get; set; }
 
-        public Mission(int ID,string Name,string Description,int NumberOfEnemy, missionType Type)
+        public Mission(int ID,string Name,string Description,int NumberOfEnemy,int Reward, missionType Type)
         {
             id = ID;
             name = Name;
             description = Description;
             numberOfEnemy = NumberOfEnemy;
             type = Type;
+            reward = Reward;
         }
     }
     public enum missionType

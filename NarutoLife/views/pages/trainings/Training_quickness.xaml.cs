@@ -24,11 +24,8 @@ namespace NarutoLife
     /// </summary>
     public partial class Training_quickness : Page
     {
-        static Frame mainframe;
         int i;
-        Character naruto;
         int hours;
-        DateTime datetime;
         int score;
         List<string> codes = new List<string>();
         List<int> usedid = new List<int>();
@@ -37,15 +34,12 @@ namespace NarutoLife
         string currentw;
         int currentind;
         int linecounter = 0;
-        public Training_quickness(int Hours, DateTime getdatetime, Character Naruto, Frame Mainframe)
+        public Training_quickness(int Hours)
         {
             InitializeComponent();
             i = Hours * 10;
-            hours = Hours;
-            naruto = Naruto;
-            datetime = getdatetime;           
+            hours = Hours;          
             string line;
-            mainframe = Mainframe;
             // Read the file and display it line by line.  
             System.IO.StreamReader file = new System.IO.StreamReader(@"randomwords.txt");
             while ((line = file.ReadLine()) != null)
@@ -78,12 +72,12 @@ namespace NarutoLife
             time.Content = "Time left: " + i.ToString();
             if (i == 0)
             {
-                naruto.expquickness = naruto.expquickness + score / 4;
-                naruto.explevel = naruto.explevel + score / 100;
-                naruto.energy = naruto.energy - hours * 5 + naruto.vitality / 2 ;
-                naruto.happiness = naruto.happiness - hours * 10;
-                datetime = datetime.AddHours(hours);
-                trainingdone.Navigate(new Training_done(datetime, naruto, mainframe, "Quickness training", score));
+                Village.naruto.expquickness = Village.naruto.expquickness + score / 4;
+                Village.naruto.explevel = Village.naruto.explevel + score / 100;
+                Village.naruto.energy = Village.naruto.energy - hours * 5 + Village.naruto.vitality / 2 ;
+                Village.naruto.happiness = Village.naruto.happiness - hours * 10;
+                Village.datetime = Village.datetime.AddHours(hours);
+                trainingdone.Navigate(new Training_done("Quickness training", score));
                 dt.Stop();
             }
         }
@@ -121,7 +115,7 @@ namespace NarutoLife
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Village(datetime, naruto, mainframe));
+            NavigationService.Navigate(new Village(Village.datetime, Village.naruto, Village.mainframe));
         }
     }
 }

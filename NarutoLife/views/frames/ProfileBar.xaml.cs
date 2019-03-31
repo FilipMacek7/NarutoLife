@@ -21,44 +21,63 @@ namespace NarutoLife
     /// </summary>
     public partial class ProfileBar : Page
     {
-        Character naruto;
+        static ProgressBar Healthbar;
+        static ProgressBar Chakrabar;
+        static ProgressBar Happinessbar;
+        static ProgressBar Energybar;
+        static TextBlock Healthtext;
+        static TextBlock Chakratext;
+        static TextBlock Happinesstext;
+        static TextBlock Energytext;
+        static Image statePic;
         static string mainframe;
-        public ProfileBar(Character Naruto, string Mainframe)
+        static Label Yen;
+        public ProfileBar(string Mainframe)
         {
             InitializeComponent();
             mainframe = Mainframe;
-            naruto = Naruto;
-            setInfo();         
+            Healthbar = healthbar;
+            Chakrabar = chakrabar;
+            Happinessbar = happinessbar;
+            Energybar = energybar;
+            Healthtext = healthtext;
+            Chakratext = chakratext;
+            Happinesstext = happinesstext;
+            Energytext = energytext;
+            statePic = StatePic;
+            Yen = yen;
+            updateStats();         
         }
-        private void setInfo()
+        public static void updateStats()
         {
-            decimal decimalhealthbar = (decimal)naruto.health / (decimal)naruto.maxhealth * 100;
-            healthbar.Value = (int)decimalhealthbar;
-            decimal decimalchakrabar = (decimal)naruto.chakra / (decimal)naruto.maxchakra * 100;
-            chakrabar.Value = (int)decimalchakrabar;
-            happinessbar.Value = naruto.happiness;
-            decimal decimalenergybar = (decimal)naruto.energy / (decimal)naruto.maxenergy * 100;
-            energybar.Value = (int)decimalenergybar;
+            Yen.Content = "Yen: " + Village.naruto.yen.ToString();
+            decimal decimalhealthbar = (decimal)Village.naruto.health / (decimal)Village.naruto.maxhealth * 100;
+            Healthbar.Value = (int)decimalhealthbar;
+            decimal decimalchakrabar = (decimal)Village.naruto.chakra / (decimal)Village.naruto.maxchakra * 100;
+            Chakrabar.Value = (int)decimalchakrabar;
+            Happinessbar.Value = Village.naruto.happiness;
+            decimal decimalenergybar = (decimal)Village.naruto.energy / (decimal)Village.naruto.maxenergy * 100;
+            Energybar.Value = (int)decimalenergybar;
 
-            healthtext.Text = naruto.health + "/" + naruto.maxhealth;
-            chakratext.Text = naruto.chakra + "/" + naruto.maxchakra;
-            happinesstext.Text = naruto.happiness + "/" + naruto.maxhappiness;
-            energytext.Text = naruto.energy + "/" + naruto.maxenergy;
-            if (naruto.happiness < 25 || naruto.energy < 10)
+            Healthtext.Text = (int)Village.naruto.health + "/" + (int)Village.naruto.maxhealth;
+            Chakratext.Text = (int)Village.naruto.chakra + "/" + (int)Village.naruto.maxchakra;
+            Happinesstext.Text = (int)Village.naruto.happiness + "/" + (int)Village.naruto.maxhappiness;
+            Energytext.Text = (int)Village.naruto.energy + "/" + (int)Village.naruto.maxenergy;
+            if (Village.naruto.happiness < 25 || Village.naruto.energy < 10)
             {
-                StatePic.Source = new BitmapImage(new Uri(@"/img/state_sad.jpg", UriKind.Relative));
+                statePic.Source = new BitmapImage(new Uri(@"/img/state_sad.jpg", UriKind.Relative));
             }
-            else if (naruto.happiness > 25 & naruto.happiness < 50 || naruto.energy < 20)
+            else if (Village.naruto.happiness > 25 & Village.naruto.happiness < 50 || Village.naruto.energy < 20)
             {
-                StatePic.Source = new BitmapImage(new Uri(@"/img/state_notok.png", UriKind.Relative));
+                statePic.Source = new BitmapImage(new Uri(@"/img/state_notok.png", UriKind.Relative));
             }
-            else if (naruto.happiness > 50 & naruto.happiness < 85 || naruto.energy < 30)
+            else if (Village.naruto.happiness > 50 & Village.naruto.happiness < 85 || Village.naruto.energy < 30)
             {
-                StatePic.Source = new BitmapImage(new Uri(@"/img/state_ok.png", UriKind.Relative));
+                statePic.Source = new BitmapImage(new Uri(@"/img/state_ok.png", UriKind.Relative));
             }
-            else if (naruto.happiness >= 85)
+            else if (Village.naruto.happiness >= 85)
             {
-                StatePic.Source = new BitmapImage(new Uri(@"/img/state_happy.png", UriKind.Relative));
+                statePic.Source = new BitmapImage(new Uri(@"/img/state_happy.png", UriKind.Relative));
             }
 
         }

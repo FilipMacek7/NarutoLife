@@ -12,33 +12,27 @@ namespace NarutoLife
     /// </summary>
     public partial class Home : Page
     {
-        DateTime datetime;
-        public static Character naruto;
         static Frame pr;
         static Frame st;
         static string framekey = "Home";
-        static Frame mainframe;
         static Page pg;    
-        public Home(DateTime Datetime, Character Naruto, Frame Mainframe)
+        public Home()
         {
             InitializeComponent();
             pg = page;
             pr = profile;
             st = settings;
-            mainframe = Mainframe;
-            datetime = Datetime;           
-            naruto = Naruto;
-            profilebar.Navigate(new ProfileBar(naruto, framekey));
-            time.Navigate(new Time(datetime, framekey));
+            profilebar.Navigate(new ProfileBar(framekey));
+            time.Navigate(new Time(framekey));
         }
         DispatcherTimer dt = new DispatcherTimer();
 
         private void setInfo()
         {
-            naruto.health = naruto.LimitToRange(naruto.health, 0, naruto.maxhealth);
-            naruto.chakra = naruto.LimitToRange(naruto.chakra, 0, naruto.maxchakra);
-            naruto.happiness = naruto.LimitToRange(naruto.happiness, 0, naruto.maxhappiness);
-            naruto.energy = naruto.LimitToRange(naruto.energy, 0, naruto.maxenergy);
+            Village.naruto.health = Village.naruto.LimitToRange(Village.naruto.health, 0, (int)Village.naruto.maxhealth);
+            Village.naruto.chakra = Village.naruto.LimitToRange(Village.naruto.chakra, 0, (int)Village.naruto.maxchakra);
+            Village.naruto.happiness = Village.naruto.LimitToRange(Village.naruto.happiness, 0, Village.naruto.maxhappiness);
+            Village.naruto.energy = Village.naruto.LimitToRange(Village.naruto.energy, 0, Village.naruto.maxenergy);
         }
         public static void Settings_Close()
         {
@@ -46,11 +40,11 @@ namespace NarutoLife
         }
         private void Settings_On(object sender, RoutedEventArgs e)
         {
-            settings.Navigate(new Settings(mainframe,framekey));
+            settings.Navigate(new Settings(framekey));
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            sleepinfo.Text = "You will wake up at: " + datetime.AddHours(sleephours).ToString("HH:mm");
+            sleepinfo.Text = "You will wake up at: " + Village.datetime.AddHours(sleephours).ToString("HH:mm");
             sleeppanel.Visibility = Visibility.Visible;
             dt.Stop();
         }
@@ -67,7 +61,7 @@ namespace NarutoLife
             {
                 sleephours++;
                 sleephourslabel.Text = sleephours.ToString();
-                sleepinfo.Text = "You will wake up at: " + datetime.AddHours(sleephours).ToString("HH:mm");
+                sleepinfo.Text = "You will wake up at: " + Village.datetime.AddHours(sleephours).ToString("HH:mm");
             }
         }
         private void Sleep_previous(object sender, RoutedEventArgs e)
@@ -76,27 +70,27 @@ namespace NarutoLife
             {
                 sleephours--;
                 sleephourslabel.Text = sleephours.ToString();
-                sleepinfo.Text = "You will wake up at: " + datetime.AddHours(sleephours).ToString("HH:mm");
+                sleepinfo.Text = "You will wake up at: " + Village.datetime.AddHours(sleephours).ToString("HH:mm");
             }
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             DoubleAnimation animation = new DoubleAnimation(0, TimeSpan.FromSeconds(2));
             page.BeginAnimation(Page.OpacityProperty, animation);
-            datetime = datetime.AddHours(sleephours);
-            naruto.energy = naruto.energy + sleephours * 20;
-            naruto.chakra = naruto.maxchakra;
-            naruto.health = naruto.health + sleephours * 10;
-            if(naruto.energy < naruto.maxenergy / 4)
+            Village.datetime = Village.datetime.AddHours(sleephours);
+            Village.naruto.energy = Village.naruto.energy + sleephours * 20;
+            Village.naruto.chakra = (int)Village.naruto.maxchakra;
+            Village.naruto.health = Village.naruto.health + sleephours * 10;
+            if(Village.naruto.energy < Village.naruto.maxenergy / 4)
             {
-                naruto.happiness = naruto.maxhappiness;
+                Village.naruto.happiness = Village.naruto.maxhappiness;
             }
             Button_Click_2(sender, e);
             setInfo();
         }
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            mainframe.Navigate(new Village(Time.datetime,naruto,mainframe));
+            Village.mainframe.Navigate(new Village(Village.datetime, Village.naruto, Village.mainframe));
         }
         public static void Profile_on()
         {     
