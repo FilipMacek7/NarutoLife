@@ -36,21 +36,24 @@ namespace NarutoLife.views.frames
                 TextBlock t = new TextBlock();
                 t.Text = item.Name + " " + item.Number.ToString() + "x";
                 t.TextAlignment = TextAlignment.Center;
+                t.FontSize = 10;
                 Image i = new Image();
                 StackPanel sp = new StackPanel();
                 sp.Children.Add(t);
-                i.Height = 55;
-                i.Margin = new Thickness(5);
+                t.Margin = new Thickness(5);
+                i.Height = 40;
                 i.Source = new BitmapImage(new Uri(@"../../img/" + item.Tag + ".png", UriKind.Relative));
                 sp.Children.Add(i);
+                sp.Background = Brushes.Gray;
                 if (item.Consumable)
                 {
                     Button b = new Button();
                     b.Click += ConsumeItem;
                     b.Content = "Use";
-                    b.Height = 35;
-                    b.Width = 50;
+                    b.Height = 20;
+                    b.Width = 40;
                     b.Tag = item.Tag;
+                    b.Margin = new Thickness(5);
                     sp.Children.Add(b);
                 }
                 Grid.SetColumn(sp, item.Xinv);
@@ -66,7 +69,7 @@ namespace NarutoLife.views.frames
                 if (i.Tag.Equals(b.Tag))
                 {
                     i.Number--;
-                    if (i.Number == 0)
+                    if (i.Number <= 0)
                     {
                         Village.naruto.inventory.Remove(i);
                         break;
@@ -75,10 +78,14 @@ namespace NarutoLife.views.frames
             }
             if (b.Tag.Equals("healthpotion"))
             {
-                Village.naruto.health += 20;
+                Village.naruto.health += 10;
                 Battleground.updateStats();    
             }
-            else
+            else if (b.Tag.Equals("sushi"))
+            {
+                Village.naruto.happiness += 20;
+                ProfileBar.updateStats();
+            }
             generateItems();
         }
 

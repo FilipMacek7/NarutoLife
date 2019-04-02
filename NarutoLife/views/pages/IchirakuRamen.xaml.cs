@@ -16,34 +16,34 @@ using System.Windows.Shapes;
 namespace NarutoLife.views.pages
 {
     /// <summary>
-    /// Interakční logika pro Hospital.xaml
+    /// Interakční logika pro IchirakuRamen.xaml
     /// </summary>
-    public partial class Hospital : Page
+    public partial class IchirakuRamen : Page
     {
         static Frame pr;
-        public Hospital()
+        public IchirakuRamen()
         {
             InitializeComponent();
-            profilebar.Navigate(new ProfileBar("Hospital"));
-            time.Navigate(new Time("Hospital"));
+            profilebar.Navigate(new ProfileBar("IchirakuRamen"));
+            time.Navigate(new Time("IchirakuRamen"));
             pr = profile;
         }
-
         private void GoVillage(object sender, RoutedEventArgs e)
         {
             Village.mainframe.Navigate(new Village(Village.datetime, Village.naruto, Village.mainframe));
         }
-
-        private void EnterHospital(object sender, RoutedEventArgs e)
+        private void EnterRamen(object sender, RoutedEventArgs e)
         {
+            enterbutton.Visibility = Visibility.Hidden;
             Village.datetime = Village.datetime.AddHours(1);
-            Village.naruto.yen -= 50;
-            Village.naruto.health = (int)Village.naruto.maxhealth;
+            Village.naruto.yen -= 100;
+            Village.naruto.happiness += 70;
             ProfileBar.updateStats();
+            background.ImageSource = new BitmapImage(new Uri(@"../../img/eatramen.gif", UriKind.Relative));
         }
         public static void Profile_on()
         {
-            pr.Navigate(new ProfilePanel("Hospital"));
+            pr.Navigate(new ProfilePanel("IchirakuRamen"));
         }
         public static void Profile_Off()
         {

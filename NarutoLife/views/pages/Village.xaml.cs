@@ -249,5 +249,9 @@ namespace NarutoLife
         {
             mainframe.Navigate(new Hospital());
         }
+        private void IchirakuRamen(object sender, RoutedEventArgs e)
+        {
+            mainframe.Navigate(new IchirakuRamen());
+        }
     }
 }

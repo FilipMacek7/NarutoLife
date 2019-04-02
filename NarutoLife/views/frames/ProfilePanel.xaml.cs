@@ -13,26 +13,34 @@ namespace NarutoLife
     /// </summary>
     public partial class ProfilePanel : Page
     {
-        string mainframe;
-        public ProfilePanel(string Mainframe)
+        string framekey;
+        public ProfilePanel(string Framekey)
         {
             InitializeComponent();
-            mainframe = Mainframe;
+            framekey = Framekey;
             setInfo();
         }
         private void Profile_Close(object sender, RoutedEventArgs e)
         {
-            if (mainframe.Equals("Village"))
+            if (framekey.Equals("Village"))
             {
                 Village.Profile_off();
             }
-            else if (mainframe.Equals("Home"))
+            else if (framekey.Equals("Home"))
             {
                 Home.Profile_off();
             }
-            else if (mainframe.Equals("Battleground"))
+            else if (framekey.Equals("Battleground"))
             {
                 Battleground.Profile_Off();
+            }
+            else if (framekey.Equals("Hospital"))
+            {
+                Hospital.Profile_Off();
+            }
+            else if (framekey.Equals("IchirakuRamen"))
+            {
+                IchirakuRamen.Profile_Off();
             }
         }
         int profilebg = 1;

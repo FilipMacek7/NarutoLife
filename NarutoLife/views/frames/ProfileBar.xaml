@@ -45,6 +45,6 @@
                 </Grid>
             </StackPanel>
         </Viewbox>
-        <Label Content="Yen: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="2" Name="yen" Foreground="Yellow"/>
+        <Label Content="Yen: " HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2" Name="yen" Foreground="Yellow"/>
     </Grid>
 </Page>

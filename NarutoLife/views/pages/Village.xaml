@@ -27,7 +27,7 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="2"  Grid.Row="5" Height="22" >
-            <Button Content="Ichiraku Ramen" Width="100"/>
+            <Button Content="Ichiraku Ramen" Width="100" Click="IchirakuRamen"/>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="3" Height="22" >
             <Button Content="Hokage mansion" Width="100" Click="HokageMansion_Button"/>
@@ -43,9 +43,9 @@
         </Viewbox>
         <Button Content="Home" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" Height="29" Grid.Column="1" Click="Home_Button" Grid.ColumnSpan="2" Margin="105,10,0,0" />
         <Frame x:Name="settings" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Width="150" Height="100" Panel.ZIndex="3"></Frame>
-        <Frame x:Name="profile" Grid.Row="1" Grid.RowSpan="4" Grid.Column="2" Grid.ColumnSpan="2" Height="300" Width="200"></Frame>
-        <Frame x:Name="profilebar"  Grid.ColumnSpan="2"></Frame>
-        <Frame x:Name="inventory"  Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Panel.ZIndex="2" Width="515" Height="300"></Frame>
+        <Frame x:Name="profile" Grid.Row="1" Grid.RowSpan="4" Grid.Column="2" Grid.ColumnSpan="2" Height="300" Width="200" Panel.ZIndex="2"></Frame>
+        <Frame x:Name="profilebar" Grid.ColumnSpan="2"></Frame>
+        <Frame x:Name="inventory"  Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Panel.ZIndex="2" Width="515" Height="280"></Frame>
         <Frame x:Name="listpanel" Height="50" Width="100" Grid.Column="5" VerticalAlignment="Top" HorizontalAlignment="Right"></Frame>
         <Frame x:Name="training"  Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" Grid.RowSpan="4" Height="300" Width="300"></Frame>
         <Frame x:Name="time" Grid.Column="5" Height="15" Width="50" HorizontalAlignment="Right" Margin="0,0,5,0"></Frame>

@@ -1,4 +1,5 @@
 ﻿using NarutoLife.model;
+using NarutoLife.views.pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,12 +31,12 @@ namespace NarutoLife
         static TextBlock Happinesstext;
         static TextBlock Energytext;
         static Image statePic;
-        static string mainframe;
+        static string framekey;
         static Label Yen;
-        public ProfileBar(string Mainframe)
+        public ProfileBar(string Framekey)
         {
             InitializeComponent();
-            mainframe = Mainframe;
+            framekey = Framekey;
             Healthbar = healthbar;
             Chakrabar = chakrabar;
             Happinessbar = happinessbar;
@@ -83,14 +84,21 @@ namespace NarutoLife
         }
         private void Profile_Button(object sender, RoutedEventArgs e)
         {
-            if(mainframe == "Village")
+            if(framekey == "Village")
             {
-
                 Village.Profile_on();
             }
-            else if (mainframe == "Home")
+            else if (framekey == "Home")
             {
                 Home.Profile_on();
+            }
+            else if (framekey == "Hospital")
+            {
+                Hospital.Profile_on();
+            }
+            else if (framekey == "IchirakuRamen")
+            {
+                IchirakuRamen.Profile_on();
             }
         }
     }

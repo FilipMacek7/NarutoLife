@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:NarutoLife.views.frames"
       mc:Ignorable="d" 
-      d:DesignHeight="400" d:DesignWidth="600"
+      d:DesignHeight="280" d:DesignWidth="515"
       Title="Inventory" Background="LightGray">
 
     <Grid>
@@ -28,6 +28,11 @@
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
+            <StackPanel Grid.Row="1">
+                <TextBlock TextAlignment="Center" Margin="5" FontSize="10">ss</TextBlock>
+                <Image Source="../../img/healpotion.png" Height="40"></Image>
+                <Button Content="Use" Width="40" Height="20" Margin="5"></Button>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

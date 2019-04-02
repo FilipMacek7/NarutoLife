@@ -100,6 +100,9 @@
     <Compile Include="views\pages\Hospital.xaml.cs">
       <DependentUpon>Hospital.xaml</DependentUpon>
     </Compile>
+    <Compile Include="views\pages\IchirakuRamen.xaml.cs">
+      <DependentUpon>IchirakuRamen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\pages\PreBattleground.xaml.cs">
       <DependentUpon>PreBattleground.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\pages\Hospital.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\pages\IchirakuRamen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -313,6 +320,8 @@
     <Resource Include="img\inventory_icon.png" />
     <Resource Include="img\sushi.png" />
     <Resource Include="img\hospital.png" />
+    <Resource Include="img\ichirakuramen.jpg" />
+    <Resource Include="img\eatramen.gif" />
     <Content Include="sounds\punch_trunk.mp3" />
     <Resource Include="img\lost_impression__child_naruto_x_child_reader__by_blackfang_124_d7kt8ze_LgY_icon.ico" />
     <Resource Include="img\menu.png" />
