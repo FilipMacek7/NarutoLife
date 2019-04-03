@@ -1,4 +1,5 @@
 ﻿using NarutoLife.model;
+using NarutoLife.views.pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,7 +75,7 @@ namespace NarutoLife
 
         private void Button_Load(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new LoadSaves(fr,"Menu"));
         }
 
         private void Button_Exit(object sender, RoutedEventArgs e)

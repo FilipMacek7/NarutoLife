@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="model\Enemy.cs" />
     <Compile Include="model\Character.cs" />
+    <Compile Include="model\GameSave.cs" />
     <Compile Include="model\Item.cs" />
     <Compile Include="model\Parallax.cs" />
     <Compile Include="views\frames\Inventory.xaml.cs">
@@ -102,6 +103,9 @@
     </Compile>
     <Compile Include="views\pages\IchirakuRamen.xaml.cs">
       <DependentUpon>IchirakuRamen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\pages\LoadSaves.xaml.cs">
+      <DependentUpon>LoadSaves.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\pages\PreBattleground.xaml.cs">
       <DependentUpon>PreBattleground.xaml</DependentUpon>
@@ -169,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\pages\IchirakuRamen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\pages\LoadSaves.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,7 +250,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="njnaruto.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -322,6 +329,7 @@
     <Resource Include="img\hospital.png" />
     <Resource Include="img\ichirakuramen.jpg" />
     <Resource Include="img\eatramen.gif" />
+    <Resource Include="img\loadsave.jpg" />
     <Content Include="sounds\punch_trunk.mp3" />
     <Resource Include="img\lost_impression__child_naruto_x_child_reader__by_blackfang_124_d7kt8ze_LgY_icon.ico" />
     <Resource Include="img\menu.png" />

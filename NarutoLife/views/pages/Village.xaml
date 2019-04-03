@@ -60,7 +60,7 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            <TextBlock TextAlignment="Center" Name="buyinfo" Grid.ColumnSpan="3"></TextBlock>
+            <TextBlock TextAlignment="Center" Name="buyinfo" Grid.ColumnSpan="3" Visibility="Hidden"></TextBlock>
             <Button Grid.Column="2" Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="4" Click="Shop_Close">
                 <StackPanel>
                     <Image Source="../../img/red_shuriken.png"></Image>

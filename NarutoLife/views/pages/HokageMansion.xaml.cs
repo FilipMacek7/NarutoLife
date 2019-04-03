@@ -152,7 +152,7 @@ namespace NarutoLife
                     
                     missions.Add(mission);
 
-                    File.WriteAllText(@"../../missions.json", JsonConvert.SerializeObject(missions));
+                    File.WriteAllText(@"missions.json", JsonConvert.SerializeObject(missions));
                     missionpanel.Children.Add(b);
                 }
             }

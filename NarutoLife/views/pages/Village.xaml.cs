@@ -26,6 +26,7 @@ namespace NarutoLife
         public static DateTime datetime;
         static ImageBrush ib;
         DispatcherTimer dt = new DispatcherTimer();
+        static TextBlock Buyinfo;
         public Village(DateTime getdatetime, Character Naruto, Frame Mainframe)
         {
             InitializeComponent();           
@@ -37,6 +38,7 @@ namespace NarutoLife
             mainframe = Mainframe;
             ib = background;
             tr = training;
+            Buyinfo = buyinfo;
             setInfo();
             NavigationCommands.BrowseBack.InputGestures.Clear();
             NavigationCommands.BrowseForward.InputGestures.Clear();
@@ -193,7 +195,8 @@ namespace NarutoLife
         int sety = 1;
         private void Confirm_buy(object sender, RoutedEventArgs e)
         {
-            if(naruto.yen >= itemcost * numberbuy)
+            buyinfo.Visibility = Visibility.Visible;
+            if (naruto.yen >= itemcost * numberbuy)
             {
                 naruto.yen -= numberbuy * itemcost;
                 ProfileBar.updateStats();     
@@ -243,6 +246,7 @@ namespace NarutoLife
         }
         public static void Inventory_Close()
         {
+            Buyinfo.Visibility = Visibility.Hidden;
             inv.Navigate(null);
         }
         private void GoHospital(object sender, RoutedEventArgs e)

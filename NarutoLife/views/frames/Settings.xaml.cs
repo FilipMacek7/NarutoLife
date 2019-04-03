@@ -1,5 +1,9 @@
-﻿using System;
+﻿using NarutoLife.model;
+using NarutoLife.views.pages;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +49,11 @@ namespace NarutoLife
             {
                 Battleground.Settings_Close();
             }
+        }
+
+        private void Save_Game(object sender, RoutedEventArgs e)
+        {
+            Village.mainframe.Navigate(new LoadSaves(Village.mainframe, "Settings"));
         }
     }
 }
