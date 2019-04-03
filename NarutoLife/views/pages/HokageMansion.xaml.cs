@@ -35,9 +35,9 @@ namespace NarutoLife
             bz.Content = "Go back";
             missiongrid.Children.Add(bz);
             bz.Visibility = Visibility.Collapsed;           
-            if (File.Exists(@"missions.json"))
+            if (File.Exists(@"../../missions.json"))
             {
-                missions = JsonConvert.DeserializeObject<List<Mission>>(File.ReadAllText(@"missions.json"));
+                missions = JsonConvert.DeserializeObject<List<Mission>>(File.ReadAllText(@"../../missions.json"));
             }
             else
             {
@@ -104,7 +104,7 @@ namespace NarutoLife
                 {
                     currentids.Add(id);
                 }
-                for (int i = missions.Count(); i < 4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     string mobname = "";
                     int number = rnd.Next(1, 4);
@@ -152,7 +152,7 @@ namespace NarutoLife
                     
                     missions.Add(mission);
 
-                    File.WriteAllText(@"missions.json", JsonConvert.SerializeObject(missions));
+                    File.WriteAllText(@"../../missions.json", JsonConvert.SerializeObject(missions));
                     missionpanel.Children.Add(b);
                 }
             }

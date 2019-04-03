@@ -80,6 +80,8 @@ namespace NarutoLife
             listpanel.Navigate(new ListPanel("Battleground"));
             st.Navigate(new Settings("Battleground"));
             inv.Navigate(new Inventory("Battleground"));
+            tks.Interval = TimeSpan.FromMilliseconds(10);
+            tks.Tick += tksTicker;
         }
         int y = 0;
         DispatcherTimer crouchtimer = new DispatcherTimer();
@@ -199,6 +201,7 @@ namespace NarutoLife
         int playercombatdamage;
         void timerTicker(object sender2, EventArgs e2)
         {
+            kunaishurikeninfo.Visibility = Visibility.Hidden; 
             i = 0;
             if (Canvas.GetLeft(narutot) >= 235)
             {
@@ -330,10 +333,105 @@ namespace NarutoLife
             ImageBehavior.SetRepeatBehavior(narutoimg, new RepeatBehavior(2));
         }
 
+        bool kunaifound = false;
+        bool shurikenfound = false;
+        DispatcherTimer tks = new DispatcherTimer();
+        static Image Shuriken;
+        static Image Kunai;
+        void tksTicker(object sender, EventArgs e)
+        {
+            if (kunaifound)
+            {
+                if (Canvas.GetLeft(Kunai) == 750)
+                {
+                    canvas.Children.Remove(Kunai);
+                    tks.Stop();
+                    playerturn = false;
+                    PreBattleground.currentEnemy.health -= 2;
+                    updateStats();
+                    Canvas.SetLeft(narutot, -20);
+                    timer.Start();
+                    kunaifound = false;
+                }
+                Canvas.SetLeft(Kunai, Canvas.GetLeft(Kunai) + 10);
+            }
+            if (shurikenfound)
+            {
+                if (Canvas.GetLeft(Shuriken) == 750)
+                {
+                    canvas.Children.Remove(Shuriken);
+                    tks.Stop();
+                    playerturn = false;
+                    PreBattleground.currentEnemy.health -= 1;
+                    updateStats();
+                    Canvas.SetLeft(narutot, -20);
+                    timer.Start();
+                    shurikenfound = false;
+                }
+                Canvas.SetLeft(Shuriken, Canvas.GetLeft(Shuriken) + 10);
+            }
+        }
         private void Kunai_Button(object sender, RoutedEventArgs e)
         {
             Fightbuttons.Visibility = Visibility.Hidden;
-            playerturn = false;
+            foreach (Item i in Village.naruto.inventory)
+            {
+                if (i.Tag.Equals("kunai"))
+                {
+                    kunaifound = true;
+                    if(i.Number == 1)
+                    {
+                        Village.naruto.inventory.Remove(i);
+                    }
+                    i.Number--;
+                    Inventory.generateItems();
+                    break;
+                }
+            }
+            foreach (Item i in Village.naruto.inventory)
+            {
+                if (i.Tag.Equals("shuriken"))
+                {
+                    shurikenfound = true;
+                    if (i.Number == 1)
+                    {
+                        Village.naruto.inventory.Remove(i);
+                    }
+
+                    i.Number--;
+                    Inventory.generateItems();
+                    break;
+
+                }
+            }             
+            if (kunaifound)
+            {
+                tks.Start();
+                Image kunai = new Image();
+                Kunai = kunai;
+                kunai.Height = 40;
+                Canvas.SetTop(kunai,50);
+                Canvas.SetLeft(kunai, 190);
+                kunai.Source = new BitmapImage(new Uri(@"/img/kunairotated.png", UriKind.Relative));
+                canvas.Children.Add(kunai);
+            }
+            if (shurikenfound)
+            {
+                tks.Start();
+                Image shuriken = new Image();
+                Shuriken = shuriken;
+                shuriken.Height = 40;
+                Canvas.SetTop(shuriken, 50);
+                Canvas.SetLeft(shuriken, 190);
+                shuriken.Source = new BitmapImage(new Uri(@"/img/shuriken.png",UriKind.Relative));
+                canvas.Children.Add(shuriken);
+            }
+            else
+            {
+                kunaishurikeninfo.Visibility = Visibility.Visible;
+                Fightbuttons.Visibility = Visibility.Visible;
+                timer.Stop();
+            }
 
         }
         bool playerdodge = false;

@@ -22,15 +22,17 @@ namespace NarutoLife.views.frames
     public partial class Inventory : Page
     {
         string framekey;
+        static Grid GRid;
         public Inventory(string Framekey)
         {
             InitializeComponent();
             framekey = Framekey;
+            GRid = grid;
             generateItems();
         }
-        private void generateItems()
+        public static void generateItems()
         {
-            grid.Children.Clear();
+            GRid.Children.Clear();
             foreach (Item item in Village.naruto.inventory)
             {
                 TextBlock t = new TextBlock();
@@ -58,10 +60,10 @@ namespace NarutoLife.views.frames
                 }
                 Grid.SetColumn(sp, item.Xinv);
                 Grid.SetRow(sp, item.Yinv);
-                grid.Children.Add(sp);
+                GRid.Children.Add(sp);
             }
         }
-        private void ConsumeItem(object sender, RoutedEventArgs e)
+        private static void ConsumeItem(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
             foreach(Item i in Village.naruto.inventory)

@@ -330,6 +330,7 @@
     <Resource Include="img\ichirakuramen.jpg" />
     <Resource Include="img\eatramen.gif" />
     <Resource Include="img\loadsave.jpg" />
+    <Resource Include="img\kunairotated.png" />
     <Content Include="sounds\punch_trunk.mp3" />
     <Resource Include="img\lost_impression__child_naruto_x_child_reader__by_blackfang_124_d7kt8ze_LgY_icon.ico" />
     <Resource Include="img\menu.png" />

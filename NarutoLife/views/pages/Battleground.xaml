@@ -42,7 +42,7 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <Canvas Height="150" VerticalAlignment="Bottom">
+        <Canvas Height="150" VerticalAlignment="Bottom" Name="canvas">
             <Image gif:ImageBehavior.RepeatBehavior="Forever"
                gif:ImageBehavior.AnimatedSource="../../img/naruto_stand.gif" 
                gif:ImageBehavior.AnimationCompleted="Naruto_AnimationCompleted"
@@ -177,5 +177,6 @@
         <Frame x:Name="profile" Height="300" Width="200" Visibility="Hidden"></Frame>
         <Frame x:Name="listpanel" Height="50" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center"></Frame>
         <Frame x:Name="settings" Width="150" Height="100" Panel.ZIndex="3" Visibility="Hidden"></Frame>
+        <Label Content="Kunai or shuriken are not in inventory" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,90,0,0" Width="220" Foreground="Red" Visibility="Hidden" Name="kunaishurikeninfo"/>
     </Grid>
 </Page>
